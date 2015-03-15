@@ -7,7 +7,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
-// echo "This is my hepler";
+echo "This is my hepler";
 /* binding data from GET parameter (the same method can work for POST, as well as for specific value of GET['']) */
 $dataToBind=new stdClass;
 if (isset($_GET)) foreach ($_GET as $k=>$v): 

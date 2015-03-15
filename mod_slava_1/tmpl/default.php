@@ -5,13 +5,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <h4>
 <?php echo $hello;?>
 </h4>
-<h3>Consulta en tabla de tramites</h3>
+<h3>Contenido actual de tabla de tramites</h3>
 <pre>
 <?php print_r($sql_query_result);?>
 </pre>
 
 </br>
-<h3>Consulta dinámica de decisiones con el metodo Ajax (introduce código Case ID de la lista)</h3>
+<h3>Consulta de resoluciones y dictamenes oara un tramite especifico (introduce código Case ID de la lista)</h3>
 <form>
 	<input type="text" name="slavadata" />
 	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>

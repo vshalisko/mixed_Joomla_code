@@ -10,6 +10,9 @@
         <filename>helper.php</filename>
         <filename>tmpl/default.php</filename>
     </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_slava_1.ini</language>
+    </languages>
     <config>
         <fields name="params">
             <fieldset name="databaseconfiguration">

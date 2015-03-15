@@ -65,8 +65,8 @@ class modHelloSlavaHelper
  	foreach( $rows as $row ) { 
 		$result .= "Predio (Parcel Map ID): " . $row->parcel_map_id . ", ";
 		$result .= "Tramite (Case ID): " . $row->parcel_case_id . ", ";
-		$result .= "Tramite iniciado: " . $row->open_date_time . ", ";
-		$result .= "Ciudadano/Persona: " . $row->person_name . ", ";
+		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
+		$result .= "Promotor: " . $row->person_name . ", ";
 		$result .= "</br>";
 	 } 
 	return $result;
@@ -99,9 +99,9 @@ class modSlava1Helper
 	// Retrieve each value in the ObjectList 
  	foreach( $rows as $row ) { 
 		$result .= "</br>";
-		$result .= "Tramite (Case ID): " . $row->parcel_case_id . ", ";
-		$result .= "Tramite iniciado: " . $row->open_date_time . ", ";
-		$result .= "Decisión: " . $row->decision_content . ", ";
+		$result .= "Case ID: " . $row->parcel_case_id . ", ";
+		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
+		$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
 		$result .= "Estatus de decición: " . $row->decision_status . ", ";
 		$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
 		$result .= "Ejecutivo: " . $row->officer_name . ", ";
