@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.0" client="site" method="upgrade">
+    <name>Hello, Slava!</name>
+    <author>Slava</author>
+    <version>1.0.0</version>
+    <description>A simple Hello, Slava! module.</description>
+    <files>
+        <filename>mod_slava_1.xml</filename>
+        <filename module="mod_slava_1">mod_slava_1.php</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="databaseconfiguration">
+                <field
+                        name="databaseexternaldriver"
+                        type="list"
+                        default="mysql"
+                        label="Database driver"
+                        description="Select database driver"
+                        >
+                    <option value="mysql">mysql</option>
+                    <option value="mysqli">sqlite</option>
+                    <option value="postgre">postgre</option>
+                </field>
+                <field
+                        name="databaseexternalhost"
+                        type="text"
+                        label="Database host"
+                        description="Specify database host, e.g.: localhost"
+                        size="70"
+                        >
+                </field>
+                <field
+                        name="databaseexternaluser"
+                        type="text"
+                        label="Database user"
+                        description="Specify database user"
+                        size="70"
+                        >
+                </field>
+                <field
+                        name="databaseexternalpassword"
+                        type="text"
+                        label="Database password"
+                        description="Specify database password"
+                        size="70"
+                        >
+                </field>
+                <field
+                        name="databaseexternaldatabase"
+                        type="text"
+                        label="Database name"
+                        description="Specify database name"
+                        size="70"
+                        >
+                </field>
+                <!--field
+                        name="databaseexternaltable"
+                        type="text"
+                        label="Database table"
+                        description="Specify database table"
+                        size="70"
+                        >
+                </field-->
+                <field
+                        name="databaseexternalprefix"
+                        type="text"
+                        default=""
+                        label="Database tables prefix"
+                        description="Specify database tables prefix, or left blank"
+                        size="10"
+                        >
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
