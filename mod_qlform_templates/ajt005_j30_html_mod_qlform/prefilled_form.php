@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		modified layout for mod_qlform
- * @copyright		Copyright (C) 2015 Biacheslav Shalisko. All rights reserved.
+ * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		layout modification by Viacheslav Shalisko vshalisko@gmail.com
  * @author 		mod_qlform by Mareike Riegel mareike.riegel@ql.de
  * @license		GNU General Public License version 2 or later; see LICENSE.txt

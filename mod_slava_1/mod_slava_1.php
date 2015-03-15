@@ -1,8 +1,9 @@
 <?php
 /**
- * Hello Slava! test module
- * Module Entry Point
- * 
+ * Entry point for Hello Slava! module
+ * @package		mod_slava_1
+ * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
+ * @author 		Viacheslav Shalisko vshalisko@gmail.com
  * @license        GNU/GPL, see LICENSE.php
  * mod_helloworld is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
