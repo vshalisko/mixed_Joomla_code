@@ -7,8 +7,9 @@
  */
 // no direct access
 defined('_JEXEC') or die;
-echo "This is my hepler";
-/* binding data from GET parameter (the same method can work for POST, as well as for specific value of GET['']) */
+// echo "This is my hepler";
+
+// binding data from GET parameter (the same method can work for POST, as well as for specific value of GET[''])
 $dataToBind=new stdClass;
 if (isset($_GET)) foreach ($_GET as $k=>$v): 
 	$dataToBind->$k=$v;
@@ -17,50 +18,39 @@ if (isset($_POST)) foreach ($_POST as $k=>$v):
 	$dataToBind->$k=$v;
 endforeach;
 
-/* taking values from database to fill some fields in table with data from database (external) */
-if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
-{
-	$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
-        $my_db1->setQuery('SELECT parcel_id, parcel_map_id, parcel_map_properties_xml, 
-		COUNT(*) AS `counting` FROM parcels WHERE parcel_id = \''.$dataToBind->parcel_id.'\'');
-	$my_db1_result=$my_db1->loadObject();
-/*
-	if (!(bool)$my_db1) {
-	    print "The DB object is empty";
-	} else {
-	    print "COUNTING:";
-	    echo $my_db1_result->counting;
-	}
-*/
+// getting data frim Joomla to fill user related fields
+$joomla_user = JFactory::getUser();
+if (!$joomla_user->guest) {
+	$dataToBind->person_login = $joomla_user->username;
+	$dataToBind->person_name = $joomla_user->name;
+	$dataToBind->person_email = $joomla_user->email;
+} else {
+	JFactory::getApplication()->enqueueMessage(JText::_(
+	'<H4>Aviso: Forma no valida. Usted tiene que entrar al sistema para poder capturar los datos personales del promotor!</H4>'
+	), 'warning');
 }
-/* $temporal_identifier - folio de tremite temporal */
-$temporal_identifier = 'MID' . $my_db1_result->parcel_map_id . 'C' . $my_db1_result->parcel_id . 'XXXXXXXX';
-$dataToBind->official_case_identifier=$temporal_identifier;
-$dataToBind->case_parcel_properties_xml=$my_db1_result->parcel_map_properties_xml;
+
+/* Some ideas to implement here
+// 1) Para el usuario quien ya anteriormente ha capturado datos debe existir la posibilidad de editarlos (CURP y Nombre),
+//	pero no se puede capturar mas que una vez datos para el usuario con el mismo login
+// 	Esto significa que la forma puede quedar prie-llenada con los datos en caso que ya existe un registro de este tipo, 
+//	y al momento de apretar boton enviar los datos tiene que actualizarse la misma linea de tabla, pero no tiene que 
+//	capturarse el nuevo registro. Sera necesario checar presencia de registro en tabla y definir comportamiento en funcion de esto.	
+//
+*/
+
+
+
+// taking values from database to fill some fields in table with data from database (external) 
+// if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
+// {
+//
+//	$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
+//        $my_db1->setQuery('SELECT parcel_id, parcel_map_id, parcel_map_properties_xml, 
+//		COUNT(*) AS `counting` FROM parcels WHERE parcel_id = \''.$dataToBind->parcel_id.'\'');
+//	$my_db1_result=$my_db1->loadObject();
+//}
 
 $form->bind($dataToBind);
 
-/* 
-
-$joomla_user = JFactory::getUser();
-echo $joomla_user->guest;
-echo $joomla_user->name;
-
-        $my_db1=JFactory::getDbo($paramsDatabaseExternal);
-$my_db = modQlformHelper::connectToDatabase($paramsDatabaseExternal);
-	echo $paramsDatabaseExternal['user'];
-	echo $module->id;
-
-
-  echo $my_db->getDatabaseName();
-$my_count = $my_db->setQuery('SELECT COUNT(*) FROM case_decisions'); 
-	print "The external DB object is not empty";
-	echo $params->get('databaseexternaltable');
-
-*/
-
 ?>
-
-
-
-

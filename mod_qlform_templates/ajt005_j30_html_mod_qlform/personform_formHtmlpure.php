@@ -8,7 +8,7 @@
  */
 // no direct access
 defined('_JEXEC') or die;
-require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_helper');
+require JModuleHelper::getLayoutPath('mod_qlform', 'personform_helper');
 ?>
 <form method="post" action="<?php echo $action; ?>" id="mod_qlform_<?php echo $module->id;?>" class="form-validate" <?php if (1==$params->get('fileupload_enabled')) echo ' enctype="multipart/form-data" ';?>>
 
