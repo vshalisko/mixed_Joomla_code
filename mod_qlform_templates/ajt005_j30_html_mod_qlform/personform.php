@@ -13,7 +13,7 @@ JHtml::_('behavior.tooltip');
 <style type="text/css">fieldset.additionalFields {display:none;}</style>
 <div class="qlform<?php echo $moduleclass_sfx; ?>">
 <?php
-if (1==$params->get('stylesActive',0))require JModuleHelper::getLayoutPath('mod_qlform', 'personform_styles');
+if (1==$params->get('stylesActive',0)) require JModuleHelper::getLayoutPath('mod_qlform', 'personform_styles');
 if (1==$emailcloak) echo '{emailcloak=off}'; /*very important; disables email cloaking in email inputs!!!!*/
 require JModuleHelper::getLayoutPath('mod_qlform', 'personform_copyright');
 

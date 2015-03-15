@@ -1,0 +1,21 @@
+[form]
+ [fieldset name="fieldsetParcelCases2"]
+
+[field type="spacer" label="Nuevo formulario de prueba para captura de tramites (cases)." description="Formulario para captura de tramites"][/field]
+
+  [field name="parcel_id" label="ID de parcela" type="text"  size="50" maxlength="12" required="true" /]
+
+  [field name="official_case_identifier" label="Folio de tramite" type="text"  size="50" readonly="true" /]
+
+  [field name="nested_case_id" label="ID de tramite anterior en cadena" type="text"  size="50" maxlength="12" /]
+
+  [field name="person_id" default="1" label="ID de persona (usuario)" type="text"  size="50"  maxlength="12" required="true" /]
+
+[field name="case_parcel_properties_xml" label="Propiedades de parcela para el tramite en XML" type="textarea" cols="50" rows="5" readonly="true" /]
+
+[field name="case_properties_xml" label="Propiedades de tramite en XML (temporalmente)" type="textarea" cols="50" rows="5" /]
+
+  [field name="open_date_time" label="Fecha de inicio del tramite (caso)" type="calendar" default="NOW"  format="%Y-%m-%d %H:%M:%S" readonly="true" required="true" /]
+
+ [/fieldset] 
+[/form]

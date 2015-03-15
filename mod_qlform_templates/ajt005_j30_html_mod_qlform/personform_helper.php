@@ -21,14 +21,38 @@ endforeach;
 // getting data frim Joomla to fill user related fields
 $joomla_user = JFactory::getUser();
 if (!$joomla_user->guest) {
+	// user logged in
 	$dataToBind->person_login = $joomla_user->username;
 	$dataToBind->person_name = $joomla_user->name;
 	$dataToBind->person_email = $joomla_user->email;
+
+	// checking presence of already filled from in database and setting values from filled form in such a case
+	if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
+	{
+		$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
+	        $my_db1->setQuery('SELECT person_id, person_name, person_email, person_curp
+			FROM persons WHERE person_login = '. $my_db1->quote($dataToBind->person_login));
+		$my_db1->execute();
+                if( $my_db1->getNumRows() > 0) {
+			// the database already has record for this user login, so we should reuse this data in modification form
+			JFactory::getApplication()->enqueueMessage(JText::_(
+			'<H4>Aviso: Usted ya cuenta con los datos personales previamente capturados.</H4>'
+			), 'warning');
+			$my_db1_result=$my_db1->loadObject();
+			if (isset($my_db1_result->person_id)) $dataToBind->person_id = $my_db1_result->person_id;
+			if (isset($my_db1_result->person_name)) $dataToBind->person_name = $my_db1_result->person_name;
+			if (isset($my_db1_result->person_email)) $dataToBind->person_email = $my_db1_result->person_email;
+			if (isset($my_db1_result->person_curp)) $dataToBind->person_curp = $my_db1_result->person_curp;
+		}
+	}
+
+
 } else {
 	JFactory::getApplication()->enqueueMessage(JText::_(
-	'<H4>Aviso: Forma no valida. Usted tiene que entrar al sistema para poder capturar los datos personales del promotor!</H4>'
+	'<H4>Aviso: Forma no valida! Usted tiene que entrar al sistema para poder capturar los datos personales del promotor.</H4>'
 	), 'warning');
 }
+
 
 /* Some ideas to implement here
 // 1) Para el usuario quien ya anteriormente ha capturado datos debe existir la posibilidad de editarlos (CURP y Nombre),
@@ -38,18 +62,6 @@ if (!$joomla_user->guest) {
 //	capturarse el nuevo registro. Sera necesario checar presencia de registro en tabla y definir comportamiento en funcion de esto.	
 //
 */
-
-
-
-// taking values from database to fill some fields in table with data from database (external) 
-// if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
-// {
-//
-//	$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
-//        $my_db1->setQuery('SELECT parcel_id, parcel_map_id, parcel_map_properties_xml, 
-//		COUNT(*) AS `counting` FROM parcels WHERE parcel_id = \''.$dataToBind->parcel_id.'\'');
-//	$my_db1_result=$my_db1->loadObject();
-//}
 
 $form->bind($dataToBind);
 
