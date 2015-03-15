@@ -18,25 +18,28 @@ if (isset($_POST)) foreach ($_POST as $k=>$v):
 endforeach;
 
 /* taking values from database to fill some fields in table with data from database (external) */
-if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
+if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal
+	AND isset($dataToBind->parcel_map_id) AND isset($dataToBind->parcel_map_version_id))
 {
 	$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
-        $my_db1->setQuery('SELECT parcel_id, parcel_map_id, parcel_map_properties_xml, 
-		COUNT(*) AS `counting` FROM parcels WHERE parcel_id = \''.$dataToBind->parcel_id.'\'');
-	$my_db1_result=$my_db1->loadObject();
-/*
-	if (!(bool)$my_db1) {
-	    print "The DB object is empty";
-	} else {
-	    print "COUNTING:";
-	    echo $my_db1_result->counting;
-	}
-*/
+        $my_db1->setQuery('SELECT parcel_id, parcel_map_id, parcel_map_properties_xml 
+		FROM parcels WHERE parcel_map_id = '. $my_db1->quote($dataToBind->parcel_map_id) .
+		' AND parcel_map_version_id = ' . $my_db1->quote($dataToBind->parcel_map_version_id));
+	$my_db1->execute();
+        if( $my_db1->getNumRows() > 0) {
+		$my_db1_result=$my_db1->loadObject();
+		if (isset($my_db1_result->parcel_id)) $dataToBind->parcel_id = $my_db1_result->parcel_id;
+		// in the next line we assign value of parcel_map_properties_xml to cerresponding copy field in parcel_case table	
+		if (isset($my_db1_result->parcel_map_properties_xml)) $dataToBind->case_parcel_properties_xml = $my_db1_result->parcel_map_properties_xml;			
+		}
 }
-/* $temporal_identifier - folio de tremite temporal */
-$temporal_identifier = 'MID' . $my_db1_result->parcel_map_id . 'C' . $my_db1_result->parcel_id . 'XXXXXXXX';
+/* $temporal_identifier - the temporal solution */
+$temporal_identifier = 'M' . $dataToBind->parcel_map_id . 'C' . $dataToBind->parcel_id . 'XXXXXXXX';
 $dataToBind->official_case_identifier=$temporal_identifier;
-$dataToBind->case_parcel_properties_xml=$my_db1_result->parcel_map_properties_xml;
+
+echo '<pre>Datos del predio:';
+echo $dataToBind->case_parcel_properties_xml;
+echo '</pre>';
 
 $form->bind($dataToBind);
 
