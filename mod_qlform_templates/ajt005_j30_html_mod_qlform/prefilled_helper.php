@@ -38,9 +38,11 @@ $temporal_identifier = 'M' . $dataToBind->parcel_map_id . 'C' . $dataToBind->par
 $dataToBind->official_case_identifier=$temporal_identifier;
 
 if (isset($dataToBind->case_parcel_properties_xml)) {
+	echo '<div class="well well-large">';
 	echo '<pre>Datos del predio:<br />';
 	echo $dataToBind->case_parcel_properties_xml;
 	echo '</pre>';
+	echo '</div>';
 } else {
 	$warning = '<H4>Forma no valida! El predio con las caracteristicas especificados no fue encontrado en sistema.</H4>';
 	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
@@ -74,9 +76,11 @@ if (!$joomla_user->guest) {
 }
 
 if (isset($dataToBind->person_name)) {
+	echo '<div class="well well-large">';
 	echo '<pre>Nombre del promotor:<br />';
 	echo $dataToBind->person_name;
 	echo '</pre>';
+	echo '</div>';
 } else {
 	$warning = '<H4>Forma no valida! Usted debe tener registrados sus datos personales.</H4>';
 	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');

@@ -1,18 +1,25 @@
 [form]
  [fieldset name="fieldsetCaseDecisions"]
 
-[field type="spacer" label="Otro formato de captura." description="Esto podria ser una descripción"][/field]
+[field type="spacer" label="Captura de decisiones, resoluciones, observaciones y dictámenes asociados con casos." description=""][/field]
 
-  [field name="parcel_case_id" label="ID de tramite (caso)" type="text"  size="50" maxlength="12" required="true" /]
+  [field name="parcel_case_id" label="Número interno ID de tramite" type="text"  size="50" maxlength="12" required="true" readonly="true" /]
 
-  [field name="officer_id" default="2" label="ID de ejecutivo" type="text"  size="50"  maxlength="12" required="true" /]
+  [field name="officer_id" label="ID de ejecutivo" type="text"  size="50"  maxlength="12" required="true" readonly="true" /]
 
   [field name="decision_content" label="Decisión" type="textarea" cols="50" rows="5" required="true" /]
 
-  [field name="decision_status" label="Estatus de decisión" type="list" cols="50" required="true"]
+  [field name="decision_content" label="Contenido de la resolución o dictámen" type="list" cols="50" required="true"]
+   [option value="Dictamen: aprobado"] Dictamen: aprobado[/option]
+   [option value="Dictamen: no-aprobado"] Dictamen: no-aprobado[/option]
+   [option value="Resolución: falta documentación"] Resolución: falta documentación[/option]
+   [option value="Resolución: falta estudio"] Resolución: falta estudio[/option]
+ [/field]
+
+  [field name="decision_status" label="Estatus de resolución/dictámen" type="list" cols="50" required="true"]
    [option value="vigente"] Vigente[/option]
-   [option value="no vigente"] No vigente[/option]
-   [option value="suprimido"] Suprimido[/option]
+   [option value="no-vigente"] No vigente[/option]
+   [option value="cancelado"] Cancelado[/option]
  [/field]
 
   [field name="decision_properties_xml" label="Propiedades de decición en XML (temporalmente)" type="textarea" cols="50" rows="5" /]

@@ -28,7 +28,7 @@ if (!$joomla_user->guest) {
 	{
 		$my_db1=JDatabaseDriver::getInstance($paramsDatabaseExternal);
 	        $my_db1->setQuery('SELECT officer_id, officer_name, officer_affiliation, officer_status
-			FROM officers WHERE officer_status = \'autorized\' AND
+			FROM officers WHERE officer_status = \'autorizado\' AND
 			officer_login = '. $my_db1->quote($dataToBind->officer_login));
 		$my_db1->execute();
                 if( $my_db1->getNumRows() > 0) {
@@ -50,6 +50,7 @@ if (!$joomla_user->guest) {
 }
 
 if (isset($dataToBind->officer_name)) {
+	echo '<div class="well well-large">';
 	echo '<pre>Nombre del ejecutivo: ';
 	echo $dataToBind->officer_name;
 	echo '<br />Afiliación del ejecutivo: ';
@@ -57,6 +58,7 @@ if (isset($dataToBind->officer_name)) {
 	echo '<br />Estatus del ejecutivo: ';
 	echo $dataToBind->officer_status;
 	echo '</pre>';
+	echo '</div>';
 }
 
 $form->bind($dataToBind);
