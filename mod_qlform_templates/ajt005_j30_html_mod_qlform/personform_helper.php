@@ -35,9 +35,9 @@ if (!$joomla_user->guest) {
 		$my_db1->execute();
                 if( $my_db1->getNumRows() > 0) {
 			// the database already has record for this user login, so we should reuse this data in modification form
-			JFactory::getApplication()->enqueueMessage(JText::_(
-			'<H4>Aviso: Usted ya cuenta con los datos personales previamente capturados.</H4>'
-			), 'warning');
+			$warning = '<H4>Usted ya cuenta con los datos personales previamente capturados.</H4>';
+			require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
+
 			$my_db1_result=$my_db1->loadObject();
 			if (isset($my_db1_result->person_id)) $dataToBind->person_id = $my_db1_result->person_id;
 			if (isset($my_db1_result->person_name)) $dataToBind->person_name = $my_db1_result->person_name;
@@ -48,9 +48,8 @@ if (!$joomla_user->guest) {
 
 
 } else {
-	JFactory::getApplication()->enqueueMessage(JText::_(
-	'<H4>Aviso: Forma no valida! Usted tiene que entrar al sistema para poder capturar los datos personales del promotor.</H4>'
-	), 'warning');
+	$warning = '<H4>Forma no valida! Usted tiene que entrar al sistema para poder capturar los datos personales del promotor.</H4>';
+	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
 

@@ -42,9 +42,8 @@ if (isset($dataToBind->case_parcel_properties_xml)) {
 	echo $dataToBind->case_parcel_properties_xml;
 	echo '</pre>';
 } else {
-	JFactory::getApplication()->enqueueMessage(JText::_(
-	'<H4>Aviso: Forma no valida! El predio con las caracteristicas especificados no fue encontrado en sistema.</H4>'
-	), 'warning');
+	$warning = '<H4>Forma no valida! El predio con las caracteristicas especificados no fue encontrado en sistema.</H4>';
+	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
 // getting data from Joomla to fill user related fields
@@ -70,9 +69,8 @@ if (!$joomla_user->guest) {
 		}
 	}
 } else {
-	JFactory::getApplication()->enqueueMessage(JText::_(
-	'<H4>Aviso: Forma no valida! Usted tiene que entrar al sistema para iniciar el tramite.</H4>'
-	), 'warning');
+	$warning = '<H4>Forma no valida! Usted tiene que entrar al sistema para iniciar el tramite.</H4>';
+	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
 if (isset($dataToBind->person_name)) {
@@ -80,10 +78,8 @@ if (isset($dataToBind->person_name)) {
 	echo $dataToBind->person_name;
 	echo '</pre>';
 } else {
-	JFactory::getApplication()->enqueueMessage(JText::_(
-	'<H4>Aviso: Forma no valida! Usted tiene que tener registrados sus datos personales.</H4>'
-	), 'warning');
-
+	$warning = '<H4>Forma no valida! Usted debe tener registrados sus datos personales.</H4>';
+	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
 
