@@ -29,4 +29,27 @@ defined('_JEXEC') or die('Restricted access'); ?>
 	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>
 </form>
 <H3><div class="slavastatus">[los resultados de subconsulta deben aparecer aquí]</div></H3>
-</div>
+</div>r aquí]</div></H3>
+
+</br>
+
+<h3>Prueba 3: Las formas dinámicas (generador de forma con arbol de deciciones)</h3>
+
+<div id="lmdfDataTest"></div>
+<input type="hidden" id="lmdfJSONoutside" value="">
+</br>
+
+<?php
+require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
+require JModuleHelper::getLayoutPath('mod_slava_1', 'lmdf');
+?>
+
+<pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aquí]</div></pre>
+
+<script type="text/javascript">
+lmdfInit();
+</script>
+
+
+
+
