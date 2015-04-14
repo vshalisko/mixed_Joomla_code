@@ -54,25 +54,29 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInput0",
-		"dependencies" : [ "lmdfInput2" , "lmdfInput4" ]
+		"alwaysvisible" : true,
+		"dependencies" : [ "lmdfSelector1" ]
 	} ,
 	{ 
 		"type" : "selector",
-		"name" : "lmdfInput1",
+		"name" : "lmdfSelector1",
 		"options" : 
 		[
 			{ 
 				"option" : "Tramite 1",
-		  		"dependencies" : [ "lmdfInput3" ]
+		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
 			},
 			{ 
-				"option" : "Tramite 2" 
+				"option" : "Tramite 2",
+				 "dependencies" : [ "lmdfInput5" ]
 			},
 			{ 
-				"option" : "Tramite 3" 
+				"option" : "Tramite 3",
+				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
 			},
 			{ 
-				"option" : "Tramite 4" 
+				"option" : "Tramite 4",
+				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
 			}
 		]
 	} ,
@@ -84,7 +88,16 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInput3"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInput4"
+	},
+	{ 
+		"type" : "input",
+		"name" : "lmdfInput5"
 	}
+
 ]};
 
 function xmlToString(xmlData) { 
@@ -106,80 +119,137 @@ function xmlToString(xmlData) {
 function lmdfInit() {
 	var lmdfDecisionTree1 = "";
 	if ( !document.getElementById("lmdfJSONoutside").value ) {
-		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree);
+		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree);              // Store JSON string on hidden field
 		lmdfDecisionTree1 = lmdfDecisionTree;
 	} else {
-		lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
+		lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);                 // Recover value of stored JSON field
 	}
 
-	var lmdfDataTest = "Inputs list: ";	
-	var lmdfXML = $.parseXML("<xml></xml>")
- 	var lmdfInputsArray = $("*[name^='lmdf']");
-	for (var a = 0; a < lmdfInputsArray.length; a++)
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)
 	{
-		inputName = lmdfInputsArray[a].name; 
-		lmdfDataTest = lmdfDataTest.concat(inputName," ");
-		for (var j = 0; j < lmdfDecisionTree1.input.length; j++)
-		{
-			if ( lmdfDecisionTree1.input[j].name == inputName ) {
-				if ( lmdfDecisionTree1.input[j].type == "input" ) {
-					lmdfDataTest = lmdfDataTest.concat(" (input) ");
-					if (    lmdfDecisionTree1.input[j].dependencies &&
-						lmdfDecisionTree1.input[j].dependencies.length > 0 ) {
-						lmdfDataTest = lmdfDataTest.concat(" /with dependencies/ ");
+		if ( !lmdfDecisionTree1.input[i].alwaysvisible ) {
+			lmdfDecisionTree1.input[i].on = false;							// Reset visibility of all elements in JSON
+		} else {
+			lmdfDecisionTree1.input[i].on = true;
+		}
+	}
+
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)
+	{
+		if (    lmdfDecisionTree1.input[i].value &&
+			lmdfDecisionTree1.input[i].dependencies &&
+			lmdfDecisionTree1.input[i].dependencies.length > 0 ) {
+			for (var d = 0; d < lmdfDecisionTree1.input[i].dependencies.length; d++) {      // Get list of dependent elements
+				for (var k = 0; k < lmdfDecisionTree1.input.length; k++)
+				// Looking for dependent elements in JSON structure to switch them on
+				{
+					if (lmdfDecisionTree1.input[k].name == lmdfDecisionTree1.input[i].dependencies[d] ) {
+                                       		lmdfDecisionTree1.input[k].on = true;			// Setting visibility of appropiate dependent elements
 					}
 				}
-				if ( lmdfDecisionTree1.input[j].value ) {
-					    	var elem = lmdfXML.createElement(inputName);
-    						$(elem).text(lmdfDecisionTree1.input[j].value);
-						var lmdfXMLelement = lmdfXML.getElementsByTagName("xml")[0]
-    						lmdfXMLelement.appendChild(elem);
-				}
-				if ( lmdfDecisionTree1.input[j].type == "selector" ) {
-					lmdfDataTest = lmdfDataTest.concat(" (selector) ");
+			}
+		}
+		if (    lmdfDecisionTree1.input[i].value &&
+			lmdfDecisionTree1.input[i].options &&
+			lmdfDecisionTree1.input[i].options.length > 0 ) {
+			for (var o = 0; o < lmdfDecisionTree1.input[i].options.length; o++)
+			{
+				if ( lmdfDecisionTree1.input[i].options[o].option == lmdfDecisionTree1.input[i].value && 
+					lmdfDecisionTree1.input[i].options[o].dependencies &&
+					lmdfDecisionTree1.input[i].options[o].dependencies.length > 0 ) {
+                                        
+					for (var d = 0; d < lmdfDecisionTree1.input[i].options[o].dependencies.length; d++) {
+						for (var k = 0; k < lmdfDecisionTree1.input.length; k++)
+						{
+							if (lmdfDecisionTree1.input[k].name == lmdfDecisionTree1.input[i].options[o].dependencies[d] ) {
+		                                       		lmdfDecisionTree1.input[k].on = true;			// Setting visibility of appropiate dependent elements
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-	$("#lmdfDataTest").text(lmdfDataTest);	
+
+	var lmdfXML = $.parseXML("<xml></xml>");					// Making empty XML document
+
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)      			// Taking one by one all the elements from JSON structure (input)
+	{
+	// Loop that change the visibility of elements
+		var lmdfDependentInputID = "#" + lmdfDecisionTree1.input[i].name;
+                var lmdfDependentInputClass = "." + lmdfDecisionTree1.input[i].name;
+		if ( lmdfDecisionTree1.input[i].on ) {
+                        $(lmdfDependentInputID).css("display", "block");           // Make element visible by ID
+                        $(lmdfDependentInputClass).css("display", "block");        // Make element visible by class (same as ID)
+		} else {
+                        $(lmdfDependentInputID).css("display", "none");           // Make element invisible by ID
+                        $(lmdfDependentInputClass).css("display", "none");        // Make element invisible by class (same as ID)
+		}
+		if ( lmdfDecisionTree1.input[i].value &&                	// Checking if there are some value stored in JSON structure
+			lmdfDecisionTree1.input[i].on ) {                       // Checking if element is visible
+			var elem = lmdfXML.createElement(lmdfDecisionTree1.input[i].name);            // Including this element to XML
+    			$(elem).text(lmdfDecisionTree1.input[i].value);
+			var lmdfXMLelement = lmdfXML.getElementsByTagName("xml")[0];
+    			lmdfXMLelement.appendChild(elem);
+		}                      			
+	}                                       	
+
 	$("#lmdfXMLout1").text(xmlToString(lmdfXML));
+
 };
 
 (function ($) {
-	$(document).on('keypress change', 'input[name^="lmdf"]', function() {     		// Getting input from one of the form elements
+	$(document).on('keypress change input keyup', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
-		var lmdfElementXML = "";
 		var lmdfElementData = $(this).val();
 		var lmdfElementName = $(this).attr('name');
 
 		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
 			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
 				if ( lmdfElementData ) {
-					lmdfDecisionTree1.input[i].value = lmdfElementData;
-				}
-				if (    lmdfDecisionTree1.input[i].dependencies &&
-					lmdfDecisionTree1.input[i].dependencies.length > 0 ) {
-					for (var d = 0; d < lmdfDecisionTree1.input[i].dependencies.length; d++) {
-						var lmdfDependentInputID = "#" + lmdfDecisionTree1.input[i].dependencies[d];
-						var lmdfDependentInputClass = "." + lmdfDecisionTree1.input[i].dependencies[d];
-						$(lmdfDependentInputID).css("display", "block");
-						$(lmdfDependentInputClass).css("display", "block");
-					}
+					lmdfDecisionTree1.input[i].value = lmdfElementData;         // Set element value in JSON structure
+				} else {
+					lmdfDecisionTree1.input[i].value = "";			    // Clear element value in JSON structure
 				}
 			}			
 		}
-                                             
-		// $("#lmdfFormElements1").text("Este texto aparece cuando hay algo introducido a uno de los elementos del formulario");
-		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);
+		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
 		lmdfInit();
 	});
 
+	$(document).on('change', 'select[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
+		var lmdfElementData = $(this).val();
+		var lmdfElementName = $(this).attr('name');
 
-////// Test button
-//	$(document).on('click', 'input[name=lmdfButton1]', function() {
-//	       var lmdfData = $('input[name=lmdfInput1]').val();
-//	       $("#lmdfXMLout1").text(lmdfData);
-//	});
+		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
+			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
+				if ( lmdfElementData ) {
+					lmdfDecisionTree1.input[i].value = lmdfElementData;         // Set element value in JSON structure
+				}
+			}			
+		}
+		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
+		lmdfInit();
+	});
+
+	$(document).on('keypress change input paste cut keyup', 'textarea[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
+		var lmdfElementData = $(this).val();
+		var lmdfElementName = $(this).attr('name');
+
+		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
+			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
+				if ( lmdfElementData ) {
+					lmdfDecisionTree1.input[i].value = lmdfElementData;         // Set element value in JSON structure
+				} else {
+					lmdfDecisionTree1.input[i].value = "";			    // Clear element value in JSON structure
+				}
+			}			
+		}
+		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
+		lmdfInit();
+	});
 
 
 })(jQuery);
