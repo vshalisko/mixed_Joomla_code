@@ -77,12 +77,12 @@ class modLMUHelper
 
     public static function requestCasesTable( $condition )
     {
-        $base_sql = "SELECT * FROM list_of_cases_for_parcel WHERE parcel_case_id IS NOT NULL AND parcel_case_id LIKE ";
+        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
 	$rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
 	$result = "";
 	// Retrieve each value in the ObjectList 
  	foreach( $rows as $row ) { 
-		$result .= "Predio (Parcel Map ID): " . $row->parcel_map_id . ", ";
 		$result .= "Tramite (Case ID): " . $row->parcel_case_id . ", ";
 		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
 		$result .= "Promotor: " . $row->person_name . ", ";

@@ -42,3 +42,6 @@ if (isset($dataGeneral->user_login)) {
 
 </div>
 
+<div class="span12 iteminfo">
+<span>Elementos obsoletos</span>
+</div>

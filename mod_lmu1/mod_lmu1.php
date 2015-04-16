@@ -18,6 +18,7 @@ JHtml::_('jquery.framework');
 // Instantiate global document object
 $dataGeneral=new stdClass;
 $doc = JFactory::getDocument();
+$joomla_user = JFactory::getUser();
 $databaseuser = $params->get('databaseexternaluser');
 
 // Include the syndicate functions only once
@@ -32,8 +33,8 @@ if (!$joomla_user->guest) {
 	$dataGeneral->person_login = $joomla_user->username;
 	$dataGeneral->person_name = $joomla_user->name;
 	$dataGeneral->person_email = $joomla_user->email;
-	$dataGeneral->user_info = modLMUHelper::requestUserInfo( $dataGeneral->person_login, $params );
-	$dataGeneral->case_list = modLMUHelper::requestCasesTable( '%', $params );
+	$dataGeneral->user_info = modLMUHelper::requestUserInfo( $dataGeneral->person_login );
+	$dataGeneral->case_list = modLMUHelper::requestCasesTable( '17' );
 }
 
 require(JModuleHelper::getLayoutPath('mod_lmu1'));
