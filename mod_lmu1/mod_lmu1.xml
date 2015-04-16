@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="2.5.0" client="site" method="upgrade">
-    <name>Slava test module</name>
+    <name>LMU1 module</name>
     <author>Viacheslav Shalisko</author>
-    <version>1.0.5</version>
-    <description>A simple test module.</description>
+    <version>1.0.0</version>
+    <description>Module for the user interface of LM system, part 1</description>
     <files>
-        <filename>mod_slava_1.xml</filename>
-        <filename module="mod_slava_1">mod_slava_1.php</filename>
+        <filename>mod_lmu1.xml</filename>
+        <filename module="mod_lmu1">mod_lmu1.php</filename>
         <filename>helper.php</filename>
         <filename>tmpl/default.php</filename>
     </files>
     <languages>
-        <language tag="en-GB">language/en-GB/en-GB.mod_slava_1.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_lmu1.ini</language>
     </languages>
     <config>
         <fields name="params">

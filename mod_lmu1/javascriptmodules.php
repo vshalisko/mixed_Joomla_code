@@ -1,7 +1,7 @@
 <?php
 /**
- * Entry point for Hello Slava! module
- * @package		mod_slava_1
+ * Template for LMU module
+ * @package		mod_lmu1
  * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
  * @license        GNU/GPL, see LICENSE.php
@@ -10,18 +10,9 @@
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
- 
-// no direct access
-defined('_JEXEC' ) or die('Restricted access');
-JHtml::_('jquery.framework');
- 
-$databaseuser = $params->get('databaseexternaluser');
 
-// Include the syndicate functions only once
-require_once(dirname(__FILE__) . '/helper.php');
-
-// Instantiate global document object
-$doc = JFactory::getDocument();
+// No direct access
+defined('_JEXEC') or die('Restricted access');
 
 // Ajax related JavaScript code, note the module name in request options
 $js = <<<JS
@@ -30,7 +21,7 @@ $js = <<<JS
 		var value   = $('input[name=slavadata]').val(),
 			request = {
 					'option' : 'com_ajax',
-					'module' : 'slava_1',
+					'module' : 'lmu1',
 					'data'   :  value,
 					'format' : 'debug'
 				};
@@ -322,11 +313,3 @@ JS;
 
 $doc->addScriptDeclaration($js);
 $doc->addScriptDeclaration($lmdfJS1);
-
-// Main module body generates initial module output (without Ajax requests)
-$hello = modHelloSlavaHelper::getHello();
-
-$sql_query_result = modHelloSlavaHelper::requestCasesTable( '%', $params );
-
-require(JModuleHelper::getLayoutPath('mod_slava_1'));
-?>
