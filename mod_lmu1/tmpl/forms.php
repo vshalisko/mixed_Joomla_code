@@ -14,13 +14,13 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-<h3>Prueba 3: Las formas din·micas (generador de forma con arbol de deciciones)</h3>
+<h3>Prueba 3: Las formas din√°micas (generador de forma con arbol de deciciones)</h3>
 
-El generador de forma din·mica funciona enteramente a nivel de cliente por medio de jQuery.
+El generador de forma din√°mica funciona enteramente a nivel de cliente por medio de jQuery.
 Los elementos de forma se habilitan al analizar de los datos introducidos. Todos los elementos estan predefinidos en ldmf.php,
 pero se encuentran ocultos (con el atributo CSS). El comportamiento y dependencias entre los elementos se establecen en la estructura JSON 
 en la parte inicial del script. Los datos introducidos por el usuario son persistentes y se almacenan en la misma estructura JSON. La cadena 
-XML para almacenamiento en la base de datos se forma por medio de mismo mecanismo de arbol de deciciÛn que la farma, entonces, 
+XML para almacenamiento en la base de datos se forma por medio de mismo mecanismo de arbol de decici√≥n que la farma, entonces, 
 los elementos desabilitados tampoco aparecen en XML, aunque sus datos quedan almacenados en JSON y en caso de quedar habilitados en algun 
 momento aparecn intactos en la forma y en XML.
 
@@ -32,7 +32,7 @@ momento aparecn intactos en la forma y en XML.
 require JModuleHelper::getLayoutPath('mod_lmu1', 'lmdf');
 ?>
 
-<pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aquÌ]</div></pre>
+<pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aqu√≠]</div></pre>
 
 <script type="text/javascript">
 lmdfInit();

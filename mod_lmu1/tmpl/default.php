@@ -22,25 +22,31 @@ defined('_JEXEC') or die('Restricted access'); ?>
 </h4>
 
 <?php
-if (isset($dataGeneral->user_login)) {
+if (isset($dataGeneral->person_login)) {
+	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
+	echo '</div><br />';
 	if (isset($dataGeneral->case_list)) {
+		echo '<div class="span12">';
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist');
+		echo '</div><br />';
 	} else {
-		print("<h3>No existen los tramites iniciados</h3>");
+		echo '<div class="span12">';
+		print("<h4>No existen los tramites iniciados por el usuario</h4>");
+		echo '</div><br />';
 	}
-
-
-
+	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
-
+	echo '</div><br />';
 } else {
+	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'login_required');
+	echo '</div><br />';
 }
 
 ?>
+</div><br />
 
-</div>
 
 <div class="span12 iteminfo">
 <span>Elementos obsoletos</span>

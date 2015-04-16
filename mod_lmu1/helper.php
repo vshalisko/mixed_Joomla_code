@@ -61,17 +61,19 @@ class modLMUHelper
     public static function requestUserInfo( $condition )
     {
         $base_sql = "SELECT * FROM persons WHERE person_login = ";
-	$rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
+	$obj = new stdClass;
+	$obj->rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
 	$result = "";
 	// Retrieve each value in the ObjectList 
- 	foreach( $rows as $row ) { 
+ 	foreach( $obj->rows as $row ) { 
 		$result .= "Person_id: " . $row->person_id . ", ";
 		$result .= "Person_login: " . $row->person_login . ", ";
 		$result .= "Person_name: " . $row->person_name . ", ";
-		$result .= "Person_CURP: " . $row->person_CURP . ", ";
+		$result .= "Person_CURP: " . $row->person_curp . ", ";
 		$result .= "</br>";
 	 } 
-	return $result;
+	$obj->string = $result;
+	return $obj;
     }
 
 
@@ -79,16 +81,18 @@ class modLMUHelper
     {
         $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
 			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
-	$rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
+	$obj = new stdClass;
+	$obj->rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
 	$result = "";
 	// Retrieve each value in the ObjectList 
- 	foreach( $rows as $row ) { 
+ 	foreach( $obj->rows as $row ) { 
 		$result .= "Tramite (Case ID): " . $row->parcel_case_id . ", ";
 		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
 		$result .= "Promotor: " . $row->person_name . ", ";
 		$result .= "</br>";
 	 } 
-	return $result;
+	$obj->string = $result;
+	return $obj;
     }
 
 

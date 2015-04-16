@@ -16,6 +16,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 
 <h3>Lista de tramites del usuario</h3>
-<pre>
-<?php print_r($dataGeneral->case_list);?>
-</pre>
+
+<?php 
+// print_r("<pre>");
+// print_r(print_r($dataGeneral->case_list->string);  // for debugging
+// print_r("</pre>");
+
+// $user_full_name = $dataGeneral->user_info->rows[0]->person_name;
+echo '<pre>' . $dataGeneral->case_list->string . '</pre>';
+?>
+

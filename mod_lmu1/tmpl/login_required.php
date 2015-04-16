@@ -26,8 +26,10 @@ Ingresa con su nombre de usuario y contraseña:
 
 <?php
 // The following code render standard login module
+$mod_login_param = array('greeting' => 0);  // param_name = value
+$mod_login_params = array('params' => json_encode($mod_login_param)); 
 $mod_login = JModuleHelper::getModule("mod_login", "login");
-$mod_login_render = JModuleHelper::renderModule($mod_login);
+$mod_login_render = JModuleHelper::renderModule($mod_login, $mod_login_params);
 print($mod_login_render);
 ?>
 </div>
