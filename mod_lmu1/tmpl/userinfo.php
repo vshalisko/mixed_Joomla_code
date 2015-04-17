@@ -24,7 +24,7 @@ $user_curp = $dataGeneral->user_info->rows[0]->person_curp;
 ?>
 
 <?php
-$personal_data_form_flag = '';
+$personal_data_form_flag = 0;
 
 if (isset($user_full_name)) {
 	// welcome user
@@ -37,7 +37,7 @@ if (isset($user_full_name)) {
 		echo ', e-mail: ';
 		echo $dataGeneral->person_email;
 		echo '</div><div class="span3 ofset1">';
-		echo '<a href="http://trainingsig.tk/index.php/9-sistema-de-tramite/12-datos-del-promotor-de-tramite"><i class="icon-pencil"></i> <small>[editar los datos personales]</small></a>';
+		echo '<a href="index.php/9-sistema-de-tramite/12-datos-del-promotor-de-tramite"><i class="icon-pencil"></i> <small>[editar los datos personales]</small></a>';
 		echo '</div>';
 	} else {
 		// no CURP
@@ -53,12 +53,11 @@ if (isset($user_full_name)) {
 
 <?php 
 if (1 == $personal_data_form_flag) {
-	echo '<div class="personal_data_form">';
 	echo '<div class="span10 offset1">';
-	echo '<form action="http://trainingsig.tk/index.php/9-sistema-de-tramite/12-datos-del-promotor-de-tramite" method="post">';
+	echo '<form action="index.php/9-sistema-de-tramite/12-datos-del-promotor-de-tramite" method="post">';
 	echo '<button type="submit" class="btn btn-large btn-block btn-primary" type="button">Capturar los datos personales</button>';
 	echo '</form>';
-	echo '</div></div>';
+	echo '</div><p style="padding-bottom: 50px;">&nbsp;</p>';
 }
 ?>
 

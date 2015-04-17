@@ -20,6 +20,14 @@ $dataGeneral=new stdClass;
 $doc = JFactory::getDocument();
 $joomla_user = JFactory::getUser();
 
+if (isset($_GET)) foreach ($_GET as $k=>$v): 
+	$dataGeneral->post->$k=$v;
+endforeach;
+if (isset($_POST)) foreach ($_POST as $k=>$v): 
+	$dataGeneral->post->$k=$v;
+endforeach;
+
+
 // Include the syndicate functions only once
 require_once(dirname(__FILE__) . '/helper.php');
 require_once(dirname(__FILE__) . '/javascriptmodules.php');
@@ -33,7 +41,12 @@ if (!$joomla_user->guest) {
 	$dataGeneral->person_name = $joomla_user->name;
 	$dataGeneral->person_email = $joomla_user->email;
 	$dataGeneral->user_info = modLMUHelper::requestUserInfo( $dataGeneral->person_login );
-	$dataGeneral->case_list = modLMUHelper::requestCasesTable( '17' );
+	if (isset($dataGeneral->user_info->rows[0]->person_id)) {
+		$dataGeneral->case_list = modLMUHelper::requestCasesTable( $dataGeneral->user_info->rows[0]->person_id );
+	}
+	if (isset($dataGeneral->post->parcel_case_id) && isset($dataGeneral->user_info->rows[0]->person_id)) {
+		$dataGeneral->case_details = modLMUHelper::requestCaseDetails( $dataGeneral->user_info->rows[0]->person_id, $dataGeneral->post->parcel_case_id );;
+	}
 }
 
 require(JModuleHelper::getLayoutPath('mod_lmu1'));

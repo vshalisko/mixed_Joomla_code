@@ -23,25 +23,42 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php
 if (isset($dataGeneral->person_login)) {
+	$case_list_flag = 1;
 	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
-	echo '</div><br />';
-	if (isset($dataGeneral->case_list)) {
-		echo '<div class="span12">';
-		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist');
-		echo '</div><br />';
-	} else {
-		echo '<div class="span12">';
-		print("<h4>No existen los tramites iniciados por el usuario</h4>");
-		echo '</div><br />';
+	echo '</div>';
+	if (0 == $personal_data_form_flag && isset($dataGeneral->new_case)) { 
+		echo '<div class="span12 iteminfo"><span>Iniciar nuevo tramite</span></div><div class="span12">';
+		require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
+		echo '</div><p></p>';
+		$case_list_flag = 0;
 	}
-	echo '<div class="span12">';
-	require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
-	echo '</div><br />';
+	if (0 == $personal_data_form_flag && isset($dataGeneral->case_details)) { 
+		echo '<div class="span12 iteminfo"><span>Detalles del tramite</span></div><div class="span12">';
+		require JModuleHelper::getLayoutPath('mod_lmu1', 'case_details');
+		echo '</div><p></p>';
+		$case_list_flag = 0;
+	}
+	if (1 == $case_list_flag) {
+		// boton de iniciar nuevo tramite
+		echo '<div class="span12">';
+		echo '<form action="index.php/9-sistema-de-tramite/10-inicio-tramite" method="post">';
+		echo '<button type="submit" class="btn btn-primary" type="button">Iniciar nuevo tramite</button>';
+		echo '</form>';
+		echo 'Paso 1: Seleccionar parcela en mapa; Paso 2: Llenar formulario; Paso 3: Anexar los documentos';
+		echo '</div><p style="padding-bottom: 30px;">&nbsp;</p>';
+	}
+	if (1 == $case_list_flag) {
+		// lista de tramites
+		echo '<div class="span12 iteminfo"><span>Lista de tramites</span></div><div class="span12">';
+		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist');
+		echo '</div><p></p>';
+	}
+
 } else {
 	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'login_required');
-	echo '</div><br />';
+	echo '</div><p></p>';
 }
 
 ?>

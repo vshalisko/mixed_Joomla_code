@@ -97,6 +97,28 @@ class modLMUHelper
 
 
 
+    public static function requestCaseDetails( $condition1, $condition2 )
+    {
+        $base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decision_id) AS decisions_count FROM persons 
+			LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+			LEFT JOIN case_decisions ON case_decisions.parcel_case_id = parcel_cases.parcel_case_id
+			WHERE persons.person_id = ". $condition1 ." AND parcel_cases.parcel_case_id = ";
+	$obj1 = new stdClass;
+	$obj1->rows = modLMUHelper::getSQLQuery01( $condition2, $base_sql );
+	$result = "";
+	// Retrieve each value in the ObjectList 
+ 	foreach( $obj1->rows as $row ) { 
+		$result .= "ID de tramite: " . $row->parcel_case_id . ", ";
+		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
+		$result .= "Promotor: " . $row->person_name . ", ";
+		$result .= "Resoluciones: " . $row->decisions_count . ", ";
+		$result .= "</br>";
+	 } 
+	$obj1->string = $result;
+	return $obj1;
+    }
+
+
 }
 
 // The class name should be strictly the same as module helper name without spaces

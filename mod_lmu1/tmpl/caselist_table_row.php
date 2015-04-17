@@ -14,20 +14,9 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-
-<?php 
-if (isset($dataGeneral->case_list) && count($dataGeneral->case_list->rows) > 0) {
-	// echo '<pre>' . $dataGeneral->case_list->string . '</pre>';		// for debugging
-	echo '<table class="table table-hover">';
-	echo '<thead><tr><th>Folio</th><th>Parcela</th><th>Fecha de inicio</th><th>Rol del solicitante</th></tr></thead><tbody>';
- 	foreach( $dataGeneral->case_list->rows as $row ) { 
-		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist_table_row');
-	 } 
-	echo '</tbody></table>';
-} else {
-	echo '<h4>No hay tramites iniciados por el usuario</h4>';
-}
-
-
-?>
-
+<tr>
+<td><a href="index.php/sistema-de-tramite?parcel_case_id=<?php echo $row->parcel_case_id ?>"><?php echo $row->official_case_identifier ?></a></td>
+<td><?php echo $row->parcel_id ?></td>
+<td><?php echo $row->open_date_time ?></td>
+<td><?php echo $row->person_role ?></td>
+</tr>
