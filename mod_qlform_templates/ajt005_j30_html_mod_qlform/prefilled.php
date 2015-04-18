@@ -7,9 +7,13 @@
  */
 // no direct access
 defined('_JEXEC') or die;
+JHtml::_('jquery.framework');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.tooltip');
+require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_javascriptmodules');
+require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_lmdf');
 ?>
+
 <style type="text/css">fieldset.additionalFields {display:none;}</style>
 <div class="qlform<?php echo $moduleclass_sfx; ?>">
 <?php
@@ -26,4 +30,12 @@ if (0==$params->get('hideform') OR (1==$params->get('hideform') AND  (!isset($va
 if (1==$params->get('backbool') AND isset($validated)) require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_back');
 if (1==$params->get('authorbool')) require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_author');
 ?>
+
+<div id="lmdfDataTest"></div>
+<input type="hidden" id="lmdfJSONoutside" value="">
+</br>
+
+<pre><div id="lmdfXMLout1">[cadena xml formada]</div></pre>
+
+
 </div>

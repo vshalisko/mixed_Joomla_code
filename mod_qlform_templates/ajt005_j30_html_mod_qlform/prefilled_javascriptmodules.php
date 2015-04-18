@@ -12,33 +12,11 @@
  */
 
 // No direct access
-defined('_JEXEC') or die('Restricted access'); 
+defined('_JEXEC') or die('Restricted access'); ?>
 
-// Instantiate global document object
-$doc = JFactory::getDocument();
 
-// Ajax related JavaScript code, note the module name in request options
-$js = <<<JS
-(function ($) {
-	$(document).on('click', 'input[name=slavabutton]', function () {
-		var value   = $('input[name=slavadata]').val(),
-			request = {
-					'option' : 'com_ajax',
-					'module' : 'slava_1',
-					'data'   :  value,
-					'format' : 'debug'
-				};
-		$.ajax({
-			type   : 'POST',
-			data   : request,
-			success: function (response) {
-				$('.slavastatus').html(response);
-			}
-		});
-		return false;
-	});
-})(jQuery);
-JS;
+<?php
+$doc1 = JFactory::getDocument();
 
 // Dynamic form generator related JavaScript code
 $lmdfJS1 = <<<JS
@@ -157,9 +135,7 @@ function xmlToString(xmlData) {
 
 
 // initialization of the form parser
-jQuery.noConflict();
-(function ($) {
-lmdfInit = function () {
+function lmdfInit() {
 	var lmdfDecisionTree1 = "";
 	if ( !document.getElementById("lmdfJSONoutside").value ) {
 		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree);              // Store JSON string on hidden field
@@ -238,8 +214,8 @@ lmdfInit = function () {
 	}                                       	
 
 	$("#lmdfXMLout1").text(xmlToString(lmdfXML));
-}
-})(jQuery);
+
+};
 
 (function ($) {
 	$(document).on('keypress change input keyup', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
@@ -310,13 +286,10 @@ lmdfInit = function () {
 		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
 		lmdfInit();
 	});
-})(jQuery);
 
+
+})(jQuery);
 JS;
 
-$doc->addScriptDeclaration($js);
-$doc->addScriptDeclaration($lmdfJS1);
-
-
-
+$doc1->addScriptDeclaration($lmdfJS1);
 ?>

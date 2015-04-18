@@ -14,24 +14,17 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-
+<?php
+require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
+?>
 
 <div id="divmodslava1" name="divmodslava1">
-<h4>
-<?php echo $hello;?>
-</h4>
-<h3>Prueeba 1: Contenido actual de tabla de tramites</h3>
-<pre>
-<?php print_r($sql_query_result);?>
-</pre>
 
-</br>
-<h3>Prueba 2: Consulta de resoluciones y dictamenes oara un tramite especifico (introduce código Case ID de la lista)</h3>
-<form>
-	<input type="text" name="slavadata" />
-	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>
-</form>
-<H3><div class="slavastatus">[los resultados de subconsulta deben aparecer aquí]</div></H3>
+<?php 
+// echo $hello; 
+// print_r($sql_query_result);
+?>
+
 
 </br>
 
@@ -50,9 +43,9 @@ momento aparecn intactos en la forma y en XML.
 </br>
 
 <?php
-require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
 require JModuleHelper::getLayoutPath('mod_slava_1', 'lmdf');
 ?>
+
 
 <pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aquí]</div></pre>
 
@@ -61,5 +54,12 @@ lmdfInit();
 </script>
 
 
+</br>
+<h3>Prueba 2: Consulta de resoluciones y dictamenes oara un tramite especifico (introduce código Case ID de la lista)</h3>
+<form>
+	<input type="text" name="slavadata" />
+	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>
+</form>
+<H3><div class="slavastatus">[los resultados de subconsulta deben aparecer aquí]</div></H3>
 
 

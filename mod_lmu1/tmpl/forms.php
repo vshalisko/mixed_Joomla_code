@@ -38,5 +38,3 @@ require JModuleHelper::getLayoutPath('mod_lmu1', 'lmdf');
 lmdfInit();
 </script>
 
-
-<h3>Generador de formas</h3>

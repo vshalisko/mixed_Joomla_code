@@ -43,6 +43,8 @@ if (isset($dataGeneral->person_login)) {
 		// boton de iniciar nuevo tramite
 		echo '<div class="span12">';
 		echo '<form action="index.php/9-sistema-de-tramite/10-inicio-tramite" method="post">';
+		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="455" />';           // debugging
+		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_version_id" value="2" />';     // debugging
 		echo '<button type="submit" class="btn btn-primary" type="button">Iniciar nuevo tramite</button>';
 		echo '</form>';
 		echo 'Paso 1: Seleccionar parcela en mapa; Paso 2: Llenar formulario; Paso 3: Anexar los documentos';
