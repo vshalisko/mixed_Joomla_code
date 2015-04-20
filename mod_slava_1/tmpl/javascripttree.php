@@ -22,68 +22,112 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector0",
+		"description" : "Selector del tipo de tramite de primer nivel",
 		"alwaysvisible" : true,
 		"options" : 
 		[
 			{ 
-				"option" : "Grupo 1",
+				"option" : "Grupo 1 Usos",
+		  		"dependencies" : [ "lmdfInput5" ]
+			},
+			{ 
+				"option" : "Grupo 2 Trazo",
+				 "dependencies" : [ "lmdfInput5" ]
+			},
+			{ 
+				"option" : "Grupo 3 Licencia",
 		  		"dependencies" : [ "lmdfSelector1" ]
 			},
 			{ 
-				"option" : "Grupo 2",
-				 "dependencies" : [ "lmdfSelector2", "lmdfInput5" ]
+				"option" : "Grupo 4 Alineamiento",
+		  		"dependencies" : [ "lmdfSelector2" ]
 			}
 		]
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector1",
+		"description" : "Selector del tipo de tramite de segundo nivel (licencias)",
 		"options" : 
 		[
 			{ 
-				"option" : "Tramite 1",
+				"option" : "Tramite 1 LConstruccionInmueble",
 		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
 			},
 			{ 
-				"option" : "Tramite 2",
+				"option" : "Tramite 2 LConstruccionAlberca",
 				 "dependencies" : [ "lmdfInput5" ]
 			},
 			{ 
-				"option" : "Tramite 3",
+				"option" : "Tramite 3 LConstruccionCancha",
 				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
 			},
 			{ 
-				"option" : "Tramite 4",
+				"option" : "Tramite 4 LConstruccionEstacionamientos"
+			},
+			{ 
+				"option" : "Tramite 5 LDemolicion"
+			},
+			{ 
+				"option" : "Tramite 6 LAcotamiento"
+			},
+			{ 
+				"option" : "Tramite 7 LTapiales"
+			},
+			{ 
+				"option" : "Tramite 8 LRemodelacion"
+			},
+			{ 
+				"option" : "Tramite 9 LReconstruccion"
+			},
+			{ 
+				"option" : "Tramite 10 LOcupacionViasMateriales"
+			},
+			{ 
+				"option" : "Tramite 11 LOcupacionViasPuestos"
+			},
+			{ 
+				"option" : "Tramite 12 LMovimientoTierra"
+			},
+			{ 
+				"option" : "Tramite 13 LConstruccionProvisional",
 				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
+			},
+			{ 
+				"option" : "Tramite 14 LConstruccionPlataformas"
+			},
+			{ 
+				"option" : "Tramite 15 LNoPrevista"
 			}
 		]
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector2",
+		"description" : "Selector del tipo de tramite de segundo nivel (tramites de alineamiento)",
 		"options" : 
 		[
 			{ 
-				"option" : "Tramite 5",
+				"option" : "Tramite A",
 		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
 			},
 			{ 
-				"option" : "Tramite 6",
+				"option" : "Tramite B",
 				 "dependencies" : [ "lmdfInput5" ]
 			},
 			{ 
-				"option" : "Tramite 7",
+				"option" : "Tramite C",
 				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
 			},
 			{ 
-				"option" : "Tramite 8"
+				"option" : "Tramite D"
 			},
 			{ 
-				"option" : "Tramite 9",
+				"option" : "Tramite E",
 				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
 			},
 			{ 
-				"option" : "Tramite 10",
+				"option" : "Tramite F",
 				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
 			}
 		]

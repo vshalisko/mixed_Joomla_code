@@ -87,6 +87,7 @@ if (isset($dataToBind->person_name)) {
 	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
+echo '<p><span class="badge">1</span> Especifica rol:</p>';
 
 
 $form->bind($dataToBind);
