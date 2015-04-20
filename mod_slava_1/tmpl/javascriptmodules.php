@@ -14,9 +14,6 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); 
 
-// Instantiate global document object
-$doc = JFactory::getDocument();
-
 // Ajax related JavaScript code, note the module name in request options
 $js = <<<JS
 (function ($) {
@@ -42,105 +39,6 @@ JS;
 
 // Dynamic form generator related JavaScript code
 $lmdfJS1 = <<<JS
-// set data structure of decicion tree
-
-var lmdfDecisionTree = 	{ input : [ 
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelector0",
-		"alwaysvisible" : true,
-		"options" : 
-		[
-			{ 
-				"option" : "Grupo 1",
-		  		"dependencies" : [ "lmdfSelector1" ]
-			},
-			{ 
-				"option" : "Grupo 2",
-				 "dependencies" : [ "lmdfSelector2", "lmdfInput5" ]
-			}
-		]
-	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelector1",
-		"options" : 
-		[
-			{ 
-				"option" : "Tramite 1",
-		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
-			},
-			{ 
-				"option" : "Tramite 2",
-				 "dependencies" : [ "lmdfInput5" ]
-			},
-			{ 
-				"option" : "Tramite 3",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
-			},
-			{ 
-				"option" : "Tramite 4",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
-			}
-		]
-	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelector2",
-		"options" : 
-		[
-			{ 
-				"option" : "Tramite 5",
-		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
-			},
-			{ 
-				"option" : "Tramite 6",
-				 "dependencies" : [ "lmdfInput5" ]
-			},
-			{ 
-				"option" : "Tramite 7",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
-			},
-			{ 
-				"option" : "Tramite 8"
-			},
-			{ 
-				"option" : "Tramite 9",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
-			},
-			{ 
-				"option" : "Tramite 10",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
-			}
-		]
-	} ,
-
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput0",
-		"alwaysvisible" : true,
-		"dependencies" : [ "lmdfInput2" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput2",
-		"dependencies" : [ "lmdfInput3" , "lmdfInput4" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput3"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput4"
-	},
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput5"
-	}
-
-]};
-
 function xmlToString(xmlData) { 
 
     var xmlString;
@@ -237,7 +135,9 @@ lmdfInit = function () {
 		}                      			
 	}                                       	
 
-	$("#lmdfXMLout1").text(xmlToString(lmdfXML));
+	lmdf_xml_formed = xmlToString(lmdfXML);
+	$("#lmdfXMLout1").text(lmdf_xml_formed);
+	$("#jform_case_properties_xml").text(lmdf_xml_formed);
 }
 })(jQuery);
 
@@ -316,7 +216,5 @@ JS;
 
 $doc->addScriptDeclaration($js);
 $doc->addScriptDeclaration($lmdfJS1);
-
-
 
 ?>

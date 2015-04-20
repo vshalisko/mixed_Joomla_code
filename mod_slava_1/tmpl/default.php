@@ -15,6 +15,10 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php
+// Instantiate global document object
+$doc = JFactory::getDocument();
+
+require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
 ?>
 
@@ -23,20 +27,23 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
 <?php 
 // echo $hello; 
 // print_r($sql_query_result);
+
+// Las formas dinámicas (generador de forma con arbol de deciciones)
+
+// El generador de forma dinámica funciona enteramente a nivel de cliente por medio de jQuery.
+// Los elementos de forma se habilitan al analizar de los datos introducidos. Todos los elementos estan predefinidos en ldmf.php,
+// pero se encuentran ocultos (con el atributo CSS). El comportamiento y dependencias entre los elementos se establecen en la estructura JSON 
+// en la parte inicial del script. Los datos introducidos por el usuario son persistentes y se almacenan en la misma estructura JSON. La cadena 
+// XML para almacenamiento en la base de datos se forma por medio de mismo mecanismo de arbol de decición que la farma, entonces, 
+// los elementos desabilitados tampoco aparecen en XML, aunque sus datos quedan almacenados en JSON y en caso de quedar habilitados en algun 
+// momento aparecn intactos en la forma y en XML.
+
+
 ?>
 
 
 </br>
 
-<h3>Prueba 3: Las formas dinámicas (generador de forma con arbol de deciciones)</h3>
-
-El generador de forma dinámica funciona enteramente a nivel de cliente por medio de jQuery.
-Los elementos de forma se habilitan al analizar de los datos introducidos. Todos los elementos estan predefinidos en ldmf.php,
-pero se encuentran ocultos (con el atributo CSS). El comportamiento y dependencias entre los elementos se establecen en la estructura JSON 
-en la parte inicial del script. Los datos introducidos por el usuario son persistentes y se almacenan en la misma estructura JSON. La cadena 
-XML para almacenamiento en la base de datos se forma por medio de mismo mecanismo de arbol de decición que la farma, entonces, 
-los elementos desabilitados tampoco aparecen en XML, aunque sus datos quedan almacenados en JSON y en caso de quedar habilitados en algun 
-momento aparecn intactos en la forma y en XML.
 
 <div id="lmdfDataTest"></div>
 <input type="hidden" id="lmdfJSONoutside" value="">
@@ -46,14 +53,15 @@ momento aparecn intactos en la forma y en XML.
 require JModuleHelper::getLayoutPath('mod_slava_1', 'lmdf');
 ?>
 
-
+<!--
 <pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aquí]</div></pre>
+-->
 
 <script type="text/javascript">
 lmdfInit();
 </script>
 
-
+<!--
 </br>
 <h3>Prueba 2: Consulta de resoluciones y dictamenes oara un tramite especifico (introduce código Case ID de la lista)</h3>
 <form>
@@ -61,5 +69,6 @@ lmdfInit();
 	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>
 </form>
 <H3><div class="slavastatus">[los resultados de subconsulta deben aparecer aquí]</div></H3>
+-->
 
 

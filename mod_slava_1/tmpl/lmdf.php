@@ -12,8 +12,11 @@
  */
 
 // No direct access
-defined('_JEXEC') or die('Restricted access'); ?>
+defined('_JEXEC') or die('Restricted access'); 
 
+// Instantiate global document object
+
+$form = <<<FORM
 
 <div>
 
@@ -82,3 +85,16 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <br />
 </div>
+
+FORM;
+
+echo '<div id="hidden_lmdf" style="display:none;">';
+echo $form;
+echo '</div>';
+
+echo '<script type="text/javascript">';
+// echo 'alert($("#hidden_lmdf").html());';    // debugging
+echo '$(".insertion_lmdf").append($("#hidden_lmdf").html());';
+echo '</script>';
+
+?>
