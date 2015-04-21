@@ -32,9 +32,6 @@ endforeach;
 require_once(dirname(__FILE__) . '/helper.php');
 // require_once(dirname(__FILE__) . '/javascriptmodules.php');
 
-// Main module body generates initial module output (without Ajax requests)
-// $hello = modLMUHelper::getHello();
-
 if (!$joomla_user->guest) {
 	// user logged in
 	$dataGeneral->person_login = $joomla_user->username;

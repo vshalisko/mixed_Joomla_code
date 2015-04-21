@@ -27,8 +27,8 @@ if (isset($dataGeneral->person_login)) {
 	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
 	echo '</div>';
-	if (0 == $personal_data_form_flag && isset($dataGeneral->new_case)) { 
-		echo '<div class="span12 iteminfo"><span>Iniciar nuevo tramite</span></div><div class="span12">';
+	if (0 == $personal_data_form_flag && isset($dataGeneral->new_case)) {  
+		echo '<div class="span12 iteminfo"><span>Nuevo tremite: Paso 3</span></div><div class="span12">';
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
 		echo '</div><p></p>';
 		$case_list_flag = 0;

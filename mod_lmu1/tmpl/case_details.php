@@ -12,7 +12,11 @@
  */
 
 // No direct access
-defined('_JEXEC') or die('Restricted access'); ?>
+defined('_JEXEC') or die('Restricted access'); 
+
+require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
+
+?>
 
 <h4>Detalles del tramite <?php echo $dataGeneral->case_list->rows[0]->official_case_identifier ?></h4>
 
@@ -25,8 +29,22 @@ Fecha de inicio: <?php echo $dataGeneral->case_details->rows[0]->open_date_time 
 Rol de solicitante: <?php echo $dataGeneral->case_details->rows[0]->person_role ?> <br />
 Nombre de solicitante: <?php echo $dataGeneral->case_details->rows[0]->person_name ?>  <br />
 Detelles del predio (XML): <?php echo $dataGeneral->case_details->rows[0]->case_parcel_properties_xml ?>  <br />
-Detalles de tramite (XML): <?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>  <br />
+Detalles de tramite (XML): <span id="insert_XML1"></span><br />
 Número de deciciones: <?php echo $dataGeneral->case_details->rows[0]->decisions_count ?>  <br />
+
+
+<script type="text/javascript">
+// Parsing XML from the output & inserting in the desired place
+// alert(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>"));
+$("#insert_XML1").append(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>")).html();
+</script>
+
+
+
+
+
+
+
 </pre>
 
 <pre>

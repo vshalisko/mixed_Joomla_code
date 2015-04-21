@@ -142,10 +142,15 @@ lmdfInit = function () {
 })(jQuery);
 
 (function ($) {
-	$(document).on('keypress change input keyup', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+	$(document).on('keypress change input keyup click', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
 		var lmdfElementData = $(this).val();
 		var lmdfElementName = $(this).attr('name');
+
+		if ( $(this).attr('type') == 'checkbox' && !$(this).is(':checked') ) {    // Unchecked checkbox requires speciel treatment
+			lmdfElementData = "";
+		}
+
 
 		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
 			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
@@ -163,12 +168,13 @@ lmdfInit = function () {
 	$(document).on('change', 'select[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
 		var lmdfElementData = $(this).val();
+		var lmdfElementText = $("option:selected", this).text();
 		var lmdfElementName = $(this).attr('name');
 
 		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
 			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
 				if ( lmdfElementData ) {
-					lmdfDecisionTree1.input[i].value = lmdfElementData;         // Set element value in JSON structure
+					lmdfDecisionTree1.input[i].value = lmdfElementText + " (" + lmdfElementData + ")";         // Set element value in JSON structure
 				}
 			}			
 		}
@@ -191,7 +197,6 @@ lmdfInit = function () {
 		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
 		lmdfInit();
 	});
-
 
 	$(document).on('keypress change input paste cut keyup', 'textarea[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);

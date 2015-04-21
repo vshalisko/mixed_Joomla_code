@@ -1,14 +1,10 @@
 <?php
 /**
- * Template for Hello Slava! module
- * @package		mod_slava_1
+ * Definition of decicion tree for form generator
+ * @package		mod_slava_1 & mod_lmu1
  * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
- * @license        GNU/GPL, see LICENSE.php
- * mod_helloworld is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
+ * @license        	GNU/GPL, see LICENSE.php
  */
 
 // No direct access
@@ -28,11 +24,11 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Grupo 1 Usos",
-		  		"dependencies" : [ "lmdfInput5" ]
+		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
 			},
 			{ 
 				"option" : "Grupo 2 Trazo",
-				 "dependencies" : [ "lmdfInput5" ]
+		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -56,7 +52,7 @@ var lmdfDecisionTree = 	{ input : [
 			},
 			{ 
 				"option" : "Tramite 2 LConstruccionAlberca",
-				 "dependencies" : [ "lmdfInput5" ]
+				 "dependencies" : [ "lmdfInput2" ]
 			},
 			{ 
 				"option" : "Tramite 3 LConstruccionCancha",
@@ -90,14 +86,14 @@ var lmdfDecisionTree = 	{ input : [
 				"option" : "Tramite 12 LMovimientoTierra"
 			},
 			{ 
-				"option" : "Tramite 13 LConstruccionProvisional",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
+				"option" : "Tramite 13 LConstruccionProvisional"
 			},
 			{ 
 				"option" : "Tramite 14 LConstruccionPlataformas"
 			},
 			{ 
-				"option" : "Tramite 15 LNoPrevista"
+				"option" : "Tramite 15 LNoPrevista",
+				 "dependencies" : [ "lmdfInputC1" ] 
 			}
 		]
 	} ,
@@ -108,35 +104,63 @@ var lmdfDecisionTree = 	{ input : [
 		"options" : 
 		[
 			{ 
-				"option" : "Tramite A",
-		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
+				"option" : "Tramite 16 Alineamiento",
+		  		"dependencies" : [ "lmdfInput2" ]
 			},
 			{ 
-				"option" : "Tramite B",
-				 "dependencies" : [ "lmdfInput5" ]
+				"option" : "Tramite 17 DesignacionNumero"
 			},
 			{ 
-				"option" : "Tramite C",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
+				"option" : "Tramite 18 Inspeccion"
 			},
 			{ 
-				"option" : "Tramite D"
-			},
-			{ 
-				"option" : "Tramite E",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
-			},
-			{ 
-				"option" : "Tramite F",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4", "lmdfInput5" ] 
+				"option" : "Tramite 19 TNoPrevisto",
+				 "dependencies" : [ "lmdfInputC1" ] 
 			}
 		]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP1",
+		"description" : "Ubicación: calle",
+		"dependencies" : [ "lmdfInputP2" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP2",
+		"description" : "Ubicación: número oficial"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP3",
+		"description" : "Ubicación: colonia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP4",
+		"description" : "Ubicación: entre la calle 1",
+		"dependencies" : [ "lmdfInputP5" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP5",
+		"description" : "Ubicación: entre la calle 2"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP6",
+		"description" : "Superficie del predio menor que 50 m",
+		"dependencies" : [ "lmdfInputP7" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP7",
+		"description" : "Superficie del predio"
 	} ,
 
 	{ 
 		"type" : "input",
 		"name" : "lmdfInput0",
-		"alwaysvisible" : true,
 		"dependencies" : [ "lmdfInput2" ]
 	} ,
 	{ 
@@ -154,10 +178,37 @@ var lmdfDecisionTree = 	{ input : [
 	},
 	{ 
 		"type" : "input",
-		"name" : "lmdfInput5"
+		"description" : "Comentario del usuario sobre el contenido del tramite",
+		"name" : "lmdfInputC1"
 	}
 
 ]};
+
+jQuery.noConflict();
+(function ($) {
+// Function for custom XML parsing and simple text output
+xmlParser = function xmlParser( xmlData ) {
+	var outString = "";
+	var xmlDoc = $.parseXML( xmlData );
+	$(xmlDoc).find('xml').each(function(){
+		$(this).children().each(function(){
+	       		var tagName = this.tagName;
+        		var valText = $(this).text();
+			for (var i = 0; i < lmdfDecisionTree.input.length; i++)	{
+				if ( lmdfDecisionTree.input[i].name == tagName ) {
+					if ( lmdfDecisionTree.input[i].description ) {
+						outString += lmdfDecisionTree.input[i].description;
+					} else {
+						outString += lmdfDecisionTree.input[i].name;
+					}
+					outString += ": <em>" + valText + "</em><br />";
+				}
+			}
+		});
+	});
+	return "<pre>" + outString + "</pre>";
+}
+})(jQuery);
 
 JS;
 
