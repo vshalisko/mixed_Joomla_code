@@ -73,6 +73,50 @@ $form = <<<FORM
 
 <p><span class="badge">3</span> Llena los campos requeridos:</p>
 
+<fieldset class="lmdfInputS0" style="display: none;">
+	<legend class="lmdfInputS0" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
+
+	<div class="row-fluid">
+		<div class="span2">
+			<label for="lmdfInputS0" class="lmdfInputS0" style="display: none;">Giro comercial</sup>
+			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
+			</label>
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS1A" class="lmdfInputS1" style="display: none;">Razón social</label>
+			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="input-xxlarge" style="display: none;" />
+		</div>
+	</div>
+
+	<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio</label>
+	<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xlarge" style="display: none;" ></textarea>
+
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputS3" class="lmdfInputS3" style="display: none;">Colonia</label>
+			<input type="text" name="lmdfInputS3" id="lmdfInputS3" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span8">
+			<label for="lmdfInputS4" class="lmdfInputS4" style="display: none;">Código postal</label>
+			<input type="text" name="lmdfInputS4" id="lmdfInputS4" class="input-mini" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputS5" class="lmdfInputS5" style="display: none;">Ciudad</label>
+			<input type="text" name="lmdfInputS5" id="lmdfInputS5" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span8">
+			<label for="lmdfInputS6" class="lmdfInputS6" style="display: none;">Estado</label>
+			<input type="text" name="lmdfInputS6" id="lmdfInputS6" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+
+		<label for="lmdfInputS7" class="lmdfInputS7" style="display: none;">Teléfono de contacto</label>
+		<input type="text" name="lmdfInputS7" id="lmdfInputS7" class="input-large" style="display: none;" />
+
+</fieldset>
+
 <fieldset class="lmdfInputP1" style="display: none;">
 	<legend class="lmdfInputP1" style="display: none;">Introduce los datos sobre ubicación del predio en forma textual</legend>
 	<div class="row-fluid">
@@ -82,7 +126,7 @@ $form = <<<FORM
 		</div>
 		<div class="span8">
 			<label for="lmdfInputP2" class="lmdfInputP2" style="display: none;">Número oficial</label>
-			<input type="text" name="lmdfInputP2" id="lmdfInputP2" class="input-mini" style="display: none inline-block;" />
+			<input type="text" name="lmdfInputP2" id="lmdfInputP2" class="input-mini" style="display: none;" />
 		</div>
 	</div>
 	<div class="row-fluid">

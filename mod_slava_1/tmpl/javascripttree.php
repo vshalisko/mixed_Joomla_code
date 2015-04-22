@@ -24,11 +24,11 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Grupo 1 Usos",
-		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
+		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6"  ]
 			},
 			{ 
 				"option" : "Grupo 2 Trazo",
-		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
+		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -119,6 +119,53 @@ var lmdfDecisionTree = 	{ input : [
 			}
 		]
 	} ,
+
+// ===============================================
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS0",
+		"description" : "Giro comercial",
+		"dependencies" : [ "lmdfInputS1" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS1",
+		"description" : "Razón social"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS2",
+		"description" : "Domicilio de residencia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS3",
+		"description" : "Colónia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS4",
+		"description" : "Código postal"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS5",
+		"description" : "Ciudad"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS6",
+		"description" : "Estado"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS7",
+		"description" : "Teléfono de contacto"
+	} ,
+
+
+// ===============================================
+
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP1",
