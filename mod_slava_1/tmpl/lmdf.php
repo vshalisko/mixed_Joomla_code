@@ -83,10 +83,13 @@ $form = <<<FORM
 			</label>
 		</div>
 		<div class="span10">
-			<label for="lmdfInputS1A" class="lmdfInputS1" style="display: none;">Razón social</label>
+			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
 			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="input-xxlarge" style="display: none;" />
 		</div>
 	</div>
+
+	<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
+	<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="input-xlarge" style="display: none;" />
 
 	<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio</label>
 	<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xlarge" style="display: none;" ></textarea>

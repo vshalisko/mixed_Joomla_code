@@ -30,8 +30,8 @@ if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal
         if( $my_db1->getNumRows() > 0) {
 		$my_db1_result=$my_db1->loadObject();
 		if (isset($my_db1_result->parcel_id)) $dataToBind->parcel_id = $my_db1_result->parcel_id;
-		// in the next line we assign value of parcel_map_properties_xml to cerresponding copy field in parcel_case table	
-		if (isset($my_db1_result->parcel_map_properties_xml)) $dataToBind->case_parcel_properties_xml = $my_db1_result->parcel_map_properties_xml;			
+		// in the next line we assign value of parcel_map_properties_xml to corresponding copy field in parcel_case table	
+		if (isset($my_db1_result->parcel_map_properties_xml)) $dataToBind->case_parcel_properties_xml = $my_db1_result->parcel_map_properties_xml;
 		}
 }
 // $temporal_identifier - the temporal solution 
@@ -89,27 +89,7 @@ if (isset($dataToBind->person_name)) {
 
 echo '<p><span class="badge">1</span> Especifica rol:</p>';
 
-
 $form->bind($dataToBind);
-
-/* 
-
-$joomla_user = JFactory::getUser();
-echo $joomla_user->guest;
-echo $joomla_user->name;
-
-        $my_db1=JFactory::getDbo($paramsDatabaseExternal);
-$my_db = modQlformHelper::connectToDatabase($paramsDatabaseExternal);
-	echo $paramsDatabaseExternal['user'];
-	echo $module->id;
-
-
-  echo $my_db->getDatabaseName();
-$my_count = $my_db->setQuery('SELECT COUNT(*) FROM case_decisions'); 
-	print "The external DB object is not empty";
-	echo $params->get('databaseexternaltable');
-
-*/
 
 ?>
 

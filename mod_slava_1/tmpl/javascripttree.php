@@ -125,7 +125,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputS0",
 		"description" : "Giro comercial",
-		"dependencies" : [ "lmdfInputS1" ]
+		"dependencies" : [ "lmdfInputS1", "lmdfInputS8" ]
 	} ,
 	{ 
 		"type" : "input",
@@ -161,6 +161,11 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputS7",
 		"description" : "Teléfono de contacto"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS8",
+		"description" : "Tipo de giro comercial"
 	} ,
 
 

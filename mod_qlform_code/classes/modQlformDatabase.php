@@ -38,8 +38,8 @@ class modQlformDatabase
 	public function save($table,$data)
 	{
 		$db=$this->getDatabase();
-        $data=$this->objectToArrayOrTheOtherWay($data);
-        return $db->insertObject($table,$data);
+	        $data=$this->objectToArrayOrTheOtherWay($data);
+	        return $db->insertObject($table,$data);
 	}
 
 
@@ -116,7 +116,7 @@ class modQlformDatabase
 	function getDatabaseName()
 	{
 		$config=JFactory::getConfig();
-        return $config->get('db');
+        	return $config->get('db');
 	}
 	/**
 	 * Method for getting Joomla! prefix name  

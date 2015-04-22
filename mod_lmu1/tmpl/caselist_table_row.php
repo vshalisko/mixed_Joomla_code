@@ -16,6 +16,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <tr>
 <td><a href="index.php/sistema-de-tramite?parcel_case_id=<?php echo $row->parcel_case_id ?>"><?php echo $row->official_case_identifier ?></a></td>
+<td><!--  Tipo de tramite --></td>
 <td><?php echo $row->parcel_id ?></td>
 <td><?php echo $row->open_date_time ?></td>
 <td><?php echo $row->person_role ?></td>

@@ -287,9 +287,12 @@ class modQlformHelper
 	public function saveToDatabase($table,$data,$paramsDatabaseExternal=array())
 	{
 		//echo "<pre>";print_r($paramsDatabaseExternal);die;print_r($this->arrTableFields);die;
-        $data=array_intersect_key($data,$this->arrTableFields);
-        if (0==count($paramsDatabaseExternal))$this->obj_database->save($table,$data);
-        else $this->obj_databaseexternal->save($table,$data);
+	        $data=array_intersect_key($data,$this->arrTableFields);
+	        if (0==count($paramsDatabaseExternal)) {
+			$this->obj_database->save($table,$data);
+		} else {
+			$this->obj_databaseexternal->save($table,$data);
+		}
 		return true;
 	}
 	/**

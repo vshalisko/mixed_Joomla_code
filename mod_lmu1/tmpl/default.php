@@ -27,7 +27,7 @@ if (isset($dataGeneral->person_login)) {
 	echo '<div class="span12">';
 	require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
 	echo '</div>';
-	if (0 == $personal_data_form_flag && isset($dataGeneral->new_case)) {  
+	if (0 == $personal_data_form_flag && isset($dataGeneral->case_step3)) {  
 		echo '<div class="span12 iteminfo"><span>Nuevo tremite: Paso 3</span></div><div class="span12">';
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
 		echo '</div><p></p>';
@@ -42,8 +42,8 @@ if (isset($dataGeneral->person_login)) {
 	if (1 == $case_list_flag) {
 		// boton de iniciar nuevo tramite
 		echo '<div class="span12">';
-		echo '<form action="index.php/9-sistema-de-tramite/10-inicio-tramite" method="post">';
-		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="455" />';           // debugging
+		echo '<form action="9-sistema-de-tramite/10-inicio-tramite" method="post">';
+		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="415" />';           // debugging
 		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_version_id" value="2" />';     // debugging
 		echo '<button type="submit" class="btn btn-primary" type="button">Iniciar nuevo tramite</button>';
 		echo '</form>';

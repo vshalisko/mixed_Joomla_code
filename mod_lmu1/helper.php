@@ -47,9 +47,12 @@ class modLMUHelper
  
 	// Obtain a database connection
 	$my_db = JDatabaseDriver::getInstance( $option );
-	$quoted_data = $my_db->quote( $data );
-	// Retrieve the shout
-	$query = $base_sql . $quoted_data ;
+	if ($data) {
+		$quoted_data = $my_db->quote( $data );
+		$query = $base_sql . $quoted_data ;
+	} else {
+		$query = $base_sql;
+	}
 	// Prepare the query
 	$my_db->setQuery($query);
 	// Load the results as a list of stdClass objects
@@ -112,6 +115,23 @@ class modLMUHelper
 		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
 		$result .= "Promotor: " . $row->person_name . ", ";
 		$result .= "Resoluciones: " . $row->decisions_count . ", ";
+		$result .= "</br>";
+	 } 
+	$obj1->string = $result;
+	return $obj1;
+    }
+
+
+    public static function requestCaseLastID( $person_id )
+    {
+        $base_sql = 'SELECT parcel_case_id, official_case_identifier FROM parcel_cases
+			WHERE person_id = ' .	$person_id . ' ORDER BY open_date_time DESC LIMIT 1';
+	$obj1 = new stdClass;
+	$obj1->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
+	$result = "";
+	// Retrieve each value in the ObjectList 
+ 	foreach( $obj1->rows as $row ) { 
+		$result .= "ID de tramite: " . $row->parcel_case_id;
 		$result .= "</br>";
 	 } 
 	$obj1->string = $result;

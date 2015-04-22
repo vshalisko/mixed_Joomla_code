@@ -64,7 +64,7 @@ if (1==$params->get('todoDatabaseExternal'))
     $checkDatabaseExternal=$obj_helper->checkDatabase($obj_helper->obj_databaseexternal,$params->get('databaseexternaltable'),$str_xml,$showDatabaseexternalFormError,$params->get('databaseexternaladdcreated'));
 }
 
-/*validation server site*/
+/*validation server side*/
 if 
 (
     /*JabBerwOcky for anti spam*/
@@ -152,7 +152,7 @@ if (isset($validated) AND 1==$validated)
 		$obj_helper->saveupdateToDatabase($params->get('databaseexternaltable'),$dataJsonified,$primary);
 	} else {
 		// Creating new record
-        	$obj_helper->saveToDatabase($params->get('databasetable'),$dataJsonified);
+        	$new_primary_flag = $obj_helper->saveToDatabase($params->get('databasetable'),$dataJsonified);
 	}
 	}
     if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal)
@@ -165,7 +165,7 @@ if (isset($validated) AND 1==$validated)
 		$obj_helper->saveupdateToDatabase($params->get('databaseexternaltable'),$dataJsonified,$primary,$paramsDatabaseExternal);
 	} else {
 		// Creating new record
-	        $obj_helper->saveToDatabase($params->get('databaseexternaltable'),$dataJsonified,$paramsDatabaseExternal);
+	        $new_primary_flag = $obj_helper->saveToDatabase($params->get('databaseexternaltable'),$dataJsonified,$paramsDatabaseExternal);
 	}
 
     }
@@ -189,7 +189,15 @@ if (isset($validated) AND 1==$validated)
         $dataJsonifiedWithoutServerData=$obj_helper->subarrayToJson($dataWithoutServer);
         $obj_helper->mail($data[$params->get('sendcopyfieldname')],'Copy: '.$params->get('emailsubject'),$dataJsonifiedWithoutServerData,$form,$params->get('sendcopyemailreplyto'),$params->get('sendcopypretext'),$params->get('sendcopylabels',1));
     }
-	if (1==$params->get('locationbool') AND !empty($location)){header('location:'.$location); exit;}
+	if (1==$params->get('locationbool') AND !empty($location)) {
+		// redirecting
+		if (isset($new_primary_flag) && $new_primary_flag) {
+			// redirecting with new primary flag
+			$location = $location . '?npf=1';
+		}
+		header('location:'.$location); 
+		exit;
+	}
     $obj_helper->arrMessages[]=array('str'=>$message);
 }
 //else echo "validation failed"; die;

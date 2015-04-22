@@ -15,7 +15,7 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 <h3>Nuevo tramite: Paso 3 - anexar los documentos y someter el tramite</h3>
-
+(id <?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>, folio <?php echo $dataGeneral->case_new_id->rows[0]->official_case_identifier ?>)
 <?php
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
 ?>

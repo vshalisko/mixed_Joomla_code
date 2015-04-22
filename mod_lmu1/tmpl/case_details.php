@@ -20,32 +20,29 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se ca
 
 <h4>Detalles del tramite <?php echo $dataGeneral->case_list->rows[0]->official_case_identifier ?></h4>
 
-<pre>
-Folio de tramite: <?php echo $dataGeneral->case_details->rows[0]->official_case_identifier ?> <br />
-ID de tramite: <?php echo $dataGeneral->case_details->rows[0]->case_id ?> <br />
-ID de parcela en mapa: <?php echo $dataGeneral->case_details->rows[0]->parcel_id ?>  <br />
-Tramites antecesores: <?php echo $dataGeneral->case_details->rows[0]->nested_case_id ?> <br />
-Fecha de inicio: <?php echo $dataGeneral->case_details->rows[0]->open_date_time ?> <br />
-Rol de solicitante: <?php echo $dataGeneral->case_details->rows[0]->person_role ?> <br />
-Nombre de solicitante: <?php echo $dataGeneral->case_details->rows[0]->person_name ?>  <br />
-Detelles del predio (XML): <?php echo $dataGeneral->case_details->rows[0]->case_parcel_properties_xml ?>  <br />
-Detalles de tramite (XML): <span id="insert_XML1"></span><br />
-Número de deciciones: <?php echo $dataGeneral->case_details->rows[0]->decisions_count ?>  <br />
-
+<table class="table table-condensed">
+<thead>
+	<tr><th>Variable</th><th>Contenido</th></tr>
+</thead>
+<tbody>
+<tr><td>Folio de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->official_case_identifier ?></td></tr>
+<tr><td>ID de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->case_id ?></td></tr>
+<tr><td>ID de parcela en mapa</td><td><?php echo $dataGeneral->case_details->rows[0]->parcel_id ?></td></tr>
+<tr><td>Tramites antecesores</td><td><?php echo $dataGeneral->case_details->rows[0]->nested_case_id ?></td></tr>
+<tr><td>Fecha de inicio</td><td><?php echo $dataGeneral->case_details->rows[0]->open_date_time ?></td></tr>
+<tr><td>Rol de solicitante</td><td><?php echo $dataGeneral->case_details->rows[0]->person_role ?></td></tr>
+<tr><td>Nombre de solicitante</td><td><?php echo $dataGeneral->case_details->rows[0]->person_name ?></td></tr>
+<tr><td>Detelles del predio (XML)</td><td><?php echo $dataGeneral->case_details->rows[0]->case_parcel_properties_xml ?></td></tr>
+<tr><td>Detalles de tramite (XML)</td><td><span id="insert_XML1"></span></td></tr>
+<tr><td>Número de deciciones</td><td><?php echo $dataGeneral->case_details->rows[0]->decisions_count ?></td></tr>
+</tbody>
+</table>
 
 <script type="text/javascript">
 // Parsing XML from the output & inserting in the desired place
 // alert(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>"));
 $("#insert_XML1").append(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>")).html();
 </script>
-
-
-
-
-
-
-
-</pre>
 
 <pre>
 <?php echo $dataGeneral->case_details->string ?>

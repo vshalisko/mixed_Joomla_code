@@ -42,8 +42,16 @@ if (!$joomla_user->guest) {
 		$dataGeneral->case_list = modLMUHelper::requestCasesTable( $dataGeneral->user_info->rows[0]->person_id );
 	}
 	if (isset($dataGeneral->post->parcel_case_id) && isset($dataGeneral->user_info->rows[0]->person_id)) {
-		$dataGeneral->case_details = modLMUHelper::requestCaseDetails( $dataGeneral->user_info->rows[0]->person_id, $dataGeneral->post->parcel_case_id );;
+		// there is case_id present and valid user
+		// request and output case details
+		$dataGeneral->case_details = modLMUHelper::requestCaseDetails( $dataGeneral->user_info->rows[0]->person_id, $dataGeneral->post->parcel_case_id );
 	}
+	if (isset($dataGeneral->post->npf) && isset($dataGeneral->user_info->rows[0]->person_id)) {
+		// the new record was added to table, that means we should pass to recover last inserted ID for this user an render "step 3"
+		$dataGeneral->case_step3 = 1;
+                $dataGeneral->case_new_id = modLMUHelper::requestCaseLastID( $dataGeneral->user_info->rows[0]->person_id );
+	}
+
 }
 
 require(JModuleHelper::getLayoutPath('mod_lmu1'));
