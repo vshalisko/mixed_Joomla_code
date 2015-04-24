@@ -24,9 +24,12 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <?php
 if (isset($dataGeneral->person_login)) {
 	$case_list_flag = 1;
-	echo '<div class="span12">';
-	require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
-	echo '</div>';
+	if (!isset($dataGeneral->case_step3)) {
+		// if we deal with the third step of capture form, we don't need userinfo (to prevent too complicated visual design)
+		echo '<div class="span12">';
+		require JModuleHelper::getLayoutPath('mod_lmu1', 'userinfo');
+		echo '</div>';
+	}
 	if (0 == $personal_data_form_flag && isset($dataGeneral->case_step3)) {  
 		echo '<div class="span12 iteminfo"><span>Nuevo tremite: Paso 3</span></div><div class="span12">';
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'forms');
@@ -40,7 +43,7 @@ if (isset($dataGeneral->person_login)) {
 		$case_list_flag = 0;
 	}
 	if (1 == $case_list_flag) {
-		// boton de iniciar nuevo tramite
+		// new case button
 		echo '<div class="span12">';
 		echo '<form action="9-sistema-de-tramite/10-inicio-tramite" method="post">';
 		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="415" />';           // debugging

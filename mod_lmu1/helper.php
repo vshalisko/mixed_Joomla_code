@@ -82,10 +82,16 @@ class modLMUHelper
 
     public static function requestCasesTable( $condition )
     {
-        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
-			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
+//        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+//			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
+
+	$base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decisions.case_decision_id) AS decisions_count 
+			FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+			LEFT JOIN case_decisions ON case_decisions.parcel_case_id <=> parcel_cases.parcel_case_id
+			WHERE persons.person_id = ". $condition ." GROUP BY case_id
+			ORDER BY parcel_cases.open_date_time DESC"; 
 	$obj = new stdClass;
-	$obj->rows = modLMUHelper::getSQLQuery01( $condition, $base_sql );
+	$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
 	$result = "";
 	// Retrieve each value in the ObjectList 
  	foreach( $obj->rows as $row ) { 
@@ -102,9 +108,9 @@ class modLMUHelper
 
     public static function requestCaseDetails( $condition1, $condition2 )
     {
-        $base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decision_id) AS decisions_count FROM persons 
-			LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
-			LEFT JOIN case_decisions ON case_decisions.parcel_case_id = parcel_cases.parcel_case_id
+        $base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decisions.case_decision_id) AS decisions_count 
+			FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+			LEFT JOIN case_decisions ON case_decisions.parcel_case_id <=> parcel_cases.parcel_case_id
 			WHERE persons.person_id = ". $condition1 ." AND parcel_cases.parcel_case_id = ";
 	$obj1 = new stdClass;
 	$obj1->rows = modLMUHelper::getSQLQuery01( $condition2, $base_sql );

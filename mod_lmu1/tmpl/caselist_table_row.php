@@ -15,9 +15,23 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 <tr>
-<td><a href="index.php/sistema-de-tramite?parcel_case_id=<?php echo $row->parcel_case_id ?>"><?php echo $row->official_case_identifier ?></a></td>
-<td><!--  Tipo de tramite --></td>
-<td><?php echo $row->parcel_id ?></td>
+<td><a href="index.php/sistema-de-tramite?parcel_case_id=<?php echo $row->case_id ?>"><?php echo $row->official_case_identifier ?></a></td>
+<td><?php 
+// regexp search of information from xml (3 options)
+if (preg_match("/<lmdfSelector[0]>(.+?)1(.+?)<\/lmdfSelector[0]>/ui", $row->case_properties_xml, $matches)) { // looking for group 1
+	echo 'Dictamen de usos y destinos';
+}
+if (preg_match("/<lmdfSelector[0]>(.+?)2(.+?)<\/lmdfSelector[0]>/ui", $row->case_properties_xml, $matches)) { // looking for group 1
+	echo 'Dictamen de trazo, usos y destinos específicos';
+}
+if (preg_match("/<lmdfSelector[12]>(.+?)<\/lmdfSelector[12]>/ui", $row->case_properties_xml, $matches)) {
+	echo $matches[0];
+}
+?></td>
+<!--<td><?php echo $row->parcel_id ?></td>-->
 <td><?php echo $row->open_date_time ?></td>
 <td><?php echo $row->person_role ?></td>
+<td><!-- Anexos --></td>
+<td><?php echo $row->decisions_count ?></td>
+<td><!-- Estatus --></td>
 </tr>

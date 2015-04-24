@@ -44,6 +44,8 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se ca
 $("#insert_XML1").append(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>")).html();
 </script>
 
+<!--
 <pre>
 <?php echo $dataGeneral->case_details->string ?>
 </pre>
+-->

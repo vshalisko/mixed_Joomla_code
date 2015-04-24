@@ -66,7 +66,7 @@ lmdfInit = function () {
 		lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);                 // Recover value of stored JSON field
 	}
 
-	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)          // Taking one by one all the elements from JSON structure (input)
 	{
 		if ( !lmdfDecisionTree1.input[i].alwaysvisible ) {
 			lmdfDecisionTree1.input[i].on = false;							// Reset visibility of all elements in JSON
@@ -75,7 +75,7 @@ lmdfInit = function () {
 		}
 	}
 
-	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)           // Taking one by one all the elements from JSON structure (input)
 	{
 		if (    lmdfDecisionTree1.input[i].value &&
 			lmdfDecisionTree1.input[i].dependencies &&
@@ -119,6 +119,7 @@ lmdfInit = function () {
 	// Loop that change the visibility of elements
 		var lmdfDependentInputID = "#" + lmdfDecisionTree1.input[i].name;
                 var lmdfDependentInputClass = "." + lmdfDecisionTree1.input[i].name;
+		var lmdfDependentInputName = lmdfDecisionTree1.input[i].name;
 		if ( lmdfDecisionTree1.input[i].on ) {
                         $(lmdfDependentInputID).css("display", "block");           // Make element visible by ID
                         $(lmdfDependentInputClass).css("display", "block");        // Make element visible by class (same as ID)
@@ -126,6 +127,18 @@ lmdfInit = function () {
                         $(lmdfDependentInputID).css("display", "none");           // Make element invisible by ID
                         $(lmdfDependentInputClass).css("display", "none");        // Make element invisible by class (same as ID)
 		}
+
+////	Borradorr de código para repoblar los campos de formulario con valores (por el momento no funciona correctamente
+//               if ( lmdfDecisionTree1.input[i].value ) {                          
+//			$('name='+lmdfDependentInputName+']').val(lmdfDecisionTree1.input[i].value);
+//			if($('name='+lmdfDependentInputName+']').is('select') && lmdfDecisionTree1.input[i].selected) {
+//				$("option",$('name='+lmdfDependentInputName+']')).each(function() {
+//				        if (this.value==lmdfDecisionTree1.input[i].selected) { 
+//						this.selected=true; 
+//					}
+//				}
+//		        });
+//		}
 		if ( lmdfDecisionTree1.input[i].value &&                	// Checking if there are some value stored in JSON structure
 			lmdfDecisionTree1.input[i].on ) {                       // Checking if element is visible
 			var elem = lmdfXML.createElement(lmdfDecisionTree1.input[i].name);            // Including this element to XML
@@ -174,7 +187,10 @@ lmdfInit = function () {
 		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
 			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
 				if ( lmdfElementData ) {
-					lmdfDecisionTree1.input[i].value = lmdfElementText + " (" + lmdfElementData + ")";         // Set element value in JSON structure
+					// Rendering data string for use in selector
+					// lmdfDecisionTree1.input[i].value = lmdfElementText + " (" + lmdfElementData + ")";         // Set element value in JSON structure
+					lmdfDecisionTree1.input[i].value = lmdfElementText;
+					lmdfDecisionTree1.input[i].selected = lmdfElementData;
 				}
 			}			
 		}

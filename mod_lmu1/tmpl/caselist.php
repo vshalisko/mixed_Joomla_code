@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 if (isset($dataGeneral->case_list) && count($dataGeneral->case_list->rows) > 0) {
 	// echo '<pre>' . $dataGeneral->case_list->string . '</pre>';		// for debugging
 	echo '<table class="table table-hover">';
-	echo '<thead><tr><th>Folio</th><th>Tipo de tramite</th><th>Parcela</th><th>Fecha de inicio</th><th>Rol del solicitante</th></tr></thead><tbody>';
+	echo '<thead><tr><th class="span2">Folio</th><th class="span3">Tipo de tramite</th> <th class="span2">Fecha de inicio</th><th class="span1">Rol del solicitante</th><th class="span1">Anexos</th><th class="span1">Resoluciones</th><th class="span2">Estatus</th></tr></thead><tbody>';
  	foreach( $dataGeneral->case_list->rows as $row ) { 
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist_table_row');
 	 } 

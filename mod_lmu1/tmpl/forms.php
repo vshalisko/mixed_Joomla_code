@@ -19,3 +19,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <?php
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
 ?>
+
+<p>Nota de parte de Viacheslav</p>
+<p>En esta pantalla van a aparecer</p>
+<p>A.) Formato para anexar (subir) los documentos en digital</p>
+<p>B.) Cuando los documentos estan completos se habilita el boto se someter tramite, al apretar boton se pasa a la hoja de confirmación y 
+sistema agraga la resolución automática de que el tramite fue aceptado para consideración</p>
