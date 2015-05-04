@@ -21,8 +21,8 @@ $form = <<<FORM
 <div>
 
 <fieldset class="lmdfSelector0">
-<p><span class="badge">2</span><span> Selecciona el tipo de servicio:</span></p>
-<div class="radio">
+<p><span class="badge">2</span> <span>Selecciona el tipo de servicio:</span></p>
+<div class="radio hasTooltip" data-placement="left" title="Elige una de 4 opciones">
 <label class="lmdfSelector0">
 	<input type="radio" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 1 Usos" /> Tramitar el dictamen de usos y destinos 
 </label>
@@ -41,8 +41,8 @@ $form = <<<FORM
 <br />
 
 <label for="lmdfSelector1" class="lmdfSelector1" style="display: none;">Selleciona el tipo de licencia a tramitar de la lista:</label>
-<select name="lmdfSelector1" id="lmdfSelector1" class="input-xxlarge" style="display: none;">
-	<option>Elige el tipo de licencia</option>
+<select name="lmdfSelector1" id="lmdfSelector1" class="input-xxlarge hasTooltip" data-placement="left" title="Elige una de 15 opciones" style="display: none;">
+	<option>Elige el tipo de licencia</option>                   
 	<option value="Tramite 1 LConstruccionInmueble">Licencia para construcción de inmuebles</option>
 	<option value="Tramite 2 LConstruccionAlberca">Licencia para construcción de albercas</option>
 	<option value="Tramite 3 LConstruccionCancha">Licencia para construcción de canchas y áreas deportivas</option>
@@ -151,12 +151,12 @@ $form = <<<FORM
 	<div class="row-fluid">
 		<div class="span4">
 			<label for="lmdfInputP6" class="lmdfInputP6" style="display: none;">Superficie del predio mayor que 50 m<sup>2</sup>
-			<input type="checkbox" name="lmdfInputP6" id="lmdfInputP6" style="display: none;" />
+			<input type="checkbox" name="lmdfInputP6" id="lmdfInputP6" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio es mayór que 50 m" />
 			</label>
                 </div>
 		<div class="span8">
 			<label for="lmdfInputP7" class="lmdfInputP7" style="display: none;">Introduce la superficie del predio en m<sup>2</sup></label>
-			<input type="text" name="lmdfInputP7" id="lmdfInputP7" class="input-mini" style="display: none;" />
+			<input type="text" name="lmdfInputP7" id="lmdfInputP7" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie para los predios mayores que 50 m" />
 		</div>
 	</div>
 </fieldset>

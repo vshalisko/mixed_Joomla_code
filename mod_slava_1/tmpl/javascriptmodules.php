@@ -151,6 +151,7 @@ lmdfInit = function () {
 	lmdf_xml_formed = xmlToString(lmdfXML);
 	$("#lmdfXMLout1").text(lmdf_xml_formed);
 	$("#jform_case_properties_xml").text(lmdf_xml_formed);
+	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree));
 }
 })(jQuery);
 

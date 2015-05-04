@@ -35,3 +35,11 @@ print($mod_login_render);
 </div>
 
 
+<script type="text/javascript">
+jQuery( document ).ready(function( $ ) {
+	$("#user4w").css("display", "none");
+});
+
+</script>
+
+

@@ -16,16 +16,17 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 
 <?php 
-if (isset($dataGeneral->case_list) && count($dataGeneral->case_list->rows) > 0) {
-	// echo '<pre>' . $dataGeneral->case_list->string . '</pre>';		// for debugging
+if (isset($dataGeneral->resolutions_list) && count($dataGeneral->resolutions_list->rows) > 0) {
+	// echo '<pre>' . $dataGeneral->resolutions_list->string . '</pre>';		// for debugging
+	echo '<h4>Lista de resoluciones/dictamenes sobre el tramite</h4>';	
 	echo '<table class="table table-hover">';
-	echo '<thead><tr><th class="span3">Folio</th><th class="span3">Tipo de tramite</th> <th class="span2">Fecha de inicio</th><th class="span1">Rol del solicitante</th><th class="span1">Anexos</th><th class="span1">Resoluciones</th><th class="span1">Estatus</th></tr></thead><tbody>';
- 	foreach( $dataGeneral->case_list->rows as $row ) { 
-		require JModuleHelper::getLayoutPath('mod_lmu1', 'caselist_table_row');
+	echo '<thead><tr><th class="span6">Resolución/Dictamen</th><th class="span2">Estatus</th><th class="span2">Fecha</th><th class="span2">Origen</th></tr></thead><tbody>';
+ 	foreach( $dataGeneral->resolutions_list->rows as $row ) { 
+		require JModuleHelper::getLayoutPath('mod_lmu1', 'resolutionslist_table_row');
 	 } 
 	echo '</tbody></table>';
 } else {
-	echo '<h4>No hay tramites iniciados por el usuario</h4>';
+	echo '<h4>No hay resoluciones sobre el tramite</h4>';
 }
 
 

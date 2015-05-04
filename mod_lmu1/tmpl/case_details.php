@@ -18,23 +18,26 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se ca
 
 ?>
 
-<h4>Detalles del tramite <?php echo $dataGeneral->case_list->rows[0]->official_case_identifier ?></h4>
+<h4>Detalles del tramite <?php echo $dataGeneral->case_list->rows[0]->system_case_identifier ?></h4>
 
 <table class="table table-condensed">
 <thead>
-	<tr><th>Variable</th><th>Contenido</th></tr>
+<tr><th class="span4">Variable</th><th class="span8">Contenido</th></tr>
 </thead>
 <tbody>
-<tr><td>Folio de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->official_case_identifier ?></td></tr>
-<tr><td>ID de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->case_id ?></td></tr>
-<tr><td>ID de parcela en mapa</td><td><?php echo $dataGeneral->case_details->rows[0]->parcel_id ?></td></tr>
-<tr><td>Tramites antecesores</td><td><?php echo $dataGeneral->case_details->rows[0]->nested_case_id ?></td></tr>
+<tr><td>Folio provisional de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->system_case_identifier ?></td></tr>
+<tr><td>Folio oficial de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->official_case_identifier ?></td></tr>
+<!--<tr><td>ID de tramite</td><td><?php echo $dataGeneral->case_details->rows[0]->case_id ?></td></tr>-->
+<tr><td>Tramites anteriores en cadena</td><td><?php echo $dataGeneral->case_details->rows[0]->nested_case_id ?></td></tr>
 <tr><td>Fecha de inicio</td><td><?php echo $dataGeneral->case_details->rows[0]->open_date_time ?></td></tr>
 <tr><td>Rol de solicitante</td><td><?php echo $dataGeneral->case_details->rows[0]->person_role ?></td></tr>
 <tr><td>Nombre de solicitante</td><td><?php echo $dataGeneral->case_details->rows[0]->person_name ?></td></tr>
-<tr><td>Detelles del predio (XML)</td><td><?php echo $dataGeneral->case_details->rows[0]->case_parcel_properties_xml ?></td></tr>
-<tr><td>Detalles de tramite (XML)</td><td><span id="insert_XML1"></span></td></tr>
-<tr><td>Número de deciciones</td><td><?php echo $dataGeneral->case_details->rows[0]->decisions_count ?></td></tr>
+<tr><td>Coordenada X del punto de interés</td><td><?php echo $dataGeneral->case_details->rows[0]->case_parcel_x ?></td></tr>
+<tr><td>Coordenada Y del punto de interés</td><td><?php echo $dataGeneral->case_details->rows[0]->case_parcel_y ?></td></tr>
+<tr><td>Número de parcela en mapa</td><td><?php echo $dataGeneral->case_details->rows[0]->parcel_id ?></td></tr>
+<tr><td>Datos asociados con la parcela en mapa</td><td><?php echo $dataGeneral->case_details->rows[0]->case_parcel_properties_xml ?></td></tr>
+<tr><td>Detalles de tramite</td><td><span id="insert_XML1"></span></td></tr>
+<tr><td>Número de deciciones emitidos por ejecutivo</td><td><?php echo $dataGeneral->case_details->rows[0]->decisions_count ?></td></tr>
 </tbody>
 </table>
 
@@ -43,6 +46,10 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se ca
 // alert(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>"));
 $("#insert_XML1").append(xmlParser("<?php echo $dataGeneral->case_details->rows[0]->case_properties_xml ?>")).html();
 </script>
+
+<?php
+require JModuleHelper::getLayoutPath('mod_lmu1', 'resolutionslist');
+?>
 
 <!--
 <pre>

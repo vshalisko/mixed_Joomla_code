@@ -104,6 +104,28 @@ class modLMUHelper
 	return $obj;
     }
 
+    public static function requestResolutionsTable( $condition )
+    {
+//        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
+//			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
+
+	$base_sql = "SELECT * FROM case_decisions 
+			WHERE case_decisions.parcel_case_id = ". $condition ."
+			ORDER BY case_decisions.decision_modification_date_time DESC"; 
+	$obj = new stdClass;
+	$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
+	$result = "";
+	// Retrieve each value in the ObjectList 
+ 	foreach( $obj->rows as $row ) { 
+		$result .= "Tramite (Case ID): " . $row->parcel_case_id . ", ";
+		$result .= "Fecha de resolución: " . $row->decision_modification_date_time . ", ";
+		$result .= "Contenido: " . $row->decision_contents . ", ";
+		$result .= "Estatus: " . $row->decision_status . ", ";
+		$result .= "</br>";
+	 } 
+	$obj->string = $result;
+	return $obj;
+    }
 
 
     public static function requestCaseDetails( $condition1, $condition2 )
@@ -111,7 +133,10 @@ class modLMUHelper
         $base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decisions.case_decision_id) AS decisions_count 
 			FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
 			LEFT JOIN case_decisions ON case_decisions.parcel_case_id <=> parcel_cases.parcel_case_id
-			WHERE persons.person_id = ". $condition1 ." AND parcel_cases.parcel_case_id = ";
+			WHERE persons.person_id = ". $condition1 ." 
+			AND case_decisions.decision_status = 'vigente'
+			AND case_decisions.officer_id != 1
+			AND parcel_cases.parcel_case_id = ";
 	$obj1 = new stdClass;
 	$obj1->rows = modLMUHelper::getSQLQuery01( $condition2, $base_sql );
 	$result = "";
@@ -142,6 +167,25 @@ class modLMUHelper
 	 } 
 	$obj1->string = $result;
 	return $obj1;
+    }                                             
+
+
+    public static function submitNewCaseForResolution( $parcel_case_id )
+    {
+        // step 1: check if case was already accepted for revision
+	$search_sql = 'SELECT COUNT(*) AS count FROM case_decisions WHERE decision_status = "vigente" 
+			AND decision_content = "aceptado para revisión" AND parcel_case_id = ';
+	$obj = new stdClass;
+	$obj->rows = modLMUHelper::getSQLQuery01( $parcel_case_id, $search_sql );
+	if(isset($obj->rows[0]->count) && $obj->rows[0]->count) {
+		// the case was already acepted, no need to insert another resolution
+		return 1;
+	} else {	
+	        $base_sql = 'INSERT INTO case_decisions VALUES (NULL,'. $parcel_case_id .',1,"aceptado para revisión","vigente",NULL,NOW())';
+		$obj1 = new stdClass;
+		$obj1->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
+		return $obj1;
+	}
     }
 
 

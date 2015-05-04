@@ -1,0 +1,11 @@
+Nota de parte de Viacheslav:
+
+Trata de un elemento que se encuentra en proceso de trabajo, favor de no eleminar los componentes insertados aquí, incluyendo los modulos mod_qlform y mod_slava_1. 
+
+Como funciona este elemento: Tramite se inicia cuando el usuario selecciona polígono en mapa. Al enviar al formulario el ID de poligono en mapa (parcel_map_id) y versión de cartografía (parcel_map_version_id=2) por medio de los metodos GET y POST se inicia el proceso de llenado de formulario, se insertan los datos asociados con los poligonos. 
+
+Ejemplo de llamada del formulario con GET: http://trainingsig.tk/index.php/9-sistema-de-tramite/10-inicio-tramite?parcel_map_id=500&parcel_map_version_id=2
+
+Otros valores que se puede incluir en la llamada de este formulario son las coordenadas de punto "point_x" y "point_y".
+
+------------------------------------------

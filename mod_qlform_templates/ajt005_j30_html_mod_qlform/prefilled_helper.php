@@ -5,6 +5,8 @@
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
+
+
 // no direct access
 defined('_JEXEC') or die;
 // echo "This is my hepler";
@@ -35,8 +37,9 @@ if (1==$params->get('todoDatabaseExternal') AND 1==$checkDatabaseExternal
 		}
 }
 // $temporal_identifier - the temporal solution 
-$temporal_identifier = 'M' . $dataToBind->parcel_map_id . 'C' . $dataToBind->parcel_id . 'XXXXXXXX';
-$dataToBind->official_case_identifier=$temporal_identifier;
+$my_date = new DateTime();
+$temporal_identifier = date('Ym') . '-' . $dataToBind->parcel_map_id . '-' . $dataToBind->parcel_id . '-' . $my_date->getTimestamp();
+$dataToBind->system_case_identifier=$temporal_identifier;
 
 if (isset($dataToBind->case_parcel_properties_xml)) {
 	echo '<div class="well well-large">';

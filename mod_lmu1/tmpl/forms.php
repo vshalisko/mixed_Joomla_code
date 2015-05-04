@@ -15,13 +15,24 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 
 <h3>Nuevo tramite: Paso 3 - anexar los documentos y someter el tramite</h3>
-(id <?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>, folio <?php echo $dataGeneral->case_new_id->rows[0]->official_case_identifier ?>)
+ID: <?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>, folio provisional: <?php echo $dataGeneral->case_new_id->rows[0]->system_case_identifier ?>
 <?php
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
+
+
+// submit case button
+echo '<div class="span12">';
+echo '<form action="tramite" method="post">';
+echo '<input type="hidden" id="parcel_case_id" name="parcel_case_id" value="'. $dataGeneral->case_new_id->rows[0]->parcel_case_id .'" />';
+echo '<input type="hidden" id="case_submit" name="npf_submit" value="1" />';
+echo '<button type="submit" class="btn btn-primary hasTooltip" type="button" title="Someter datos para revisión por un ejecutivo" data-placement="right">Someter</button>';
+echo '</form>';
+
 ?>
 
 <p>Nota de parte de Viacheslav</p>
 <p>En esta pantalla van a aparecer</p>
 <p>A.) Formato para anexar (subir) los documentos en digital</p>
-<p>B.) Cuando los documentos estan completos se habilita el boto se someter tramite, al apretar boton se pasa a la hoja de confirmación y 
-sistema agraga la resolución automática de que el tramite fue aceptado para consideración</p>
+<p>B.) Cuando los documentos estan completos se habilita el boto se someter tramite</p>
+<p>Temporalmente el boton esta habilitado todo el tiempo, al apretarlo se pasa a la pantalla con resumen de los datos introducidos y 
+sistema emite la resolución automática de que el tramite fue aceptado para inicio de su revisión.</p>
