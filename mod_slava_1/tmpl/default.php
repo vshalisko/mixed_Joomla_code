@@ -14,19 +14,49 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-<?php
-// Instantiate global document object
-$doc = JFactory::getDocument();
-
-require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');
-require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
-?>
-
 <div id="divmodslava1" name="divmodslava1">
 
+
+<?php
+// get module mode defined in parameters
+$my_module_mode = $params->get('modulemode');
+
+// Initialization of the global document object
+$doc = JFactory::getDocument();
+
+
+if ('LMDF'== $my_module_mode) {
+// the option of dynamic form generation
+	require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');
+	require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
+	// Initialization of the hidden dynamic form HTML
+	echo '</br><div id="lmdfDataTest"></div><input type="hidden" id="lmdfJSONoutside" value=""></br>';
+        require JModuleHelper::getLayoutPath('mod_slava_1', 'lmdf');
+	// Jamascript initial visualization of the form
+	echo '<script type="text/javascript">lmdfInit();</script>';
+}
+if ('AJAX1'== $my_module_mode ) {
+// the option of ajax-style output
+	require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptajax');
+	echo '<p>(Map parcel ID)</p>';
+	echo '<form><input type="text" class="input-mini" name="ajax1data" /></br>';
+	echo '<input type="button" class="input-mini" name="ajax1button" id="ajax1button" value="Consultar" /></form>';
+	echo '<p><div class="ajax1result"></div></p>';
+}
+if ('AJAX2'== $my_module_mode ) {
+// the option of ajax-style output
+	require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptajax1');
+}
+
+
+
+?>
+
+</div>
+
+
+
 <?php 
-// echo $hello; 
-// print_r($sql_query_result);
 
 // Las formas dinámicas (generador de forma con arbol de deciciones)
 
@@ -41,34 +71,5 @@ require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptmodules');
 
 ?>
 
-
-</br>
-
-
-<div id="lmdfDataTest"></div>
-<input type="hidden" id="lmdfJSONoutside" value="">
-</br>
-
-<?php
-require JModuleHelper::getLayoutPath('mod_slava_1', 'lmdf');
-?>
-
-<!--
-<pre><div id="lmdfXMLout1">[cadena xml formada debe aparecer aquí]</div></pre>
--->
-
-<script type="text/javascript">
-lmdfInit();
-</script>
-
-<!--
-</br>
-<h3>Prueba 2: Consulta de resoluciones y dictamenes oara un tramite especifico (introduce código Case ID de la lista)</h3>
-<form>
-	<input type="text" name="slavadata" />
-	<input type="button" name="slavabutton" id="slavabutton" value="Consultar"/>
-</form>
-<H3><div class="slavastatus">[los resultados de subconsulta deben aparecer aquí]</div></H3>
--->
 
 

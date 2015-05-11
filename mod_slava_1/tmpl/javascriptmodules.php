@@ -14,29 +14,6 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); 
 
-// Ajax related JavaScript code, note the module name in request options
-$js = <<<JS
-(function ($) {
-	$(document).on('click', 'input[name=slavabutton]', function () {
-		var value   = $('input[name=slavadata]').val(),
-			request = {
-					'option' : 'com_ajax',
-					'module' : 'slava_1',
-					'data'   :  value,
-					'format' : 'debug'
-				};
-		$.ajax({
-			type   : 'POST',
-			data   : request,
-			success: function (response) {
-				$('.slavastatus').html(response);
-			}
-		});
-		return false;
-	});
-})(jQuery);
-JS;
-
 // Dynamic form generator related JavaScript code
 $lmdfJS1 = <<<JS
 function xmlToString(xmlData) { 
@@ -236,7 +213,5 @@ lmdfInit = function () {
 
 JS;
 
-$doc->addScriptDeclaration($js);
 $doc->addScriptDeclaration($lmdfJS1);
-
 ?>

@@ -152,6 +152,25 @@ class modLMUHelper
 	return $obj1;
     }
 
+    public static function requestCaseLastStatus( $condition1 )
+    {
+        $base_sql = "SELECT * FROM case_decisions 
+			WHERE case_decisions.decision_status = 'vigente'
+			AND case_decisions.officer_id != 1
+			AND ( decision_type = 'dictamen' OR decision_type = 'aviso' OR decision_type = 'resolución')
+			AND parcel_case_id = " . $condition1 . " ORDER BY decision_modification_date_time DESC LIMIT 1";
+	$obj1 = new stdClass;
+	$obj1->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
+	$result = "";
+	// Retrieve each value in the ObjectList 
+ 	foreach( $obj1->rows as $row ) { 
+		$result .= "Status: " . $row->decision_status;
+		$result .= "</br>";
+	 } 
+	$obj1->string = $result;
+	return $obj1;
+    }
+
 
     public static function requestCaseLastID( $person_id )
     {

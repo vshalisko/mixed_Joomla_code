@@ -23,7 +23,6 @@ require_once(dirname(__FILE__) . '/helper.php');
 
 // Main module body generates initial module output (without Ajax requests)
 // $hello = modHelloSlavaHelper::getHello();
-
 // $sql_query_result = modHelloSlavaHelper::requestCasesTable( '%', $params );
 
 require(JModuleHelper::getLayoutPath('mod_slava_1'));

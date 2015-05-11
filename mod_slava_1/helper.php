@@ -24,8 +24,7 @@ class modHelloSlavaHelper
     }
 
 
-
-    public static function getSQLQuery01( $data, $base_sql )
+    public static function getModuleParamsArray()
     {
 	// get and parse module parameters (for database connection)
 	jimport( 'joomla.application.module.helper' );
@@ -36,10 +35,17 @@ class modHelloSlavaHelper
 	    list($key,$value) = explode(':',$pair);
 	    $my_params_array[$key]=$value;
 	};
+	return $my_params_array;
+    }
 
+
+    public static function getSQLQuery01( $data, $base_sql )
+    {
+
+	$my_params_array = modHelloSlavaHelper::getModuleParamsArray();
 	$option = array();
-        $option['driver']   = $my_params_array['databaseexternaldriver'];            // Database driver name
-	$option['host']     = $my_params_array['databaseexternalhost'];    // Database host name
+        $option['driver']   = $my_params_array['databaseexternaldriver'];       	// Database driver name
+	$option['host']     = $my_params_array['databaseexternalhost'];    		// Database host name
 	$option['user']     = $my_params_array['databaseexternaluser'];  // User for database authentication
 	$option['password'] = $my_params_array['databaseexternalpassword'];   // Password for database authentication
 	$option['database'] = $my_params_array['databaseexternaldatabase'];      // Database name
@@ -88,31 +94,43 @@ class modSlava1Helper
 	// Function to precess Ajax submitted data and return Ajax output
 	// Getting input data
 	$input = JFactory::getApplication()->input;
-	$data  = $input->get('data');
 
-	// Preparing and executing database request
-        $base_sql = "SELECT * FROM list_of_decisions_for_case WHERE decision_content IS NOT NULL AND parcel_case_id = ";
-	$rows = modHelloSlavaHelper::getSQLQuery01( $data, $base_sql );
+	$variable1  = $input->get('variable1');
+	// the variable 2 could be numeric only (for security reasons, as it is not passed through db->quote
+	$variable2 = preg_replace('/[^0-9]/', '', $input->get('variable2'));
+	$mode  = $input->get('ajax_mode');
 
-	$result = "";
-	if( !$rows ) {
-		$result = "</br>Tramite aun sin deciciones</br>";;
+	$base_sql = '';
+	if ('parcel_info' == $mode) {
+	        $base_sql = "SELECT * FROM parcels WHERE parcel_map_version_id = ". $variable2 ." AND parcel_map_id = ";
 	}
-	// Retrieve each value in the ObjectList 
- 	foreach( $rows as $row ) { 
-		$result .= "</br>";
-		$result .= "Case ID: " . $row->parcel_case_id . ", ";
-		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
-		$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
-		$result .= "Estatus de decición: " . $row->decision_status . ", ";
-		$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
-		$result .= "Ejecutivo: " . $row->officer_name . ", ";
-		$result .= "Organismo: " . $row->officer_affiliation . ", ";
-		$result .= "</br>";
-	 } 
+	if ('case_status' == $mode) {
+	        $base_sql = "SELECT * FROM case_decisions WHERE decision_status = 'vigente' 
+		AND parcel_case_id = ". $variable2 . " ORDER BY decision_modification_date_time DESC LIMIT 1";
+	}
+	                                           	
 
-	return 'Resultados de consulta por medio de Ajax: ' . $result;
-    }
+	$obj = new stdClass;
+	$obj->rows = modHelloSlavaHelper::getSQLQuery01( $variable1, $base_sql );
+	$result = "";
+
+	// Retrieve each value in the ObjectList 
+ 	foreach( $obj->rows as $row ) { 
+		$result .= "XML:" . $row->parcel_map_properties_xml ;
+		//$result .= "Case ID: " . $row->parcel_case_id . ", ";
+		//$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
+		//$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
+		//$result .= "Estatus de decición: " . $row->decision_status . ", ";
+		//$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
+		//$result .= "Ejecutivo: " . $row->officer_name . ", ";
+		//$result .= "Organismo: " . $row->officer_affiliation . ", ";
+	 } 
+	if( !$obj->rows ) {
+		$result = "Consulta no regreso datos";
+	}
+	$obj->string = $result;
+	return json_encode($obj);
+      }
 
 }
 ?>

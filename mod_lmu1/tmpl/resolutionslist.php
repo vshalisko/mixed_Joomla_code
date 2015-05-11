@@ -20,7 +20,7 @@ if (isset($dataGeneral->resolutions_list) && count($dataGeneral->resolutions_lis
 	// echo '<pre>' . $dataGeneral->resolutions_list->string . '</pre>';		// for debugging
 	echo '<h4>Lista de resoluciones/dictamenes sobre el tramite</h4>';	
 	echo '<table class="table table-hover">';
-	echo '<thead><tr><th class="span6">Resolución/Dictamen</th><th class="span2">Estatus</th><th class="span2">Fecha</th><th class="span2">Origen</th></tr></thead><tbody>';
+	echo '<thead><tr><th class="span6">Resolución/Dictamen</th><th class="span1">Tipo</th><th class="span1">Estatus</th><th class="span2">Fecha</th><th class="span2">Origen</th></tr></thead><tbody>';
  	foreach( $dataGeneral->resolutions_list->rows as $row ) { 
 		require JModuleHelper::getLayoutPath('mod_lmu1', 'resolutionslist_table_row');
 	 } 

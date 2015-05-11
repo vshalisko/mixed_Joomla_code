@@ -77,6 +77,17 @@
                         >
                 </field>
             </fieldset>
+            <fieldset name="mode">
+                <field
+                        name="modulemode"
+                        type="list"
+                        default="0"
+                        label="Module use mode"
+                        description="Select the mode of usde for the module">
+                    <option value="LMDF">LMDF</option>
+                    <option value="AJAX1">AJAX1</option>
+                </field>
+            </fieldset>
         </fields>
     </config>
 </extension>

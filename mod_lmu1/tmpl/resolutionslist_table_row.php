@@ -16,6 +16,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <tr>
 <td><?php echo $row->decision_content ?></td>
+<td><?php echo $row->decision_type ?></td>
 <td><?php echo $row->decision_status ?></td>
 <td><?php echo $row->decision_modification_date_time ?></td>
 <td>
