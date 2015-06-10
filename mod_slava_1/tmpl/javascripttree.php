@@ -24,21 +24,30 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Grupo 1 Usos",
-		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
+		  		"dependencies" : [ 
+						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 2 Trazo",
-		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7" ]
+		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", 
+							"lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
+						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
 		  		"dependencies" : [ "lmdfInputL0","lmdfInputL1","lmdfInputL2","lmdfInputL3","lmdfInputL4","lmdfInputL5",
 						"lmdfInputL6","lmdfInputL7","lmdfInputL8","lmdfInputL9","lmdfInputL10","lmdfInputL11",
-						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15" ]
+						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15",
+						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 4 Alineamiento",
-		  		"dependencies" : [ "lmdfSelector2" ]
+		  		"dependencies" : [ "lmdfSelector2",
+						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
 			}
 		]
 	} ,
@@ -106,109 +115,20 @@ var lmdfDecisionTree = 	{ input : [
 		"options" : 
 		[
 			{ 
-				"option" : "Tramite 16 Alineamiento",
+				"option" : "Alineamiento",
 		  		"dependencies" : [ "lmdfInput2" ]
 			},
 			{ 
-				"option" : "Tramite 17 DesignacionNumero"
+				"option" : "Numero"
 			},
 			{ 
-				"option" : "Tramite 18 Inspeccion"
+				"option" : "Inspeccion"
 			},
 			{ 
-				"option" : "Tramite 19 TNoPrevisto",
+				"option" : "Otro",
 				 "dependencies" : [ "lmdfInputC1" ] 
 			}
 		]
-	} ,
-
-// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
-
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP1",
-		"description" : "Ubicación: calle",
-		"dependencies" : [ "lmdfInputP2" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP2",
-		"description" : "Ubicación: número oficial"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP3",
-		"description" : "Ubicación: colonia"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP4",
-		"description" : "Ubicación: entre la calle 1",
-		"dependencies" : [ "lmdfInputP5" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP5",
-		"description" : "Ubicación: entre la calle 2"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP6",
-		"description" : "Superficie del predio menor que 50 m",
-		"dependencies" : [ "lmdfInputP7" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP7",
-		"description" : "Superficie del predio"
-	} ,
-// =========Campos de información sobre solicitante======================================
-
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS0",
-		"description" : "Giro comercial",
-		"dependencies" : [ "lmdfInputS1", "lmdfInputS8" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS1",
-		"description" : "Razón social"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS2",
-		"description" : "Domicilio de residencia"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS3",
-		"description" : "Colónia"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS4",
-		"description" : "Código postal"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS5",
-		"description" : "Ciudad"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS6",
-		"description" : "Estado"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS7",
-		"description" : "Teléfono de contacto"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS8",
-		"description" : "Tipo de giro comercial"
 	} ,
 
 // ====nuevo selector de licencias========
@@ -292,6 +212,99 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputL15",
 		"description" : "Licencia similar de tipo no previsto"
 	} ,
+// ====campos a llenar en formulario========
+	{       // this should be selected in any case after the selector lmdfSelector0 
+		"type" : "input",
+		"name" : "lmdfInputS",
+		"description" : "Campos a llenar (grupo)"
+	} ,
+// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP1",
+		"description" : "Ubicación: calle",
+		"dependencies" : [ "lmdfInputP2" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP2",
+		"description" : "Ubicación: número oficial"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP3",
+		"description" : "Ubicación: colonia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP4",
+		"description" : "Ubicación: entre la calle 1",
+		"dependencies" : [ "lmdfInputP5" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP5",
+		"description" : "Ubicación: entre la calle 2"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP6",
+		"description" : "Superficie del predio menor que 50 m",
+		"dependencies" : [ "lmdfInputP7" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP7",
+		"description" : "Superficie del predio"
+	} ,
+// =========Campos de información sobre solicitante======================================
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS0",
+		"description" : "Giro comercial",
+		"dependencies" : [ "lmdfInputS1", "lmdfInputS8" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS1",
+		"description" : "Razón social"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS2",
+		"description" : "Domicilio de residencia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS3",
+		"description" : "Colónia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS4",
+		"description" : "Código postal"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS5",
+		"description" : "Ciudad"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS6",
+		"description" : "Estado"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS7",
+		"description" : "Teléfono de contacto"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS8",
+		"description" : "Tipo de giro comercial"
+	} ,
+
 
 
 
