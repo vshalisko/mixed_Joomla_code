@@ -38,6 +38,8 @@ $form = <<<FORM
 
 <br />
 
+<!--old selector of licencia types - to remove-->
+
 <label for="lmdfSelector1" class="lmdfSelector1" style="display: none;">Selleciona el tipo de licencia a tramitar de la lista:</label>
 <select name="lmdfSelector1" id="lmdfSelector1" class="input-xxlarge hasTooltip" data-placement="left" title="Elige una de 15 opciones" style="display: none;">
 	<option>Elige el tipo de licencia</option>                   
@@ -66,6 +68,98 @@ $form = <<<FORM
 	<option value="Tramite 18 Inspeccion">Inspección de inmueble para verificación de su valor</option>
 	<option value="Tramite 19 TNoPrevisto">Tramite similar de tipo no previsto</option>
 </select>
+
+<!--new selector of licencia types-->
+<fieldset class="lmdfInputL0" style="display: none;">
+	<legend class="lmdfInputL0" style="display: none;">Selecciona el tipo de licenciqa a tramitar</legend>
+
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL1" class="lmdfInputL1" style="display: none;">Licencia para construcción de inmuebles</sup>
+			<input type="checkbox" name="lmdfInputL1" id="lmdfInputL1" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL8" class="lmdfInputL8" style="display: none;">Licencia para remodelación o restauración</sup>
+			<input type="checkbox" name="lmdfInputL8" id="lmdfInputL8" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL9" class="lmdfInputL9" style="display: none;">Licencia para reconstrucción, reestructuración o adaptación</sup>
+			<input type="checkbox" name="lmdfInputL9" id="lmdfInputL9" style="display: none;" />
+			</label>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL13" class="lmdfInputL13" style="display: none;">Licencia provisional de construcción</sup>
+			<input type="checkbox" name="lmdfInputL13" id="lmdfInputL13" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL3" class="lmdfInputL3" style="display: none;">Licencia para construcción de canchas y áreas deportivas</sup>
+			<input type="checkbox" name="lmdfInputL3" id="lmdfInputL3" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL2" class="lmdfInputL2" style="display: none;">Licencia para construcción de albercas</sup>
+			<input type="checkbox" name="lmdfInputL2" id="lmdfInputL2" style="display: none;" />
+			</label>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL6" class="lmdfInputL6" style="display: none;">Licencia para acotamiento</sup>
+			<input type="checkbox" name="lmdfInputL6" id="lmdfInputL6" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL4" class="lmdfInputL4" style="display: none;">Licencia para construcción de estacionamientos para usos no habitacionales</sup>
+			<input type="checkbox" name="lmdfInputL4" id="lmdfInputL4" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL11" class="lmdfInputL11" style="display: none;">Licencia para ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales</sup>
+			<input type="checkbox" name="lmdfInputL11" id="lmdfInputL11" style="display: none;" />
+			</label>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL5" class="lmdfInputL5" style="display: none;">Licencia para demolición</sup>
+			<input type="checkbox" name="lmdfInputL5" id="lmdfInputL5" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL7" class="lmdfInputL7" style="display: none;">Licencia para instalar tapiales provisionales en la vía pública</sup>
+			<input type="checkbox" name="lmdfInputL7" id="lmdfInputL7" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL10" class="lmdfInputL10" style="display: none;">Licencia para ocupación de la vía pública con materiales de construcción</sup>
+			<input type="checkbox" name="lmdfInputL10" id="lmdfInputL10" style="display: none;" />
+			</label>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL12" class="lmdfInputL12" style="display: none;">Licencia para movimientos de tierra</sup>
+			<input type="checkbox" name="lmdfInputL12" id="lmdfInputL12" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL14" class="lmdfInputL14" style="display: none;">Licencia para construcción de plataformas, patios de maniobra y rampas</sup>
+			<input type="checkbox" name="lmdfInputL14" id="lmdfInputL14" style="display: none;" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL15" class="lmdfInputL15" style="display: none;">Licencia similar de tipo no previsto</sup>
+			<input type="checkbox" name="lmdfInputL15" id="lmdfInputL15" style="display: none;" />
+			</label>
+		</div>
+	</div>
+</fieldset>
+
 
 <br />
 

@@ -81,7 +81,8 @@ docInit = function () {
 		}	
 	}
 
-	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)      			// Taking one by one all the elements from JSON structure (input)
+	// Taking one by one all the elements from JSON structure and switchig on or off the corresponding predefined elements in HTML
+	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)      			
 	{
 	// Loop that change the visibility of elements
 		var lmdfDependentInputID = "#" + lmdfDecisionTree1.input[i].name;

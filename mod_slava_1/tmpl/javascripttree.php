@@ -32,7 +32,9 @@ var lmdfDecisionTree = 	{ input : [
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
-		  		"dependencies" : [ "lmdfSelector1" ]
+		  		"dependencies" : [ "lmdfInputL0","lmdfInputL1","lmdfInputL2","lmdfInputL3","lmdfInputL4","lmdfInputL5",
+						"lmdfInputL6","lmdfInputL7","lmdfInputL8","lmdfInputL9","lmdfInputL10","lmdfInputL11",
+						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15" ]
 			},
 			{ 
 				"option" : "Grupo 4 Alineamiento",
@@ -120,7 +122,48 @@ var lmdfDecisionTree = 	{ input : [
 		]
 	} ,
 
-// ===============================================
+// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
+
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP1",
+		"description" : "Ubicación: calle",
+		"dependencies" : [ "lmdfInputP2" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP2",
+		"description" : "Ubicación: número oficial"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP3",
+		"description" : "Ubicación: colonia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP4",
+		"description" : "Ubicación: entre la calle 1",
+		"dependencies" : [ "lmdfInputP5" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP5",
+		"description" : "Ubicación: entre la calle 2"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP6",
+		"description" : "Superficie del predio menor que 50 m",
+		"dependencies" : [ "lmdfInputP7" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP7",
+		"description" : "Superficie del predio"
+	} ,
+// =========Campos de información sobre solicitante======================================
+
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS0",
@@ -168,57 +211,100 @@ var lmdfDecisionTree = 	{ input : [
 		"description" : "Tipo de giro comercial"
 	} ,
 
+// ====nuevo selector de licencias========
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL0",
+		"description" : "Licencias (grupo)"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL1",
+		"description" : "Licencia para construcción de inmuebles"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL2",
+		"description" : "Licencia para construcción de albercas"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL3",
+		"description" : "Licencia para construcción de canchas y áreas deportivas"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL4",
+		"description" : "Licencia para construcción de estacionamientos para usos no habitacionales"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL5",
+		"description" : "Licencia para demolición"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL6",
+		"description" : "Licencia para acotamiento"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL7",
+		"description" : "Licencia para instalar tapiales provisionales en la vía pública"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL8",
+		"description" : "Licencia para remodelación o restauración"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL9",
+		"description" : "Licencia para reconstrucción, reestructuración o adaptación"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL10",
+		"description" : "Licencia para ocupación de la vía pública con materiales de construcción"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL11",
+		"description" : "Licencia para ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL12",
+		"description" : "Licencia para movimientos de tierra"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL13",
+		"description" : "Licencia provisional de construcción"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL14",
+		"description" : "Licencia para construcción de plataformas, patios de maniobra y rampas"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputL15",
+		"description" : "Licencia similar de tipo no previsto"
+	} ,
 
-// ===============================================
 
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP1",
-		"description" : "Ubicación: calle",
-		"dependencies" : [ "lmdfInputP2" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP2",
-		"description" : "Ubicación: número oficial"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP3",
-		"description" : "Ubicación: colonia"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP4",
-		"description" : "Ubicación: entre la calle 1",
-		"dependencies" : [ "lmdfInputP5" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP5",
-		"description" : "Ubicación: entre la calle 2"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP6",
-		"description" : "Superficie del predio menor que 50 m",
-		"dependencies" : [ "lmdfInputP7" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP7",
-		"description" : "Superficie del predio"
-	} ,
 
+
+
+// ====pruebas viejas========
 	{ 
 		"type" : "input",
-		"name" : "lmdfInput0",
-		"dependencies" : [ "lmdfInput2" ]
+		"name" : "lmdfInput0"
 	} ,
 	{ 
 		"type" : "input",
-		"name" : "lmdfInput2",
-		"dependencies" : [ "lmdfInput3" , "lmdfInput4" ]
+		"name" : "lmdfInput2"
 	} ,
 	{ 
 		"type" : "input",
