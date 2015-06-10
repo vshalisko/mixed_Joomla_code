@@ -105,7 +105,7 @@ lmdfInit = function () {
                         $(lmdfDependentInputClass).css("display", "none");        // Make element invisible by class (same as ID)
 		}
 
-////	Borradorr de código para repoblar los campos de formulario con valores (por el momento no funciona correctamente
+////	Borradorr de código para repoblar los campos de formulario con valores (por el momento no funciona correctamente)
 //               if ( lmdfDecisionTree1.input[i].value ) {                          
 //			$('name='+lmdfDependentInputName+']').val(lmdfDecisionTree1.input[i].value);
 //			if($('name='+lmdfDependentInputName+']').is('select') && lmdfDecisionTree1.input[i].selected) {
@@ -116,6 +116,7 @@ lmdfInit = function () {
 //				}
 //		        });
 //		}
+
 		if ( lmdfDecisionTree1.input[i].value &&                	// Checking if there are some value stored in JSON structure
 			lmdfDecisionTree1.input[i].on ) {                       // Checking if element is visible
 			var elem = lmdfXML.createElement(lmdfDecisionTree1.input[i].name);            // Including this element to XML

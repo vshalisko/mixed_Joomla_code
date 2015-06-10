@@ -41,16 +41,31 @@ if ('Grupo 4 Alineamiento' == $case_group) {
 
 ?></td>
 <!--<td><?php echo $row->parcel_id ?></td>-->
-<td><?php echo $row->open_date_time ?></td>
 <td><?php echo $row->person_role ?></td>
-<td><!-- Anexos --></td>
-<td><?php echo $row->decisions_count ?></td>
-<td><?php
+<td><?php echo $row->open_date_time_format ?></td>
+<td>
+<?php 
+if ( isset($row->decisions_count) && ($row->decisions_count > 0) ) {
+	if ( $row->decisions_count == 1 ) {
+		echo '<small>' . $row->decisions_count . ' revision por ejecutivo </small>';
+	} else {
+		echo '<small>' . $row->decisions_count . ' revisiones por ejecutivo </small>';
+	}
+
+}
+?>
+<?php
 $case_status = modLMUHelper::requestCaseLastStatus( $row->case_id );
 if (isset($case_status->rows[0]->decision_type)) {
-	echo $case_status->rows[0]->decision_type;
-} else {
-	echo '...';
+	echo ', estatus: <em><b>' . $case_status->rows[0]->decision_type . '</b></em>';
 }
 ?></td>
+<td><!-- Anexos --></td>
+<td><!-- Descargables -->
+<?php
+if (isset($case_status->rows[0]->decision_type)) {
+	echo '[d]';
+}
+?>
+</td>
 </tr>

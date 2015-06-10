@@ -24,7 +24,7 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Grupo 1 Usos",
-		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6"  ]
+		  		"dependencies" : [ "lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 2 Trazo",
@@ -232,8 +232,13 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"description" : "Comentario del usuario sobre el contenido del tramite",
 		"name" : "lmdfInputC1"
+	},
+	{ 
+		"type" : "docRequired",
+		"name" : "docRequired1",
+		"alwaysvisible" : true,
+		"description" : "Documiento requerido de tipo 1"
 	}
-
 ]};
 
 jQuery.noConflict();

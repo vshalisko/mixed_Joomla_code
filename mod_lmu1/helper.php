@@ -85,7 +85,8 @@ class modLMUHelper
 //        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
 //			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
 
-	$base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decisions.case_decision_id) AS decisions_count 
+	$base_sql = "SELECT *, parcel_cases.parcel_case_id AS case_id, COUNT(case_decisions.case_decision_id) AS decisions_count,
+			DATE_FORMAT(parcel_cases.open_date_time, '%d-%m-%Y') AS open_date_time_format
 			FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
 			LEFT JOIN case_decisions ON case_decisions.parcel_case_id <=> parcel_cases.parcel_case_id
 			WHERE persons.person_id = ". $condition ." GROUP BY case_id
@@ -109,8 +110,10 @@ class modLMUHelper
 //        $base_sql = "SELECT * FROM persons LEFT JOIN parcel_cases ON parcel_cases.person_id = persons.person_id
 //			WHERE parcel_cases.parcel_case_id IS NOT NULL AND persons.person_id = ";
 
-	$base_sql = "SELECT * FROM case_decisions 
-			WHERE case_decisions.parcel_case_id = ". $condition ."
+	$base_sql = "SELECT *, 
+			DATE_FORMAT(case_decisions.decision_modification_date_time, '%d-%m-%Y') 
+			AS decision_modification_date_time_format
+			FROM case_decisions WHERE case_decisions.parcel_case_id = ". $condition ."
 			ORDER BY case_decisions.decision_modification_date_time DESC"; 
 	$obj = new stdClass;
 	$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
@@ -174,7 +177,7 @@ class modLMUHelper
 
     public static function requestCaseLastID( $person_id )
     {
-        $base_sql = 'SELECT parcel_case_id, official_case_identifier FROM parcel_cases
+        $base_sql = 'SELECT parcel_case_id, system_case_identifier, official_case_identifier, case_properties_json FROM parcel_cases
 			WHERE person_id = ' .	$person_id . ' ORDER BY open_date_time DESC LIMIT 1';
 	$obj1 = new stdClass;
 	$obj1->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
@@ -200,7 +203,7 @@ class modLMUHelper
 		// the case was already acepted, no need to insert another resolution
 		return 1;
 	} else {	
-	        $base_sql = 'INSERT INTO case_decisions VALUES (NULL,'. $parcel_case_id .',1,"aceptado para revisión","vigente",NULL,NOW())';
+	        $base_sql = 'INSERT INTO case_decisions VALUES (NULL,'. $parcel_case_id .',1,"aceptado para revisión","vigente",NULL,NOW(),"mensaje de sistema")';
 		$obj1 = new stdClass;
 		$obj1->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
 		return $obj1;

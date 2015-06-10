@@ -14,8 +14,6 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); 
 
-// Instantiate global document object
-
 $form = <<<FORM
 
 <div>
@@ -190,7 +188,6 @@ $form = <<<FORM
 
 <br />
 </div>
-
 FORM;
 
 echo '<div id="hidden_lmdf" style="display:none;">';
