@@ -88,7 +88,7 @@ docInit = function () {
 		var lmdfDependentInputID = "#" + lmdfDecisionTree1.input[i].name;
                 var lmdfDependentInputClass = "." + lmdfDecisionTree1.input[i].name;
 		var lmdfDependentInputName = lmdfDecisionTree1.input[i].name;
-		if ( !lmdfDecisionTree1.input[i].on ) {
+		if ( lmdfDecisionTree1.input[i].on ) {
                         $(lmdfDependentInputID).css("display", "block");           // Make element visible by ID
                         $(lmdfDependentInputClass).css("display", "block");        // Make element visible by class (same as ID)
 		} else {

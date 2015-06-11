@@ -119,10 +119,10 @@ var lmdfDecisionTree = 	{ input : [
 		  		"dependencies" : [ "lmdfInput2" ]
 			},
 			{ 
-				"option" : "Numero"
+				"option" : "Número oficial"
 			},
 			{ 
-				"option" : "Inspeccion"
+				"option" : "Inspección"
 			},
 			{ 
 				"option" : "Otro",
@@ -333,9 +333,8 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputC1"
 	},
 	{ 
-		"type" : "docRequired",
+		"type" : "input",
 		"name" : "docRequired1",
-		"alwaysvisible" : true,
 		"description" : "Documiento requerido de tipo 1"
 	}
 ]};

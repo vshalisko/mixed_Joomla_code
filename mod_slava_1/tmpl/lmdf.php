@@ -136,10 +136,10 @@ $form = <<<FORM
 		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Alineamiento" /> Tramitar de alineamiento
 	</label>
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Numero" /> Designación del número oficial
+		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Número oficial" /> Designación del número oficial
 	</label>
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Inspeccion" /> Inspección de inmueble para verificación de su valor
+		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Inspección" /> Inspección de inmueble para verificación de su valor
 	</label>
 	<label class="lmdfSelector0">
 		<input type="radio" name="lmdfSelector2" id="lmdfSelector2" value="Otro" /> Tramite similar de tipo no previsto
