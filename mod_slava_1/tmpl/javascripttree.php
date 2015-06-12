@@ -27,13 +27,13 @@ var lmdfDecisionTree = 	{ input : [
 		  		"dependencies" : [ 
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
-			},
+			},                                                                  
 			{ 
 				"option" : "Grupo 2 Trazo",
-		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", 
-							"lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
+		  		"dependencies" : [ "docRequired1", "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", 
+						"lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
-						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -42,69 +42,12 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
-			},
+			},                                                                    
 			{ 
 				"option" : "Grupo 4 Alineamiento",
 		  		"dependencies" : [ "lmdfSelector2",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
-			}
-		]
-	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelector1",
-		"description" : "Selector del tipo de tramite de segundo nivel (licencias)",
-		"options" : 
-		[
-			{ 
-				"option" : "Tramite 1 LConstruccionInmueble",
-		  		"dependencies" : [ "lmdfInput2", "lmdfInput3" ]
-			},
-			{ 
-				"option" : "Tramite 2 LConstruccionAlberca",
-				 "dependencies" : [ "lmdfInput2" ]
-			},
-			{ 
-				"option" : "Tramite 3 LConstruccionCancha",
-				 "dependencies" : [ "lmdfInput3", "lmdfInput4" ] 
-			},
-			{ 
-				"option" : "Tramite 4 LConstruccionEstacionamientos"
-			},
-			{ 
-				"option" : "Tramite 5 LDemolicion"
-			},
-			{ 
-				"option" : "Tramite 6 LAcotamiento"
-			},
-			{ 
-				"option" : "Tramite 7 LTapiales"
-			},
-			{ 
-				"option" : "Tramite 8 LRemodelacion"
-			},
-			{ 
-				"option" : "Tramite 9 LReconstruccion"
-			},
-			{ 
-				"option" : "Tramite 10 LOcupacionViasMateriales"
-			},
-			{ 
-				"option" : "Tramite 11 LOcupacionViasPuestos"
-			},
-			{ 
-				"option" : "Tramite 12 LMovimientoTierra"
-			},
-			{ 
-				"option" : "Tramite 13 LConstruccionProvisional"
-			},
-			{ 
-				"option" : "Tramite 14 LConstruccionPlataformas"
-			},
-			{ 
-				"option" : "Tramite 15 LNoPrevista",
-				 "dependencies" : [ "lmdfInputC1" ] 
 			}
 		]
 	} ,
@@ -130,7 +73,6 @@ var lmdfDecisionTree = 	{ input : [
 			}
 		]
 	} ,
-
 // ====nuevo selector de licencias========
 	{ 
 		"type" : "input",
@@ -255,8 +197,9 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP7",
-		"description" : "Superficie del predio"
-	} ,
+		"description" : "Superficie del predio",
+		"dependencies" : [ "docRequired1" ]
+	} ,                         
 // =========Campos de información sobre solicitante======================================
 	{ 
 		"type" : "input",
@@ -304,12 +247,13 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputS8",
 		"description" : "Tipo de giro comercial"
 	} ,
-
-
-
-
-
-
+// ====documents========
+	{ 
+		"type" : "input",
+		"name" : "docRequired1",
+		// "alwaysvisible" : true,
+		"description" : "Documiento requerido A"
+	} ,
 // ====pruebas viejas========
 	{ 
 		"type" : "input",
@@ -331,11 +275,6 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"description" : "Comentario del usuario sobre el contenido del tramite",
 		"name" : "lmdfInputC1"
-	},
-	{ 
-		"type" : "input",
-		"name" : "docRequired1",
-		"description" : "Documiento requerido de tipo 1"
 	}
 ]};
 

@@ -18,7 +18,7 @@ $docs = <<<DOCS
 
 <div>
 <label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
-<input type="text" name="docRequired1" id="docRequired1" style="display: none;" />
+<input type="file" name="docRequired1" id="docRequired1" style="display: none;" />
 </div>
 
 DOCS;

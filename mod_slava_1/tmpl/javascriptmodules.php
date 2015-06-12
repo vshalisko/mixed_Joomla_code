@@ -61,8 +61,9 @@ lmdfInit = function () {
 				for (var k = 0; k < lmdfDecisionTree1.input.length; k++)
 				// Looking for dependent elements in JSON structure to switch them on
 				{
-					if (lmdfDecisionTree1.input[k].name == lmdfDecisionTree1.input[i].dependencies[d] ) {
+					if ( lmdfDecisionTree1.input[k].name == lmdfDecisionTree1.input[i].dependencies[d] ) {
                                        		lmdfDecisionTree1.input[k].on = true;			// Setting visibility of appropiate dependent elements
+						// alert("Swithching on :" + lmdfDecisionTree1.input[k].name);   // debugging
 					}
 				}
 			}
@@ -130,7 +131,7 @@ lmdfInit = function () {
 	lmdf_xml_formed = xmlToString(lmdfXML);
 	$("#lmdfXMLout1").text(lmdf_xml_formed);
 	$("#jform_case_properties_xml").text(lmdf_xml_formed);
-	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree));
+	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree1));
 }
 })(jQuery);
 
@@ -140,8 +141,12 @@ lmdfInit = function () {
 		var lmdfElementData = $(this).val();
 		var lmdfElementName = $(this).attr('name');
 
-		if ( $(this).attr('type') == 'checkbox' && !$(this).is(':checked') ) {    // Unchecked checkbox requires speciel treatment
-			lmdfElementData = "";
+		if ( $(this).attr('type') == 'checkbox' ) { 	// Checkbox requires speciel treatment
+			if ( !$(this).is(':checked') ) {    
+				lmdfElementData = "";
+			} else {
+				lmdfElementData = "on";
+			}
 		}
 
 
