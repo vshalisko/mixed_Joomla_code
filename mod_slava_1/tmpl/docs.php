@@ -14,12 +14,62 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access'); 
 
+// Ajax related JavaScript code, note the module name in request options
+$js = <<<JS
+(function ($) {
+	$(document).on('click', 'input[name=ajaxFileSubmit1]', function () {
+		var file   = $('input[name=docRequired1_file]')[0].files[0];
+		var file_comment   = $('input[name=docRequired1_text]').val();
+		var request = new FormData();     // the requesto should be an object to be correctly transfered through JSON Ajax
+			request.append('variable_file',file);
+			request.append('variable_comment',file_comment);
+			request.append('option','com_ajax');
+			request.append('module','lmu1');
+			request.append('ajax_mode','file_submit');
+			request.append('format','json');
+
+		$.ajax({
+			type   : 'POST',
+			dataType   : 'json',
+			processData: false,
+			contentType: false,
+			data   : request,
+			success: function (response) {
+				var s = JSON.stringify(response.data); // debugging
+				var r = JSON.parse(response.data);           
+				$('.ajaxFileSubmitResult1').html( s );   
+			}
+		});
+		return false;
+	});
+})(jQuery);
+JS;
+
+$doc->addScriptDeclaration($js);
+
 $docs = <<<DOCS
 
 <div>
-<label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
-<input type="file" name="docRequired1" id="docRequired1" style="display: none;" />
+<form class="docRequired1" name="docRequired1" enctype="multipart/form-data" style="display: none;" /> 
+	<label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
+	<input type="file" accept="image/*" name="docRequired1_file" id="docRequired1_file" />
+	<input type="text" name="docRequired1_text" id="docRequired1_text" />
+	<input type="button" class="input-mini" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir archivo" />
+	<div class="ajaxFileSubmitResult1"></div>
+</form>
 </div>
+
+
+<div>
+<form class="docRequired2" enctype="multipart/form-data" style="display: none;" /> 
+	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras del predio</label>
+	<input type="file" name="docRequired2" id="docRequired2" />
+	<input type="text" name="docRequired2_text" id="docRequired2_text" />
+	<input type="button" class="input-mini" name="ajaxFileSubmit2" id="ajaxFileSubmit2" value="Subir archivo" />
+	<div class="ajaxFileSubmitResult2"></div>
+</form>
+</div>
+
 
 DOCS;
 

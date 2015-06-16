@@ -20,9 +20,7 @@ ID: <?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>, folio prov
 <input type="hidden" id="lmdfJSONoutside" value="<?php echo $dataGeneral->case_new_id->rows[0]->case_properties_json ?>">
 
 <?php
-echo '<div><fieldset class="lmdfSelector0"><legend>Anexar documentos</legend>
-
-';
+echo '<div><fieldset class="lmdfSelector0"><legend>Anexar documentos</legend>';
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
 require JModuleHelper::getLayoutPath('mod_slava_1', 'docs');  // se cargan formas de documentos
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptdocs');  // se carga componente de parder de documentos requeridos

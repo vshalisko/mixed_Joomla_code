@@ -18,7 +18,7 @@ defined('_JEXEC') or die('Restricted access');
 $js = <<<JS
 (function ($) {
 	$(document).on('click', 'input[name=ajax1button]', function () {
-		var value   = $('input[name=ajax1data]').val(),
+		var value   = $('input[name=ajax1data]').val();
 			request = {
 					'option' : 	'com_ajax',
 					'module' : 	'slava_1',

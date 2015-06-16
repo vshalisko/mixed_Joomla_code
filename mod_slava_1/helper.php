@@ -108,22 +108,17 @@ class modSlava1Helper
 	        $base_sql = "SELECT * FROM case_decisions WHERE decision_status = 'vigente' 
 		AND parcel_case_id = ". $variable2 . " ORDER BY decision_modification_date_time DESC LIMIT 1";
 	}
-	                                           	
+                                         	
 
 	$obj = new stdClass;
 	$obj->rows = modHelloSlavaHelper::getSQLQuery01( $variable1, $base_sql );
 	$result = "";
 
 	// Retrieve each value in the ObjectList 
- 	foreach( $obj->rows as $row ) { 
-		$result .= "XML:" . $row->parcel_map_properties_xml ;
-		//$result .= "Case ID: " . $row->parcel_case_id . ", ";
-		//$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
-		//$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
-		//$result .= "Estatus de decición: " . $row->decision_status . ", ";
-		//$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
-		//$result .= "Ejecutivo: " . $row->officer_name . ", ";
-		//$result .= "Organismo: " . $row->officer_affiliation . ", ";
+ 	foreach( $obj->rows as $row ) {
+		if ('parcel_info' == $mode) { 
+			$result .= "XML:" . $row->parcel_map_properties_xml ;
+		}
 	 } 
 	if( !$obj->rows ) {
 		$result = "Consulta no regreso datos";

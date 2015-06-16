@@ -223,17 +223,45 @@ class modLmu1Helper
 	// Getting input data
 	$input = JFactory::getApplication()->input;
 	$data  = $input->get('data');
+	$variable_file  = $input->get('variable_file');
+	$variable_comment = $input->get('variable_comment');
+	$mode  = $input->get('ajax_mode');
 
-	// Preparing and executing database request
-        $base_sql = "SELECT * FROM list_of_decisions_for_case WHERE decision_content IS NOT NULL AND parcel_case_id = ";
-	$rows = modLMUHelper::getSQLQuery01( $data, $base_sql );
 
-	$result = "";
-	if( !$rows ) {
+	if ('file_submit' == $mode) {
+	        $base_sql = "SELECT * FROM persons LIMIT 1";  // ---------------- random request for debugging only
+		$obj = new stdClass;
+		$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
+		$result = "";
+
+   		$files = $input->files->get('variable_file');
+                $result_dump = print_r($files, true);
+		$result .= "\n<br /> Dump: " . $result_dump;  // dumping file object as it was submitted
+		$result .= "\n<br /> Comment: " . $variable_comment;  // testing comment text
+
+    		// $filename = $files['docRequired1']['name'];
+	
+		// Retrieve each value in the ObjectList 
+ 		foreach( $obj->rows as $row ) {
+		        // $result .= "test file submit output string " . $variable_file ;
+	 	} 
+		if( !$obj->rows ) {
+			$result = "Procedimiento no fue exitoso";
+		}
+		$obj->string = $result;
+		return json_encode($obj);
+
+	} else {
+		// Preparing and executing database request
+        	$base_sql = "SELECT * FROM list_of_decisions_for_case WHERE decision_content IS NOT NULL AND parcel_case_id = ";
+		$rows = modLMUHelper::getSQLQuery01( $data, $base_sql );
+
+		$result = "";
+		if( !$rows ) {
 		$result = "</br>Tramite aun sin deciciones</br>";;
-	}
-	// Retrieve each value in the ObjectList 
- 	foreach( $rows as $row ) { 
+		}
+		// Retrieve each value in the ObjectList 
+ 		foreach( $rows as $row ) { 
 		$result .= "</br>";
 		$result .= "Case ID: " . $row->parcel_case_id . ", ";
 		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
@@ -243,11 +271,9 @@ class modLmu1Helper
 		$result .= "Ejecutivo: " . $row->officer_name . ", ";
 		$result .= "Organismo: " . $row->officer_affiliation . ", ";
 		$result .= "</br>";
-	 } 
-
-	return 'Resultados de consulta por medio de Ajax: ' . $result;
+	 	} 
+		return 'Resultados de consulta por medio de Ajax: ' . $result;
+	}
     }
-
-
 }
 ?>

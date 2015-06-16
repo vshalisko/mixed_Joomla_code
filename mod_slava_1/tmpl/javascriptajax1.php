@@ -15,16 +15,16 @@
 defined('_JEXEC') or die('Restricted access'); 
 
 // Ajax related JavaScript code, note the module name in request options
+// NOTA! ESTE CODIGO ES SOLO DE PRUEBA; ACTUALMENTE javascriptajax1 no se utuliza
 $js = <<<JS
 (function ($) {
-	$(document).on('click', 'input[name=ajax1button]', function () {
-		var value   = $('input[name=ajax1data]').val(),
+	$(document).on('click', 'input[name=ajax2button]', function () {
+		var variable1   = $('input[name=ajax2data]').val();
 			request = {
 					'option' : 	'com_ajax',
 					'module' : 	'slava_1',
-					'variable1' : 	value,  		
-					'variable2' : 	'2',                     // can be numeric only
-					'ajax_mode' : 	'parcel_info',					
+					'variable1' : 	variable1,  		
+					'ajax_mode' : 	'file_submit',					
 					'format' : 	'json'
 				};
 		$.ajax({
@@ -33,9 +33,7 @@ $js = <<<JS
 			success: function (response) {
 				// var s = JSON.stringify(response.data); // debugging
 				var r = JSON.parse(response.data);           
-				// $('.ajax1result').html(r.string);   			// string output
-				// $('.ajax1result').html(r.rows[0].parcel_map_id);   	// specific field output
-				$('.ajax1result').html(r.rows[0].parcel_map_properties_xml);   
+				$('.ajax2result').html(r.rows[0].parcel_map_properties_xml);   
 
 			}
 		});
