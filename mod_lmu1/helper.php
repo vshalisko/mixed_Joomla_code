@@ -223,7 +223,6 @@ class modLmu1Helper
 	// Getting input data
 	$input = JFactory::getApplication()->input;
 	$data  = $input->get('data');
-	$variable_file  = $input->get('variable_file');
 	$variable_comment = $input->get('variable_comment');
 	$mode  = $input->get('ajax_mode');
 
@@ -234,13 +233,31 @@ class modLmu1Helper
 		$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
 		$result = "";
 
-   		$files = $input->files->get('variable_file');
-                $result_dump = print_r($files, true);
-		$result .= "\n<br /> Dump: " . $result_dump;  // dumping file object as it was submitted
+		// file processing
+		jimport('joomla.filesystem.file');
+		$files = $input->files->get('variable_file');
+		if ($files['error']!="0") {
+                	// error_log('Error en subir el archivo');
+			$result .= "\n<br /> Error al subir el archivo";
+             	} else {
+		        $tempName = $files['tmp_name'];
+	             	$type = $files['type'];
+	             	$name = JFile::makeSafe($files['name']);  // 'safe' filename
+			$tempFullPath = ini_get('upload_tmp_dir').$tempName;
+
+	                $result_dump = print_r($files, true);
+			$result .= "\n<br /> Dump: " . $result_dump;  // dumping file object as it was submitted
+			$result .= "\n<br /> Temp name : " . $tempName;  
+			$result .= "\n<br /> Type : " . $type;  
+			$result .= "\n<br /> Name : " . $name; 
+			if (file_exists($tempFullPath)) { 
+				$result .= "\n<br /> Temp full path : " . $tempFullPath;  
+			} else {
+				$result .= "\n<br /> No existe el archivo temporal!!! : " . $tempFullPath;  
+			}
+		}
 		$result .= "\n<br /> Comment: " . $variable_comment;  // testing comment text
 
-    		// $filename = $files['docRequired1']['name'];
-	
 		// Retrieve each value in the ObjectList 
  		foreach( $obj->rows as $row ) {
 		        // $result .= "test file submit output string " . $variable_file ;
@@ -274,6 +291,7 @@ class modLmu1Helper
 	 	} 
 		return 'Resultados de consulta por medio de Ajax: ' . $result;
 	}
+	JFactory::getApplication()->close(); // Ensure getApplication termination
     }
 }
 ?>

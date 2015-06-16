@@ -18,10 +18,12 @@ defined('_JEXEC') or die('Restricted access');
 $js = <<<JS
 (function ($) {
 	$(document).on('click', 'input[name=ajaxFileSubmit1]', function () {
-		var file   = $('input[name=docRequired1_file]')[0].files[0];
-		var file_comment   = $('input[name=docRequired1_text]').val();
-		var request = new FormData();     // the requesto should be an object to be correctly transfered through JSON Ajax
-			request.append('variable_file',file);
+		var file   = $('input[name=docRequired1_file]')[0].files[0];  // taking only the first file in the array of selected files
+		var file_comment   = $('input[name=docRequired1_text]').val(); // taking the comment value
+		var request = new FormData();     // the request should be an object to be correctly transfered through JSON Ajax
+			if (typeof file != "undefined") {
+				request.append('variable_file',file);
+			}
 			request.append('variable_comment',file_comment);
 			request.append('option','com_ajax');
 			request.append('module','lmu1');
@@ -29,12 +31,12 @@ $js = <<<JS
 			request.append('format','json');
 
 		$.ajax({
-			type   : 'POST',
-			dataType   : 'json',
-			processData: false,
-			contentType: false,
-			data   : request,
-			success: function (response) {
+			type   : 	'POST',
+			dataType   : 	'json',
+			processData: 	false,
+			contentType: 	false,
+			data   : 	request,
+			success: 	function (response) {
 				var s = JSON.stringify(response.data); // debugging
 				var r = JSON.parse(response.data);           
 				$('.ajaxFileSubmitResult1').html( s );   
@@ -52,7 +54,7 @@ $docs = <<<DOCS
 <div>
 <form class="docRequired1" name="docRequired1" enctype="multipart/form-data" style="display: none;" /> 
 	<label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
-	<input type="file" accept="image/*" name="docRequired1_file" id="docRequired1_file" />
+	<input type="file" accept="image/*, application/pdf" name="docRequired1_file" id="docRequired1_file" />
 	<input type="text" name="docRequired1_text" id="docRequired1_text" />
 	<input type="button" class="input-mini" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir archivo" />
 	<div class="ajaxFileSubmitResult1"></div>
