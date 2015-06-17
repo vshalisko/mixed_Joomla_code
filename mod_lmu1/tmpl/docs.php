@@ -67,7 +67,8 @@ $js = <<<JS
 			        	// Do something with upload progress
 			        	var progressbar = '<div class="progress progress-striped">' +
 						'<div class="bar" style="width:' + percentComplete +
-						';">' + percentComplete + '</div></div>';
+						';">' + '</div><span align="center">' +   			// seems that align attribute for span is depreciated
+						percentComplete +'</span></div></div>';
 					$('.ajaxFileSubmitResult'+baseName).html( progressbar );
 			      	}
 			    	}, false);
@@ -84,9 +85,11 @@ $js = <<<JS
 					$('.ajaxFileSubmitResult'+baseName).html( errormessage );	
 				} else {
 					// no error
-					$('.ajaxFileSubmitResult'+baseName).html( '<i class="icon-ok"></i><br />' + r['string'] + '<br />' + r['insertId'] );   
+					$('.ajaxFileSubmitResult'+baseName).html( '<i class="icon-ok"></i><!-- Messages: ' + r['string'] + 'InsertID:' + r['insertId'] + '-->');   
 					document.getElementById('ajaxFileSubmit'+baseName).disabled = true; // disabling submit button on success
+					document.getElementById('ajaxFileDelete'+baseName).style.display = "inline";
 					document.getElementById('docRequired'+baseName+'_file').disabled = true;
+					document.getElementById('docRequired'+baseName+'_id').value = r['insertId']; 
 				}
 			},
 			error: 	function () {
@@ -104,6 +107,31 @@ JS;
 
 $doc->addScriptDeclaration($js);
 
+$style = <<<CSS
+/**
+ * Progress bars with centered text
+ */
+.progress {
+    position: relative;
+}
+
+.bar {
+    z-index: 1;
+    position: absolute;
+}
+
+.progress span {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    color: black; // You might need to change it
+    text-align: center;
+    width: 100%;
+}
+CSS;
+
+$doc->addStyleDeclaration( $style );
+
 ?>
 
 <div id="hidden_docs">
@@ -115,9 +143,13 @@ $doc->addScriptDeclaration($js);
 	<input type="hidden" name="docRequired1_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
 	<input type="hidden" name="docRequired1_text" id="docRequired1_text" value="identificación oficial de solicitante" />
-	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir archivo" />
+	<input type="hidden" name="docRequired1_id" id="docRequired1_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete1" id="ajaxFileDelete1" value="Eliminar documento" style="display: none;" />
 	</div>
-	<div class="ajaxFileSubmitResult1"></div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult1"></div><div class="span3">&nbsp;</div>
+	</div>
 </form>
 
 
@@ -128,9 +160,13 @@ $doc->addScriptDeclaration($js);
 	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
 	<input type="hidden" name="docRequired2_text" id="docRequired2_text" value="escrituras del predio"/>
-	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit2" id="ajaxFileSubmit2" value="Subir archivo" />
+	<input type="hidden" name="docRequired2_id" id="docRequired1_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit2" id="ajaxFileSubmit2" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete2" id="ajaxFileDelete2" value="Eliminar documento" style="display: none;" />
 	</div>
-	<div class="ajaxFileSubmitResult2"></div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult2"></div>
+	</div>
 </form>
 
 </div>
