@@ -22,8 +22,8 @@ ID: <?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>, folio prov
 <?php
 echo '<div><fieldset class="lmdfSelector0"><legend>Anexar documentos</legend>';
 require JModuleHelper::getLayoutPath('mod_slava_1', 'javascripttree');  // se carga arbol de decición de otro modulo
-require JModuleHelper::getLayoutPath('mod_slava_1', 'docs');  // se cargan formas de documentos
-require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptdocs');  // se carga componente de parder de documentos requeridos
+require JModuleHelper::getLayoutPath('mod_lmu1', 'docs');  // se cargan formas de documentos
+require JModuleHelper::getLayoutPath('mod_slava_1', 'javascriptdocs');  // se carga componente de parser de documentos requeridos
 // The initial visualization of the document list
 echo '<script type="text/javascript">docInit();</script>';
 echo '<br /></fieldset></div>';

@@ -19,12 +19,14 @@ $js = <<<JS
 (function ($) {
 	$(document).on('click', 'input[name=ajaxFileSubmit1]', function () {
 		var file   = $('input[name=docRequired1_file]')[0].files[0];  // taking only the first file in the array of selected files
-		var file_comment   = $('input[name=docRequired1_text]').val(); // taking the comment value
+		var file_doctype   = $('input[name=docRequired1_text]').val(); // taking the comment value
+		var parcel_case_id = $('input[name=docRequired1_parcel_case_id]').val(); // taking the comment value
 		var request = new FormData();     // the request should be an object to be correctly transfered through JSON Ajax
 			if (typeof file != "undefined") {
 				request.append('variable_file',file);
 			}
-			request.append('variable_comment',file_comment);
+			request.append('variable_doctype',file_doctype);
+			request.append('parcel_case_id',parcel_case_id);
 			request.append('option','com_ajax');
 			request.append('module','lmu1');
 			request.append('ajax_mode','file_submit');
@@ -37,9 +39,17 @@ $js = <<<JS
 			contentType: 	false,
 			data   : 	request,
 			success: 	function (response) {
-				var s = JSON.stringify(response.data); // debugging
-				var r = JSON.parse(response.data);           
-				$('.ajaxFileSubmitResult1').html( s );   
+				// var s = JSON.stringify(response.data); // debugging
+				// $('.ajaxFileSubmitResult1').html( s );
+				var r = JSON.parse(response.data);
+				if (response.type == 'error' || r['errorlog']) {
+					// we got an error in some part of the process
+					$('.ajaxFileSubmitResult1').html( '<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong>' + r['errorlog'] + '</div>');	
+				} else {
+					// no error
+					$('.ajaxFileSubmitResult1').html( r['string'] + '<br />' + r['insertId'] );   
+				}
+
 			}
 		});
 		return false;
@@ -49,12 +59,14 @@ JS;
 
 $doc->addScriptDeclaration($js);
 
-$docs = <<<DOCS
+?>
 
+<div id="hidden_docs">
 <div>
 <form class="docRequired1" name="docRequired1" enctype="multipart/form-data" style="display: none;" /> 
 	<label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
 	<input type="file" accept="image/*, application/pdf" name="docRequired1_file" id="docRequired1_file" />
+	<input type="hidden" name="docRequired1_parcel_case_id" id="docRequired1_parcel_case_id" value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
 	<input type="text" name="docRequired1_text" id="docRequired1_text" />
 	<input type="button" class="input-mini" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir archivo" />
 	<div class="ajaxFileSubmitResult1"></div>
@@ -72,11 +84,7 @@ $docs = <<<DOCS
 </form>
 </div>
 
+</div>
 
-DOCS;
 
-echo '<div id="hidden_docs">';
-echo $docs;
-echo '</div>';
 
-?>

@@ -5,7 +5,7 @@
  * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
  * @license        GNU/GPL, see LICENSE.php
- * mod_helloworld is free software. This version may have been modified pursuant
+ * mod_lmu1 is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -13,19 +13,11 @@
 class modLMUHelper
 {
     /**
-     * Retrieves the hello message and simple external database querry
-     *
      * @param array $params An object containing the module parameters
      * @access public
      */    
-    public static function getHello()
-    {
-        return 'Ok!';
-    }
 
-
-
-    public static function getSQLQuery01( $data, $base_sql )
+    public static function getDBinstance ( )
     {
 	// get and parse module parameters (for database connection)
 	jimport( 'joomla.application.module.helper' );
@@ -47,6 +39,12 @@ class modLMUHelper
  
 	// Obtain a database connection
 	$my_db = JDatabaseDriver::getInstance( $option );
+	return $my_db;
+    }
+
+    public static function getSQLQuery01( $data, $base_sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
 	if ($data) {
 		$quoted_data = $my_db->quote( $data );
 		$query = $base_sql . $quoted_data ;
@@ -58,6 +56,16 @@ class modLMUHelper
 	// Load the results as a list of stdClass objects
         $rows = $my_db->loadObjectList();
 	return $rows;
+    }
+
+    public static function getSQLInsert ( $sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
+	// Prepare the query
+	$my_db->setQuery($sql);
+	// Load the results as a list of stdClass objects
+	$my_db->execute();
+	return $my_db->insertid();
     }
 
 
@@ -223,49 +231,81 @@ class modLmu1Helper
 	// Getting input data
 	$input = JFactory::getApplication()->input;
 	$data  = $input->get('data');
-	$variable_comment = $input->get('variable_comment');
+	$variable_doctype = $input->get('variable_doctype');
+	$parcel_case_id = $input->get('parcel_case_id');
 	$mode  = $input->get('ajax_mode');
 
 
 	if ('file_submit' == $mode) {
-	        $base_sql = "SELECT * FROM persons LIMIT 1";  // ---------------- random request for debugging only
-		$obj = new stdClass;
-		$obj->rows = modLMUHelper::getSQLQuery01( '', $base_sql );
 		$result = "";
+		$errorlog = "";
 
 		// file processing
 		jimport('joomla.filesystem.file');
+		jimport( 'joomla.filesystem.folder' );
 		$files = $input->files->get('variable_file');
 		if ($files['error']!="0") {
-                	// error_log('Error en subir el archivo');
-			$result .= "\n<br /> Error al subir el archivo";
+			$errorlog .= "\nError al subir el archivo";
              	} else {
 		        $tempName = $files['tmp_name'];
 	             	$type = $files['type'];
-	             	$name = JFile::makeSafe($files['name']);  // 'safe' filename
+			$size = $files['size'];
+			$name = JFile::makeSafe($files['name']);  // 'safe' filename
+			$extension = JFile::getExt($files['name']);  // file extension
 			$tempFullPath = ini_get('upload_tmp_dir').$tempName;
+			$destination_folder = JPATH_SITE . "/" . "uploaded_documents";
+			$file_properties_xml = "<xml><fileName>".$name."</fileName><fileType>".$type."</fileType><fileSize>".$size."</fileSize></xml>";
 
-	                $result_dump = print_r($files, true);
-			$result .= "\n<br /> Dump: " . $result_dump;  // dumping file object as it was submitted
-			$result .= "\n<br /> Temp name : " . $tempName;  
-			$result .= "\n<br /> Type : " . $type;  
-			$result .= "\n<br /> Name : " . $name; 
-			if (file_exists($tempFullPath)) { 
-				$result .= "\n<br /> Temp full path : " . $tempFullPath;  
+			// generating file name string (3 components: 1) joomla username, 2) timestamp, 3) random 3 symbol alphanumeric string)
+			$my_date = new DateTime();
+			$timestamp = $my_date->getTimestamp();
+                        $random = substr( md5(rand()), 0, 3);
+			$joomla_user = JFactory::getUser();
+    			$safe_username = preg_replace("/[^a-zA-Z0-9]+/", "", $joomla_user->username);
+			$destination_filename = $safe_username . $timestamp . $random .'.'. $extension;
+			$destinationFullPath = $destination_folder . "/" . $destination_filename;
+
+			if (JFile::exists($tempFullPath)) {
+				// Create the folder if not exists in images folder
+				if ( !JFolder::exists( $destination_folder ) ) {
+					JFolder::create( $destination_folder, 0755 );
+				} 
+				// The second check to ensure that the festination folder is OK
+				if ( !JFolder::exists( $destination_folder ) ) { 
+					$errorlog .= "\nError al crear la carpeta de destino";
+				} else {
+					// Move the temporal file to the destination folder
+					JFile::upload( $tempFullPath,  $destinationFullPath );
+				}
+				// Check if the file move was successfull
+				if ( !JFile::exists( $destinationFullPath ) ) { 
+					$errorlog .= "\nError al mover el archivo enviado a la carpeta";
+				} else {
+					$result .= "\nExito al subir el archivo";
+				}
 			} else {
-				$result .= "\n<br /> No existe el archivo temporal!!! : " . $tempFullPath;  
+				$errorlog .= "\nError: no fue encontrado el archivo temporal";
+			}
+	                // $result_dump = print_r($files, true);
+			// $result .= "\n<br /> Dump: " . $result_dump;
+		}
+
+		if (!$errorlog) {
+			// no error detected in file processing, so generating a database record (INSERT)
+			$my_db1 = modLMUHelper::getDBinstance();
+		        $base_sql = 'INSERT INTO case_documents VALUES (NULL,'.$my_db1->quote($parcel_case_id).','.$my_db1->quote($variable_doctype);
+			$base_sql .= ','.$my_db1->quote($destinationFullPath).','.$my_db1->quote($file_properties_xml).',NOW());'; 
+			$insert_id = modLMUHelper::getSQLInsert($base_sql);
+			if( !$insert_id ) {
+				$errorlog .= "\nRegistro en DB no fue exitoso";
+			} else {
+				$result .= "\nExito al generar registro en DB";
 			}
 		}
-		$result .= "\n<br /> Comment: " . $variable_comment;  // testing comment text
-
-		// Retrieve each value in the ObjectList 
- 		foreach( $obj->rows as $row ) {
-		        // $result .= "test file submit output string " . $variable_file ;
-	 	} 
-		if( !$obj->rows ) {
-			$result = "Procedimiento no fue exitoso";
-		}
-		$obj->string = $result;
+		$obj = new stdClass;
+		$obj->insertId = $insert_id;	// the ID of new database record
+		$obj->string = $result;		// the result messages
+		$obj->errorlog = $errorlog;	// the error message (if any)
 		return json_encode($obj);
 
 	} else {
@@ -275,11 +315,11 @@ class modLmu1Helper
 
 		$result = "";
 		if( !$rows ) {
-		$result = "</br>Tramite aun sin deciciones</br>";;
+			$result = "<br />Tramite aun sin deciciones</br>";;
 		}
 		// Retrieve each value in the ObjectList 
  		foreach( $rows as $row ) { 
-		$result .= "</br>";
+		$result .= "<br />";
 		$result .= "Case ID: " . $row->parcel_case_id . ", ";
 		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
 		$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
@@ -287,7 +327,7 @@ class modLmu1Helper
 		$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
 		$result .= "Ejecutivo: " . $row->officer_name . ", ";
 		$result .= "Organismo: " . $row->officer_affiliation . ", ";
-		$result .= "</br>";
+		$result .= "<br />";
 	 	} 
 		return 'Resultados de consulta por medio de Ajax: ' . $result;
 	}

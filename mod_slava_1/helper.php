@@ -13,16 +13,9 @@
 class modHelloSlavaHelper
 {
     /**
-     * Retrieves the hello message and simple external database querry
-     *
      * @param array $params An object containing the module parameters
      * @access public
      */    
-    public static function getHello()
-    {
-        // return 'Ok!';
-    }
-
 
     public static function getModuleParamsArray()
     {
