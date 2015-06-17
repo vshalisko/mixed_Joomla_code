@@ -27,20 +27,22 @@ $js = <<<JS
 			$('.ajaxFileSubmitResult'+baseName).html( errormessage );	
 			return false;
 		}
-		if (file.size > 3145728) { // checking if the size is OK (less than 3 Mb)
+		if (file.size > 4194304) { // checking if the size is OK (less than 4 Mb)
 			// too large file
 			var errormessage = '<div class="alert"><button type="button" class="close" data-dismiss="alert">' +
-						'×</button><strong>Aviso!</strong> Archivo del documento no puede exceder 3 Mb. Documento no fue anexado.</div>';
+						'×</button><strong>Aviso!</strong> Archivo del documento no puede exceder 4 Mb. Documento no fue anexado.</div>';
 			$('.ajaxFileSubmitResult'+baseName).html( errormessage );	
 			return false;
 		}
-		var file_doctype   = $('input[name=docRequired'+baseName+'_text]').val(); // taking the comment value
-		var parcel_case_id = $('input[name=docRequired'+baseName+'_parcel_case_id]').val(); // taking the comment value
+		var variable_doctype = 'docRequired' + baseName;                                    // setting the reference doctype as in LMDF tree
+		var variable_doc_description = $('input[name=docRequired'+baseName+'_text]').val(); // taking the description
+		var parcel_case_id = $('input[name=docRequired'+baseName+'_parcel_case_id]').val(); // taking the case id
 		var request = new FormData();     // the request should be an object to be correctly transfered through JSON Ajax
 			if (typeof file != "undefined") {
 				request.append('variable_file',file);
 			}
-			request.append('variable_doctype',file_doctype);
+			request.append('variable_doctype',variable_doctype);
+			request.append('variable_doc_description',variable_doc_description);
 			request.append('parcel_case_id',parcel_case_id);
 			request.append('option','com_ajax');
 			request.append('module','lmu1');
@@ -52,6 +54,7 @@ $js = <<<JS
 			dataType   : 	'json',
 			processData: 	false,
 			contentType: 	false,
+			scriptCharset: 'utf-8',
 			data   : 	request,
 			xhr : function()
 			  {
@@ -89,6 +92,7 @@ $js = <<<JS
 					document.getElementById('ajaxFileSubmit'+baseName).disabled = true; // disabling submit button on success
 					document.getElementById('ajaxFileDelete'+baseName).style.display = "inline";
 					document.getElementById('docRequired'+baseName+'_file').disabled = true;
+					document.getElementById('docRequired'+baseName+'_text').disabled = true;
 					document.getElementById('docRequired'+baseName+'_id').value = r['insertId']; 
 				}
 			},
@@ -142,7 +146,7 @@ $doc->addStyleDeclaration( $style );
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired1_file" id="docRequired1_file" />
 	<input type="hidden" name="docRequired1_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
-	<input type="hidden" name="docRequired1_text" id="docRequired1_text" value="identificación oficial de solicitante" />
+	<input type="hidden" name="docRequired1_text" id="docRequired1_text" value="identificación oficial del solicitante" />
 	<input type="hidden" name="docRequired1_id" id="docRequired1_id" value="" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit1" id="ajaxFileSubmit1" value="Subir documento" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete1" id="ajaxFileDelete1" value="Eliminar documento" style="display: none;" />
@@ -159,15 +163,34 @@ $doc->addStyleDeclaration( $style );
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired2_file" id="docRequired2_file" />
 	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
-	<input type="hidden" name="docRequired2_text" id="docRequired2_text" value="escrituras del predio"/>
-	<input type="hidden" name="docRequired2_id" id="docRequired1_id" value="" />
+	<input type="hidden" name="docRequired2_text" id="docRequired2_text" value="escrituras del predio" />
+	<input type="hidden" name="docRequired2_id" id="docRequired2_id" value="" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit2" id="ajaxFileSubmit2" value="Subir documento" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete2" id="ajaxFileDelete2" value="Eliminar documento" style="display: none;" />
 	</div>
 	<div class="row-fluid">
-	<div class="span6 ajaxFileSubmitResult2"></div>
+	<div class="span6 ajaxFileSubmitResult2"></div><div class="span3">&nbsp;</div>
 	</div>
 </form>
+
+<form class="docRequiredOpt1" name="docRequiredOpt1" enctype="multipart/form-data" style="display: block;" /> 
+	<div class="row-fluid">
+	<label for="docRequiredOpt1" class="docRequiredOpt1">Documento opcional considerado por el solicitante</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredOpt1_file" id="docRequiredOpt1_file" />
+	<input type="hidden" name="docRequiredOpt1_parcel_case_id" id="docRequiredOpt1_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequiredOpt1_id" id="docRequiredOpt1_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmitOpt1" id="ajaxFileSubmitOpt1" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDeleteOpt1" id="ajaxFileDeleteOpt1" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<input class="span5" type="text" name="docRequiredOpt1_text" id="docRequiredOpt1_text" placeholder="describe el documento aquí" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResultOpt1"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
 
 </div>
 

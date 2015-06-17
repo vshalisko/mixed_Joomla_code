@@ -230,8 +230,9 @@ class modLmu1Helper
 	// Function to precess Ajax submitted data and return Ajax output
 	// Getting input data
 	$input = JFactory::getApplication()->input;
-	$data  = $input->get('data');
-	$variable_doctype = $input->get('variable_doctype');
+	$data  = $input->get('data');    // the data variable is useful in case of the simple request of the list of decicions for case
+	$variable_doctype = $input->get('variable_doctype');  // getting the document type as it defined in LMDF
+	$variable_doc_description = urldecode($input->get('variable_doc_description','','string'));  // the urldecode is necessary to get the correct string as it can contain spaces and non ASCII
 	$parcel_case_id = $input->get('parcel_case_id');
 	$mode  = $input->get('ajax_mode');
 
@@ -254,7 +255,9 @@ class modLmu1Helper
 			$extension = JFile::getExt($files['name']);  // file extension
 			$tempFullPath = ini_get('upload_tmp_dir').$tempName;
 			$destination_folder = JPATH_SITE . "/" . "uploaded_documents";
-			$file_properties_xml = "<xml><fileName>".$name."</fileName><fileType>".$type."</fileType><fileSize>".$size."</fileSize></xml>";
+			$file_properties_xml = "<xml><fileName>".$name."</fileName><fileType>".
+					$type."</fileType><fileSize>".$size."</fileSize><fileDescription>".
+					$variable_doc_description."</fileDescription></xml>";
 
 			// generating file name string (3 components: 1) joomla username, 2) timestamp, 3) random 3 symbol alphanumeric string)
 			$my_date = new DateTime();
