@@ -192,7 +192,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputP6",
 		"description" : "Superficie del predio menor que 50 m",
-		"dependencies" : [ "lmdfInputP7" ]
+		"dependencies" : [ "lmdfInputP7", "docRequired2" ]
 	} ,
 	{ 
 		"type" : "input",
@@ -251,9 +251,14 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "docRequired1",
-		// "alwaysvisible" : true,
-		"description" : "Documiento requerido A"
+		"description" : "Documiento requerido: identificación oficial del solicitante"
 	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired2",
+		"description" : "Documiento requerido: escrituras"
+	} ,
+
 // ====pruebas viejas========
 	{ 
 		"type" : "input",
