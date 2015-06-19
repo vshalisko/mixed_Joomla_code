@@ -159,7 +159,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired2" name="docRequired2" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras del predio</label>
+	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras o contrato de compra-venta</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired2_file" id="docRequired2_file" />
 	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -172,6 +172,23 @@ $doc->addStyleDeclaration( $style );
 	<div class="span6 ajaxFileSubmitResult2"></div><div class="span3">&nbsp;</div>
 	</div>
 </form>
+
+<form class="docRequiredD" name="docRequiredD" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequiredD" class="docRequiredD">Documento requerido: dictamen de usos y destinos</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredD_file" id="docRequiredD_file" />
+	<input type="hidden" name="docRequiredD_parcel_case_id" id="docRequiredD_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequiredD_text" id="docRequiredD_text" value="escrituras del predio" />
+	<input type="hidden" name="docRequiredD_id" id="docRequiredD_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmitD" id="ajaxFileSubmitD" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDeleteD" id="ajaxFileDeleteD" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResultD"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
 
 <form class="docRequiredOpt1" name="docRequiredOpt1" enctype="multipart/form-data" style="display: block;" /> 
 	<div class="row-fluid">

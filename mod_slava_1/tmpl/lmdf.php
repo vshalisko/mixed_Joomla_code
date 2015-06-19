@@ -150,6 +150,21 @@ $form = <<<FORM
 
 <fieldset class="lmdfInputS" style="display: none;">
 	<legend class="lmdfInputS" style="display: none;"><span class="badge">3</span> Llena los campos requeridos</legend>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputD0" class="lmdfInputD0" style="display: none;">Predio ya cuenta con dictamen de usos y destinos</sup>
+			<input type="checkbox" name="lmdfInputD0" id="lmdfInputD0" style="display: none;" class="hasTooltip" title="Selecciona casillla en caso que existe un dictamen previamente emitido" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD1" class="lmdfInputD1" style="display: none;">Número oficial del dictamen de usos y destinos</label>
+			<input type="text" name="lmdfInputD1" id="lmdfInputD1" class="input-large" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD2" class="lmdfInputD2" style="display: none;">Fecha de emisión del dictamen de usos y destinos</label>
+			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
+		</div>
+	</div>
 </fieldset>
 
 
@@ -157,29 +172,32 @@ $form = <<<FORM
 <fieldset class="lmdfInputP1" style="display: none;">
 	<legend class="lmdfInputP1" style="display: none;">Introduce los datos sobre ubicación del predio</legend>
 	<div class="row-fluid">
-		<div class="span4">
+		<div class="span6">
 			<label for="lmdfInputP1" class="lmdfInputP1" style="display: none;">Calle</label>
 			<input type="text" name="lmdfInputP1" id="lmdfInputP1" class="input-xlarge" style="display: none;" />
 		</div>
-		<div class="span8">
+		<div class="span6">
 			<label for="lmdfInputP2" class="lmdfInputP2" style="display: none;">Número oficial</label>
 			<input type="text" name="lmdfInputP2" id="lmdfInputP2" class="input-mini" style="display: none;" />
 		</div>
 	</div>
 	<div class="row-fluid">
-		<div class="span4">
+		<div class="span6">
 			<label for="lmdfInputP4" class="lmdfInputP4" style="display: none;">Entre la calle</label>
 			<input type="text" name="lmdfInputP4" id="lmdfInputP4" class="input-xlarge" style="display: none;" />
                 </div>
-		<div class="span8">
+		<div class="span6">
 			<label for="lmdfInputP5" class="lmdfInputP5" style="display: none;">y calle</label>
 			<input type="text" name="lmdfInputP5" id="lmdfInputP5" class="input-xlarge" style="display: none;" />
 		</div>
 	</div>
 	<div class="row-fluid">
-		<div class="span12">
+		<div class="span6">
 			<label for="lmdfInputP3" class="lmdfInputP3" style="display: none;">Colonia</label>
 			<input type="text" name="lmdfInputP3" id="lmdfInputP3" class="input-xlarge" style="display: none;" />
+		</div>
+		<div class="span6">
+			&nbsp;
 		</div>
 	</div>
 </fieldset>
@@ -199,6 +217,66 @@ $form = <<<FORM
 	</div>
 </fieldset>
 
+<!-- Datos sobre solicitante -->
+<fieldset class="lmdfInputS0" style="display: none;">
+	<legend class="lmdfInputS0" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
+
+	<div class="row-fluid">
+		<div class="span2">
+			<label for="lmdfInputS0" class="lmdfInputS0" style="display: none;">Giro comercial</sup>
+			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
+			</label>
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
+			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="span10" style="display: none;" placeholder="escribe nombre completo de la persona moral" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
+			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="span10" style="display: none;" placeholder="describe la actividad comercial" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio del solicitante</label>
+			<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xxlarge" style="display: none;" ></textarea>
+		</div>
+	</div>
+
+
+	<div class="row-fluid">
+		<div class="span6">
+			<label for="lmdfInputS3" class="lmdfInputS3" style="display: none;">Colonia</label>
+			<input type="text" name="lmdfInputS3" id="lmdfInputS3" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputS4" class="lmdfInputS4" style="display: none;">Código postal</label>
+			<input type="text" name="lmdfInputS4" id="lmdfInputS4" class="input-mini" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+			<label for="lmdfInputS5" class="lmdfInputS5" style="display: none;">Ciudad</label>
+			<input type="text" name="lmdfInputS5" id="lmdfInputS5" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputS6" class="lmdfInputS6" style="display: none;">Estado</label>
+			<input type="text" name="lmdfInputS6" id="lmdfInputS6" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<label for="lmdfInputS7" class="lmdfInputS7" style="display: none;">Teléfono de contacto</label>
+			<input type="text" name="lmdfInputS7" id="lmdfInputS7" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+</fieldset>
+
 <!-- Datos sobre propietario -->
 <fieldset class="lmdfInputPR0" style="display: none;">
 	<legend class="lmdfInputPR0" style="display: none;">Introduce los datos adicionales sobre el propietario</legend>
@@ -210,13 +288,13 @@ $form = <<<FORM
 		</div>
 		<div class="span10">
 			<label for="lmdfInputPR1" class="lmdfInputPR1" style="display: none;">Nombre completo del propietario</label>
-			<input type="text" name="lmdfInputPR1" id="lmdfInputPR1" class="input-xxlarge" style="display: none;" placeholder="escribe nombre completo del propietario tal como aparece en la identificación oficial" />
+			<input type="text" name="lmdfInputPR1" id="lmdfInputPR1" class="span10" style="display: none;" placeholder="escribe nombre completo del propietario tal como aparece en la identificación oficial" />
 		</div>
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
 			<label for="lmdfInputPR2" class="lmdfInputPR2" style="display: none;">Domicilio del propietario</label>
-			<textarea type="textarea" name="lmdfInputPR2" id="lmdfInputPR2" class="input-xlarge" style="display: none;" ></textarea>
+			<textarea type="textarea" name="lmdfInputPR2" id="lmdfInputPR2" class="input-xxlarge" style="display: none;" ></textarea>
 		</div>
 	</div>
 	<div class="row-fluid">
@@ -242,7 +320,7 @@ $form = <<<FORM
 	<div class="row-fluid">
 		<div class="span6">
 			<label for="lmdfInputPR7" class="lmdfInputPR7" style="display: none;">Teléfono de contacto</label>
-			<input type="text" name="lmdfInputPR7" id="lmdfInputPR7" class="input-large" style="display: none;" />
+			<input type="text" name="lmdfInputPR7" id="lmdfInputPR7" class="input-xlarge" style="display: none;" />
 		</div>
 		<div class="span6">
 			<label for="lmdfInputPR8" class="lmdfInputPR8" style="display: none;">Dirección del correo electrónico</label>
@@ -251,77 +329,6 @@ $form = <<<FORM
 	</div>
 </fieldset>
 
-
-
-<!-- Datos sobre solicitante -->
-<fieldset class="lmdfInputS0" style="display: none;">
-	<legend class="lmdfInputS0" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
-
-	<div class="row-fluid">
-		<div class="span2">
-			<label for="lmdfInputS0" class="lmdfInputS0" style="display: none;">Giro comercial</sup>
-			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
-			</label>
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
-			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="input-xxlarge" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span2">
-			&nbsp;
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
-			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio</label>
-			<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xlarge" style="display: none;" ></textarea>
-		</div>
-	</div>
-
-
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputS3" class="lmdfInputS3" style="display: none;">Colonia</label>
-			<input type="text" name="lmdfInputS3" id="lmdfInputS3" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span8">
-			<label for="lmdfInputS4" class="lmdfInputS4" style="display: none;">Código postal</label>
-			<input type="text" name="lmdfInputS4" id="lmdfInputS4" class="input-mini" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputS5" class="lmdfInputS5" style="display: none;">Ciudad</label>
-			<input type="text" name="lmdfInputS5" id="lmdfInputS5" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span8">
-			<label for="lmdfInputS6" class="lmdfInputS6" style="display: none;">Estado</label>
-			<input type="text" name="lmdfInputS6" id="lmdfInputS6" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<label for="lmdfInputS7" class="lmdfInputS7" style="display: none;">Teléfono de contacto</label>
-			<input type="text" name="lmdfInputS7" id="lmdfInputS7" class="input-large" style="display: none;" />
-		</div>
-	</div>
-</fieldset>
-
-
-
-
-<div class="control-group" style="display: none;" >
-<label for="lmdfInput0" class="lmdfInput0">Primer campo</label>
-<input type="text" name="lmdfInput0" id="lmdfInput0" class="input-xxlarge" placeholder="escribe texto aquí" />
-</div>
-
-<br />
 
 
 <fieldset class="lmdfInputC1" style="display: none;">
