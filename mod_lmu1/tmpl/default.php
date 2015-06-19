@@ -17,9 +17,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 
 <div id="divmodlmu1" name="divmodlmu1">
-<h4>
-<?php echo $hello;?>
-</h4>
 
 <?php
 if (isset($dataGeneral->person_login)) {

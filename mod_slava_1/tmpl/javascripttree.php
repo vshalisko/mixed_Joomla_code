@@ -26,14 +26,14 @@ var lmdfDecisionTree = 	{ input : [
 				"option" : "Grupo 1 Usos",
 		  		"dependencies" : [ 
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
-						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputPR0", "docRequired1" ]
 			},                                                                  
 			{ 
 				"option" : "Grupo 2 Trazo",
-		  		"dependencies" : [ "docRequired1", "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", 
+		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", 
 						"lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
-						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6" ]
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputPR0", "docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -41,13 +41,13 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputL6","lmdfInputL7","lmdfInputL8","lmdfInputL9","lmdfInputL10","lmdfInputL11",
 						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
-						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputPR0", "docRequired1", "docRequired2" ]
 			},                                                                    
 			{ 
 				"option" : "Grupo 4 Alineamiento",
 		  		"dependencies" : [ "lmdfSelector2",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
-						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "docRequired1" ]
+						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputPR0", "docRequired1", "docRequired2" ]
 			}
 		]
 	} ,
@@ -160,46 +160,6 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputS",
 		"description" : "Campos a llenar (grupo)"
 	} ,
-// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP1",
-		"description" : "Ubicación: calle",
-		"dependencies" : [ "lmdfInputP2" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP2",
-		"description" : "Ubicación: número oficial"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP3",
-		"description" : "Ubicación: colonia"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP4",
-		"description" : "Ubicación: entre la calle 1",
-		"dependencies" : [ "lmdfInputP5" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP5",
-		"description" : "Ubicación: entre la calle 2"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP6",
-		"description" : "Superficie del predio menor que 50 m",
-		"dependencies" : [ "lmdfInputP7", "docRequired2" ]
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputP7",
-		"description" : "Superficie del predio",
-		"dependencies" : [ "docRequired1" ]
-	} ,                         
 // =========Campos de información sobre solicitante======================================
 	{ 
 		"type" : "input",
@@ -247,6 +207,92 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputS8",
 		"description" : "Tipo de giro comercial"
 	} ,
+// =========Campos de información sobre propietario======================================
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR0",
+		"description" : "Propietario es distinto del solicitante",
+		"dependencies" : [ "lmdfInputPR1", "lmdfInputPR2", "lmdfInputPR3", "lmdfInputPR4", "lmdfInputPR5", "lmdfInputPR6", "lmdfInputPR7", "lmdfInputPR8" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR1",
+		"description" : "Nombre del propietario"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR2",
+		"description" : "Domicilio del propietario"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR3",
+		"description" : "Colónia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR4",
+		"description" : "Código postal"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR5",
+		"description" : "Ciudad"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR6",
+		"description" : "Estado"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR7",
+		"description" : "Teléfono de contacto de propietario"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputPR8",
+		"description" : "Correo electrónico de propietario"
+	} ,
+// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP1",
+		"description" : "Ubicación: calle",
+		"dependencies" : [ "lmdfInputP2" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP2",
+		"description" : "Ubicación: número oficial"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP3",
+		"description" : "Ubicación: colonia"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP4",
+		"description" : "Ubicación: entre la calle 1",
+		"dependencies" : [ "lmdfInputP5" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP5",
+		"description" : "Ubicación: entre la calle 2"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP6",
+		"description" : "Superficie del predio menor que 50 m",
+		"dependencies" : [ "lmdfInputP7" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP7",
+		"description" : "Superficie del predio",
+	} ,                         
 // ====documents========
 	{ 
 		"type" : "input",
@@ -260,22 +306,6 @@ var lmdfDecisionTree = 	{ input : [
 	} ,
 
 // ====pruebas viejas========
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput0"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput2"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput3"
-	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInput4"
-	},
 	{ 
 		"type" : "input",
 		"description" : "Comentario del usuario sobre el contenido del tramite",
