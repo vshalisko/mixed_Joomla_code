@@ -227,6 +227,22 @@ $form = <<<FORM
 			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
 		</div>
 	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputD3" class="lmdfInputD3" style="display: none;">Número de escritura</label>
+			<input type="text" name="lmdfInputD3" id="lmdfInputD3" class="input-large" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD4" class="lmdfInputD4" style="display: none;">Número de contrato de compra-venta</label>
+			<input type="text" name="lmdfInputD4" id="lmdfInputD4" class="input-large" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD5" class="lmdfInputD5" style="display: none;">Fecha de contrato de compra-venta</label>
+			<input type="text" name="lmdfInputD5" id="lmdfInputD5" class="input-large" style="display: none;" />
+		</div>
+
+	</div>
+
 </fieldset>
 
 
@@ -259,25 +275,154 @@ $form = <<<FORM
 			<input type="text" name="lmdfInputP3" id="lmdfInputP3" class="input-xlarge" style="display: none;" />
 		</div>
 		<div class="span6">
-			&nbsp;
+			<label for="lmdfInputP8" class="lmdfInputP8" style="display: none;">Manzana</label>
+			<input type="text" name="lmdfInputP8" id="lmdfInputP8" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+			<label for="lmdfInputP9" class="lmdfInputP9" style="display: none;">Lote</label>
+			<input type="text" name="lmdfInputP9" id="lmdfInputP9" class="input-xlarge" style="display: none;" />
+		</div>
+		<div class="span6">
+			<label for="lmdfInputP10" class="lmdfInputP10" style="display: none;">Clave catastral</label>
+			<input type="text" name="lmdfInputP10" id="lmdfInputP10" class="input-xlarge" style="display: none;" />
 		</div>
 	</div>
 </fieldset>
 
-<fieldset class="lmdfInputP6" style="display: none;">
-	<legend class="lmdfInputP6" style="display: none;">Especifica la superficie del predio</legend>
+<fieldset class="lmdfInputP16" style="display: none;">
+	<legend class="lmdfInputP16" style="display: none;">Ubicación en el centro histórico</legend>
 	<div class="row-fluid">
 		<div class="span4">
-			<label for="lmdfInputP6" class="checkbox lmdfInputP6" style="display: none;">Superficie del predio mayor que 50 m<sup>2</sup>
+			<label for="lmdfInputP16" class="checkbox lmdfInputP16" style="display: none;">Ubicado en el centro histórico
+			<input type="checkbox" name="lmdfInputP16" id="lmdfInputP16" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio se encuentra en el centro histórico" />
+			</label>
+                </div>
+		<div class="span4">
+			<label for="lmdfInputP17" class="checkbox lmdfInputP17" style="display: none;">Restauración en el centro histórico
+			<input type="checkbox" name="lmdfInputP17" id="lmdfInputP17" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de restauración de inmueble en el centro histórico" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputP18" class="checkbox lmdfInputP18" style="display: none;">Remodelación en el centro histórico
+			<input type="checkbox" name="lmdfInputP18" id="lmdfInputP18" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de remodelación de inmueble en el centro histórico" />
+			</label>
+		</div>
+
+	</div>
+</fieldset>
+
+
+<fieldset class="lmdfInputP11" style="display: none;">
+	<legend class="lmdfInputP11" style="display: none;">Presencia de servicios</legend>
+	<div class="row-fluid">
+		<div class="span2">
+			<label for="lmdfInputP11" class="checkbox lmdfInputP11" style="display: none;">Agua
+			<input type="checkbox" name="lmdfInputP11" id="lmdfInputP11" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con servicios de agua" />
+			</label>
+                </div>
+		<div class="span2">
+			<label for="lmdfInputP12" class="checkbox lmdfInputP12" style="display: none;">Drenaje
+			<input type="checkbox" name="lmdfInputP12" id="lmdfInputP12" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con servicios de drenaje" />
+			</label>
+		</div>
+		<div class="span2">
+			<label for="lmdfInputP13" class="checkbox lmdfInputP13" style="display: none;">Alumbrado
+			<input type="checkbox" name="lmdfInputP13" id="lmdfInputP13" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con alumbrado" />
+			</label>
+		</div>
+		<div class="span2">
+			<label for="lmdfInputP14" class="checkbox lmdfInputP14" style="display: none;">Pavimiento
+			<input type="checkbox" name="lmdfInputP14" id="lmdfInputP14" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con pavimiento" />
+			</label>
+		</div>
+		<div class="span2">
+			<label for="lmdfInputP15" class="checkbox lmdfInputP15" style="display: none;">Banqueta
+			<input type="checkbox" name="lmdfInputP15" id="lmdfInputP15" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con banqueta" />
+			</label>
+		</div>
+	</div>
+</fieldset>
+
+
+
+<fieldset class="lmdfInputP6" style="display: none;">
+	<legend class="lmdfInputP6" style="display: none;">Especifica la detalles y superficie de la obra</legend>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputP19" class="checkbox lmdfInputP19" style="display: none;">Existe una construcción o se va a construir
+			<input type="checkbox" name="lmdfInputP19" id="lmdfInputP19" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con una construcción o se pretende construir una" />
+			</label>
+                </div>
+		<div class="span8">
+			<label for="lmdfInputP20" class="lmdfInputP20" style="display: none;">Descripción de la construcción y de la obra que se realizará (250 símbolos)
+			<textarea type="textarea" name="lmdfInputP20" id="lmdfInputP20" class="input-xxlarge" style="display: none;" ></textarea>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputP6" class="checkbox lmdfInputP6" style="display: none;">Superficie de la obra mayor que 50 m<sup>2</sup>
 			<input type="checkbox" name="lmdfInputP6" id="lmdfInputP6" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio es mayór que 50 m" />
 			</label>
                 </div>
 		<div class="span8">
-			<label for="lmdfInputP7" class="lmdfInputP7" style="display: none;">Introduce la superficie del predio en m<sup>2</sup></label>
+			<label for="lmdfInputP7" class="lmdfInputP7" style="display: none;">Introduce la superficie de la obra en m<sup>2</sup></label>
 			<input type="text" name="lmdfInputP7" id="lmdfInputP7" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie para los predios mayores que 50 m" />
 		</div>
 	</div>
 </fieldset>
+
+
+<!-- Datos especificos sobre licencias -->
+
+<fieldset class="lmdfInputL20" style="display: none;">
+	<legend class="lmdfInputL20" style="display: none;">Detalles de licencias</legend>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputL23" class="checkbox lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado por la licencia</label>
+			<input type="text" name="lmdfInputL23" id="lmdfInputL23" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL26" class="checkbox lmdfInputL26" style="display: none;">El volumen en m<sup>3</sup> apmarado por la licencia</label>
+			<input type="text" name="lmdfInputL26" id="lmdfInputL26" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Volumen" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL24" class="checkbox lmdfInputL24" style="display: none;">El periodo en días apmarado por la licencia</label>
+			<input type="text" name="lmdfInputL24" id="lmdfInputL24" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Periodo (días)" />
+			</label>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<fieldset class="lmdfSelectorL25">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL25">Tipo de estacionamiento:</span>
+				<label class="lmdfSelectorL25">
+					<input type="radio" name="lmdfSelectorL1A" id="lmdfSelectorL25" value="cubierto" /> Cubierto
+				</label>
+				<label class="lmdfSelectorL25">
+					<input type="radio" name="lmdfSelectorL1A" id="lmdfSelectorL25" value="descubierto" /> Descubierto
+				</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputL21" class="checkbox lmdfInputL21" style="display: none;">Reparación menor
+			<input type="checkbox" name="lmdfInputL21" id="lmdfInputL21" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que se pretende realizar una reparación menor" />
+			</label>
+                </div>
+		<div class="span4">
+			<label for="lmdfInputL22" class="checkbox lmdfInputL22" style="display: none;">Reparación mayor o adaptación
+			<input type="checkbox" name="lmdfInputL22" id="lmdfInputL22" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que se pretende realizar una reparación mayor o adaptación" />
+			</label>
+		</div>
+  	</div>
+</fieldset>
+
+
 
 <!-- Datos sobre solicitante -->
 <fieldset class="lmdfInputS0" style="display: none;">

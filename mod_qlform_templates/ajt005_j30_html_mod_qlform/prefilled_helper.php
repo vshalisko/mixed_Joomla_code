@@ -41,11 +41,13 @@ $my_date = new DateTime();
 $temporal_identifier = date('Ym') . '-' . $dataToBind->parcel_map_id . '-' . $dataToBind->parcel_id . '-' . $my_date->getTimestamp();
 $dataToBind->system_case_identifier=$temporal_identifier;
 
+echo '<div class="row-fluid">';
+
 if (isset($dataToBind->case_parcel_properties_xml)) {
-	echo '<div class="well well-large">';
-	echo '<pre>Datos del predio:<br />';
+	echo '<div class="span6 alert alert-success">';
+	echo 'Datos del predio:<br />';
 	echo $dataToBind->case_parcel_properties_xml;
-	echo '</pre>';
+	echo '';
 	echo '</div>';
 } else {
 	$warning = '<H4>Forma no valida! El predio con las caracteristicas especificados no fue encontrado en sistema.</H4>';
@@ -80,17 +82,21 @@ if (!$joomla_user->guest) {
 }
 
 if (isset($dataToBind->person_name)) {
-	echo '<div class="well well-large">';
-	echo '<pre>Nombre del promotor:<br />';
-	echo $dataToBind->person_name;
-	echo '</pre>';
+	echo '<div class="span6 alert alert-success">';
+	echo 'Nombre del solicitante:<br />';
+	echo '<b>'.$dataToBind->person_name.'</b>';
+	echo '<br />CURP del solicitante:<br />';
+	echo '<b>'.$dataToBind->person_curp.'</b>';
+	echo '<br />Correo electrónico del solicitante:<br />';
+	echo '<b>'.$dataToBind->person_email.'</b>';
+	echo '';
 	echo '</div>';
 } else {
 	$warning = '<H4>Forma no valida! Usted debe tener registrados sus datos personales.</H4>';
 	require JModuleHelper::getLayoutPath('mod_qlform', 'dictamenform_alerts');
 }
 
-echo '<p><span class="badge">1</span> Especifica rol:</p>';
+echo '</div><p><span class="badge">1</span> Especifica rol del solicitante:</p>';
 
 $form->bind($dataToBind);
 

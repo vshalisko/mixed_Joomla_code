@@ -159,9 +159,9 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired2" name="docRequired2" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras o contrato de compra-venta</label>
+	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired2_file" id="docRequired2_file" />
-	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired1_parcel_case_id" 
+	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired2_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
 	<input type="hidden" name="docRequired2_text" id="docRequired2_text" value="escrituras del predio" />
 	<input type="hidden" name="docRequired2_id" id="docRequired2_id" value="" />
@@ -172,6 +172,24 @@ $doc->addStyleDeclaration( $style );
 	<div class="span6 ajaxFileSubmitResult2"></div><div class="span3">&nbsp;</div>
 	</div>
 </form>
+
+<form class="docRequired3" name="docRequired3" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired3" class="docRequired3">Documento requerido: contrato de compra-venta</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired3_file" id="docRequired3_file" />
+	<input type="hidden" name="docRequired3_parcel_case_id" id="docRequired3_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired3_text" id="docRequired3_text" value="escrituras del predio" />
+	<input type="hidden" name="docRequired3_id" id="docRequired3_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit3" id="ajaxFileSubmit3" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete3" id="ajaxFileDelete3" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult3"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+
 
 <form class="docRequiredD" name="docRequiredD" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
