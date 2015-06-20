@@ -28,7 +28,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15","lmdfInputP16","lmdfInputP19", 
-						"lmdfInputPR0","lmdfInputD3","lmdfInputD4","lmdfInputD5","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
 			},                                                                  
 			{ 
 				"option" : "Grupo 2 Trazo",
@@ -36,7 +36,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19",
-						"lmdfInputPR0","lmdfInputD3","lmdfInputD4","lmdfInputD5","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -48,7 +48,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", "lmdfInputPR0",
 						"lmdfInputL20", 
-						"lmdfInputD0","lmdfInputD3","lmdfInputD4","lmdfInputD5","docRequired1" ]
+						"lmdfInputD0","lmdfSelectorD3","docRequired1" ]
 			},                                                                    
 			{ 
 				"option" : "Grupo 4 Alineamiento",
@@ -57,7 +57,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", 
-						"lmdfInputPR0","lmdfInputD3","lmdfInputD4","lmdfInputD5","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
 			}
 		]
 	} ,
@@ -92,9 +92,11 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "A",
+				"dependencies" : [ "lmdfSelectorL30" ] 
 			},
 			{ 
-				"option" : "B"
+				"option" : "B",
+				"dependencies" : [ "lmdfSelectorL32" ] 
 			},
 		]
 	} ,
@@ -109,7 +111,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL1",
 		"description" : "Licencia para construcción de inmuebles",
-		"dependencies" : [ "lmdfSelectorL1A", "lmdfInputD3","lmdfInputD4" ] 
+		"dependencies" : [ "lmdfSelectorL1A" ] 
 	} ,
 	{ 
 		"type" : "selector",
@@ -119,60 +121,60 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "A",
+				"dependencies" : [ "lmdfSelectorL30", "lmdfSelectorL31" ] 
 			},
 			{ 
-				"option" : "B"
+				"option" : "B",
+				"dependencies" : [ "lmdfSelectorL32" ]
 			},
 		]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL2",
-		"description" : "Licencia para construcción de albercas",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4" ] 
+		"description" : "Licencia para construcción de albercas"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL3",
-		"description" : "Licencia para construcción de canchas y áreas deportivas",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4" ] 
+		"description" : "Licencia para construcción de canchas y áreas deportivas"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL4",
 		"description" : "Licencia para construcción de estacionamientos para usos no habitacionales",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfSelectorL25", "lmdfInputL23"  ] 
+		"dependencies" : [ "lmdfSelectorL25", "lmdfInputL23"  ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL5",
 		"description" : "Licencia para demolición",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4" ] 
+		"dependencies" : [ "lmdfInputP16" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL6",
 		"description" : "Licencia para acotamiento",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfInputL23" ] 
+		"dependencies" : [ "lmdfInputL23", "lmdfSelectorL30" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL7",
 		"description" : "Licencia para instalar tapiales provisionales en la vía pública",
-		"dependencies" : [ "lmdfInputL23" ] 
+		"dependencies" : [ "lmdfInputP16", "lmdfInputL27" ] 
 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL8",
 		"description" : "Licencia para remodelación o restauración",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfInputP17", "lmdfInputP18" ] 
+		"dependencies" : [ "lmdfInputP17", "lmdfInputP18" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL9",
 		"description" : "Licencia para reconstrucción, reestructuración o adaptación",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfInputL21", "lmdfInputL22" ] 
+		"dependencies" : [ "lmdfSelectorL21" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -191,25 +193,24 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL12",
 		"description" : "Licencia para movimientos de tierra",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfInputL26" ] 
+		"dependencies" : [ "lmdfInputL26" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL13",
-		"description" : "Licencia provisional de construcción",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", ] 
+		"description" : "Licencia provisional de construcción"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL14",
 		"description" : "Licencia para construcción de plataformas, patios de maniobra y rampas",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4", "lmdfInputL23" ] 
+		"dependencies" : [ "lmdfInputL23" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL15",
 		"description" : "Licencia similar de tipo no previsto",
-		"dependencies" : [ "lmdfInputD3","lmdfInputD4","lmdfInputL23" ] 
+		"dependencies" : [ "lmdfInputL23", "lmdfInputC1" ] 
 	} ,
 
 // ====campos a llenar en formulario========
@@ -234,38 +235,55 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputD2",
 		"description" : "Fecha de emisión del dictamen de usos y destinos"
 	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorD3",
+		"description" : "Estacionamiento cubierto o descubierto",
+		"options" : 
+		[
+			{ 
+				"option" : "escritura",
+				"dependencies" : [ "lmdfInputD3", "docRequired3" ]
+			},
+			{ 
+				"option" : "contrato de compra-venta",
+				"dependencies" : [ "lmdfInputD4", "lmdfInputD5", "docRequired3" ]
+			},
+		]
+	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD3",
-		"description" : "Número de escritura",
-		"dependencies" : [ "docRequired2" ]
+		"description" : "Número de escritura"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD4",
-		"description" : "Número de contrato de compra-venta",
-		"dependencies" : [ "docRequired3" ]
+		"description" : "Número de contrato de compra-venta"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD5",
-		"description" : "Fecha de contrato de compra-venta",
-		"dependencies" : [ "docRequired3" ]
+		"description" : "Fecha de contrato de compra-venta"
 	} ,
 	{       // this should be selected in any case after any License is selected
 		"type" : "input",
 		"name" : "lmdfInputL20",
 		"description" : "Detalles de licencias"
 	} ,
-	{       
-		"type" : "input",
-		"name" : "lmdfInputL21",
-		"description" : "Reparación menor"
-	} ,
-	{       
-		"type" : "input",
-		"name" : "lmdfInputL22",
-		"description" : "Reparación mayor o adaptación"
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL21",
+		"description" : "Tipo de reparación",
+		"options" : 
+		[
+			{ 
+				"option" : "reparación menor"
+			},
+			{ 
+				"option" : "reparación mayor o adaptación"
+			},
+		]
 	} ,
 	{       
 		"type" : "input",
@@ -296,7 +314,156 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputL26",
 		"description" : "Volumen en metros cúbicos"
 	} ,
+	{       
+		"type" : "input",
+		"name" : "lmdfInputL27",
+		"description" : "Distancia metros lineales"
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL30",
+		"description" : "Densidad",
+		"options" : 
+		[
+			{ 
+				"option" : "alta"
+			},
+			{ 
+				"option" : "media"
+			},
+			{ 
+				"option" : "baja"
+			},
+			{ 
+				"option" : "minima"
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL31",
+		"description" : "Tipo de vivienda",
+		"options" : 
+		[
+			{ 
+				"option" : "unifamiliar"
+			},
+			{ 
+				"option" : "plurifamiliar horizontal"
+			},
+			{ 
+				"option" : "plurifamiliar vertical"
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL32",
+		"description" : "Tipo de uso no habitacional",
+		"options" : 
+		[
+			{ 
+				"option" : "comercio y servicios",
+				"dependencies" : [ "lmdfSelectorL33" ]
+			},
+			{ 
+				"option" : "uso turístico",
+				"dependencies" : [ "lmdfSelectorL34" ]
+			},
+			{ 
+				"option" : "industria",
+				"dependencies" : [ "lmdfSelectorL35" ]
+			},
+			{ 
+				"option" : "equipamiento y otros",
+				"dependencies" : [ "lmdfSelectorL36" ]
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL33",
+		"description" : "Tipo de comercio y servicios",
+		"options" : 
+		[
+			{ 
+				"option" : "barrial"
+			},
+			{ 
+				"option" : "central"
+			},
+			{ 
+				"option" : "distrital"
+			},
+			{ 
+				"option" : "regional"
+			}
 
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL34",
+		"description" : "Tipo de uso turistico",
+		"options" : 
+		[
+			{ 
+				"option" : "campestre"
+			},
+			{ 
+				"option" : "hotelero densidad alta"
+			},
+			{ 
+				"option" : "hotelero densidad media"
+			},
+			{ 
+				"option" : "hotelero densidad baja"
+			},
+			{ 
+				"option" : "hotelero densidad mínima"
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL35",
+		"description" : "Tipo de industria",
+		"options" : 
+		[
+			{ 
+				"option" : "ligera riesgo bajo"
+			},
+			{ 
+				"option" : "media riesgo medio"
+			},
+			{ 
+				"option" : "pesada riesgo alto"
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL36",
+		"description" : "Tipo de equipamientos y otros",
+		"options" : 
+		[
+			{ 
+				"option" : "institucional"
+			},
+			{ 
+				"option" : "regional"
+			},
+			{ 
+				"option" : "espacios verdes"
+			},
+			{ 
+				"option" : "especial"
+			},
+			{ 
+				"option" : "infraestructura"
+			}
+		]
+	} ,
 // =========Campos de información sobre solicitante======================================
 	{ 
 		"type" : "input",

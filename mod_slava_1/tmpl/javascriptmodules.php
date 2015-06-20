@@ -129,9 +129,14 @@ lmdfInit = function () {
 	}                                       	
 
 	lmdf_xml_formed = xmlToString(lmdfXML);
-	$("#lmdfXMLout1").text(lmdf_xml_formed);
-	$("#jform_case_properties_xml").text(lmdf_xml_formed);
-	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree1));
+//	alert(lmdf_xml_formed);
+//	document.getElementById("lmdfXMLout1").value = lmdf_xml_formed;
+	document.getElementById("jform_case_properties_xml").value = lmdf_xml_formed;
+	document.getElementById("jform_case_properties_json").value = JSON.stringify(lmdfDecisionTree1);
+//	$("#lmdfXMLout1").text(lmdf_xml_formed);
+//	$("#jform_case_properties_xml").text(lmdf_xml_formed);
+//	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree1));
+	
 }
 })(jQuery);
 

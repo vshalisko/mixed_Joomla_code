@@ -62,7 +62,7 @@ $form = <<<FORM
 		<div class="span6">
 			<fieldset class="lmdfSelectorL1A">
 				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
-				<span class="lmdfSelectorL1A">de acuerdo con la clasificación siguiente:</span>
+				<span class="lmdfSelectorL1A">Opción:</span>
 				<label class="lmdfSelectorL1A">
 					<input type="radio" name="lmdfSelectorL1A" id="lmdfSelectorL1A" value="A" /> A. Inmuebles de uso habitacional
 				</label>
@@ -196,7 +196,7 @@ $form = <<<FORM
 		<div class="span6">
 			<fieldset class="lmdfSelector2A">
 				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
-					<span class="lmdfSelector2A">de acuerdo con la clasificación siguiente:</span>
+					<span class="lmdfSelector2A">Opción:</span>
 					<label class="lmdfSelector2A">
 						<input type="radio" name="lmdfSelector2A" id="lmdfSelector2A" value="A" /> A. Inmuebles de uso habitacional
 					</label>
@@ -208,7 +208,6 @@ $form = <<<FORM
 		</div>
 	</div>
 </fieldset>
-
 
 <fieldset class="lmdfInputS" style="display: none;">
 	<legend class="lmdfInputS" style="display: none;"><span class="badge">3</span> Llena los campos requeridos</legend>
@@ -229,10 +228,23 @@ $form = <<<FORM
 	</div>
 	<div class="row-fluid">
 		<div class="span4">
-			<label for="lmdfInputD3" class="lmdfInputD3" style="display: none;">Número de escritura</label>
-			<input type="text" name="lmdfInputD3" id="lmdfInputD3" class="input-large" style="display: none;" />
+			<fieldset class="lmdfSelectorD3">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+					<span class="lmdfSelectorD3">Especifica escritura o contrato de compra-venta:</span>
+					<label class="lmdfSelectorD3">
+						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="escritura" /> Escritura
+					</label>
+					<label class="lmdfSelectorD3">
+						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="contrato de compra-venta" /> Contrato de compra-venta
+					</label>
+				</div>
+			</fieldset>
 		</div>
 		<div class="span4">
+			<!-- Opcion escritura -->
+			<label for="lmdfInputD3" class="lmdfInputD3" style="display: none;">Número de escritura</label>
+			<input type="text" name="lmdfInputD3" id="lmdfInputD3" class="input-large" style="display: none;" />
+			<!-- Opcion contrato -->
 			<label for="lmdfInputD4" class="lmdfInputD4" style="display: none;">Número de contrato de compra-venta</label>
 			<input type="text" name="lmdfInputD4" id="lmdfInputD4" class="input-large" style="display: none;" />
 		</div>
@@ -243,6 +255,203 @@ $form = <<<FORM
 
 	</div>
 
+</fieldset>
+
+<!-- Datos especificos sobre licencias -->
+<fieldset class="lmdfInputL20 lmdfSelectorL30 lmdfSelectorL32" style="display: none;">
+	<legend class="lmdfInputL20 lmdfSelectorL30 lmdfSelectorL32" style="display: none;">Detalles de licencias</legend>
+	<div class="row-fluid">
+		<div class="span4">
+			<fieldset class="lmdfSelectorL30">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL30">Densidad:</span>
+				<label class="lmdfSelectorL30">
+					<input type="radio" name="lmdfSelectorL30" id="lmdfSelectorL30" value="alta" /> Alta
+				</label>
+				<label class="lmdfSelectorL30">
+					<input type="radio" name="lmdfSelectorL30" id="lmdfSelectorL30" value="media" /> Media
+				</label>
+				<label class="lmdfSelectorL30">
+					<input type="radio" name="lmdfSelectorL30" id="lmdfSelectorL30" value=baja" /> Baja
+				</label>
+				<label class="lmdfSelectorL30">
+					<input type="radio" name="lmdfSelectorL30" id="lmdfSelectorL30" value="minima" /> Mínima
+				</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<fieldset class="lmdfSelectorL31">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL31">Tipo de vivienda:</span>
+				<label class="lmdfSelectorL31">
+					<input type="radio" name="lmdfSelectorL31" id="lmdfSelectorL31" value="unifamiliar" /> Unifamiliar
+				</label>
+				<label class="lmdfSelectorL31">
+					<input type="radio" name="lmdfSelectorL31" id="lmdfSelectorL31" value="plurifamiliar horizontal" /> Plurifamiliar horizontal
+				</label>
+				<label class="lmdfSelectorL31">
+					<input type="radio" name="lmdfSelectorL31" id="lmdfSelectorL31" value="plurifamiliar vertical" /> Plurifamiliar vertical
+				</label>
+				</div>
+			</fieldset>
+                </div>
+  	</div>
+
+
+	<div class="row-fluid">
+		<div class="span4">
+			<fieldset class="lmdfSelectorL32">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL32">Tipo de uso no habitacional:</span>
+				<label class="lmdfSelectorL32">
+					<input type="radio" name="lmdfSelectorL32" id="lmdfSelectorL32" value="comercio y servicios" /> Comercio y servicios
+				</label>
+				<label class="lmdfSelectorL32">
+					<input type="radio" name="lmdfSelectorL32" id="lmdfSelectorL32" value="uso turístico" /> Uso turístico
+				</label>
+				<label class="lmdfSelectorL32">
+					<input type="radio" name="lmdfSelectorL32" id="lmdfSelectorL32" value="industria" /> Industria
+				</label>
+				<label class="lmdfSelectorL32">
+					<input type="radio" name="lmdfSelectorL32" id="lmdfSelectorL32" value="equipamiento y otros" /> Equipamiento y otros
+				</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span6 lmdfSelectorL33" style="display: none;">
+			<fieldset class="lmdfSelectorL33">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL33">Tipo de comercio y servicios:</span>
+				<label class="lmdfSelectorL33">
+					<input type="radio" name="lmdfSelectorL33" id="lmdfSelectorL33" value="barrial" /> Barrial
+				</label>
+				<label class="lmdfSelectorL33">
+					<input type="radio" name="lmdfSelectorL33" id="lmdfSelectorL33" value="central" /> Central
+				</label>
+				<label class="lmdfSelectorL33">
+					<input type="radio" name="lmdfSelectorL33" id="lmdfSelectorL33" value="distrital" /> Distrital
+				</label>
+				<label class="lmdfSelectorL33">
+					<input type="radio" name="lmdfSelectorL33" id="lmdfSelectorL33" value="regional" /> Regional
+				</label>
+				</div>
+			</fieldset>
+                </div>
+		<div class="span6 lmdfSelectorL34" style="display: none;">
+			<fieldset class="lmdfSelectorL34">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL34">Tipo de uso turistico:</span>
+				<label class="lmdfSelectorL34">
+					<input type="radio" name="lmdfSelectorL34" id="lmdfSelectorL34" value="campestre" /> Campestre
+				</label>
+				<label class="lmdfSelectorL34">
+					<input type="radio" name="lmdfSelectorL34" id="lmdfSelectorL34" value="hotelero densidad alta" /> Hotelero densidad alta
+				</label>
+				<label class="lmdfSelectorL34">
+					<input type="radio" name="lmdfSelectorL34" id="lmdfSelectorL34" value="hotelero densidad media" /> Hotelero densidad media
+				</label>
+				<label class="lmdfSelectorL34">
+					<input type="radio" name="lmdfSelectorL34" id="lmdfSelectorL34" value="hotelero densidad baja" /> Hotelero densidad baja
+				</label>
+				<label class="lmdfSelectorL34">
+					<input type="radio" name="lmdfSelectorL34" id="lmdfSelectorL34" value="hotelero densidad mínima" /> Hotelero densidad mínima
+				</label>
+				</div>
+			</fieldset>
+                </div>
+        	<div class="span6 lmdfSelectorL35" style="display: none;">
+			<fieldset class="lmdfSelectorL35">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL35">Tipo de industria:</span>
+				<label class="lmdfSelectorL35">
+					<input type="radio" name="lmdfSelectorL35" id="lmdfSelectorL35" value="ligera riesgo bajo" /> Ligiera, riesgo bajo
+				</label>
+				<label class="lmdfSelectorL35">
+					<input type="radio" name="lmdfSelectorL35" id="lmdfSelectorL35" value="media riesgo merio" /> Media, riesgo medio
+				</label>
+				<label class="lmdfSelectorL35">
+					<input type="radio" name="lmdfSelectorL35" id="lmdfSelectorL35" value="pesada riesgo alto" /> Pesada, riesgo alto
+				</label>
+				</div>
+			</fieldset>
+                </div>
+        	<div class="span6 lmdfSelectorL36" style="display: none;">
+			<fieldset class="lmdfSelectorL36">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL36">Tipo de equipamiento y otros:</span>
+				<label class="lmdfSelectorL36">
+					<input type="radio" name="lmdfSelectorL36" id="lmdfSelectorL36" value="institucional" /> Institucional
+				</label>
+				<label class="lmdfSelectorL36">
+					<input type="radio" name="lmdfSelectorL36" id="lmdfSelectorL36" value="regional" /> Regional
+				</label>
+				<label class="lmdfSelectorL36">
+					<input type="radio" name="lmdfSelectorL36" id="lmdfSelectorL36" value="espacios verdes" /> Espacios verdes
+				</label>
+				<label class="lmdfSelectorL36">
+					<input type="radio" name="lmdfSelectorL36" id="lmdfSelectorL36" value="especial" /> Especial
+				</label>
+				<label class="lmdfSelectorL36">
+					<input type="radio" name="lmdfSelectorL36" id="lmdfSelectorL36" value="infraestructura" /> Infraestructura
+				</label>
+				</div>
+			</fieldset>
+                </div>
+  	</div>
+
+
+
+	<div class="row-fluid">
+		<div class="span4 lmdfSelectorL25" style="display: none;">
+			<fieldset class="lmdfSelectorL25">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL25">Tipo de estacionamiento:</span>
+				<label class="lmdfSelectorL25">
+					<input type="radio" name="lmdfSelectorL25" id="lmdfSelectorL25" value="cubierto" /> Cubierto
+				</label>
+				<label class="lmdfSelectorL25">
+					<input type="radio" name="lmdfSelectorL25" id="lmdfSelectorL25" value="descubierto" /> Descubierto
+				</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4 lmdfSelectorL21" style="display: none;">
+			<fieldset class="lmdfSelectorL21">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+				<span class="lmdfSelectorL21">Tipo de reparacipon:</span>
+				<label class="lmdfSelectorL21">
+					<input type="radio" name="lmdfSelectorL21" id="lmdfSelectorL21" value="reparación menor" /> Reparación menor
+				</label>
+				<label class="lmdfSelectorL21">
+					<input type="radio" name="lmdfSelectorL21" id="lmdfSelectorL21" value="reparación mayor o adaptación" /> Reparación mayor o adaptación
+				</label>
+				</div>
+			</fieldset>
+		</div>
+  	</div>
+	<div class="row-fluid">
+		<div class="span3 lmdfInputL23" style="display: none;">
+			<label for="lmdfInputL23" class="checkbox lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>
+			<input type="text" name="lmdfInputL23" id="lmdfInputL23" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie" />
+			</label>
+		</div>
+		<div class="span3 lmdfInputL27" style="display: none;">
+			<label for="lmdfInputL27" class="checkbox lmdfInputL27" style="display: none;">Distancia en m apmarado</label>
+			<input type="text" name="lmdfInputL27" id="lmdfInputL27" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Distancia" />
+			</label>
+		</div>
+		<div class="span3 lmdfInputL26" style="display: none;">
+			<label for="lmdfInputL26" class="checkbox lmdfInputL26" style="display: none;">El volumen en m<sup>3</sup> apmarado</label>
+			<input type="text" name="lmdfInputL26" id="lmdfInputL26" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Volumen" />
+			</label>
+		</div>
+		<div class="span3 lmdfInputL24" style="display: none;">
+			<label for="lmdfInputL24" class="checkbox lmdfInputL24" style="display: none;">El periodo en días apmarado</label>
+			<input type="text" name="lmdfInputL24" id="lmdfInputL24" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Periodo (días)" />
+			</label>
+		</div>
+	</div>
 </fieldset>
 
 
@@ -374,53 +583,6 @@ $form = <<<FORM
 </fieldset>
 
 
-<!-- Datos especificos sobre licencias -->
-
-<fieldset class="lmdfInputL20" style="display: none;">
-	<legend class="lmdfInputL20" style="display: none;">Detalles de licencias</legend>
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputL23" class="checkbox lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado por la licencia</label>
-			<input type="text" name="lmdfInputL23" id="lmdfInputL23" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie" />
-			</label>
-		</div>
-		<div class="span4">
-			<label for="lmdfInputL26" class="checkbox lmdfInputL26" style="display: none;">El volumen en m<sup>3</sup> apmarado por la licencia</label>
-			<input type="text" name="lmdfInputL26" id="lmdfInputL26" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Volumen" />
-			</label>
-		</div>
-		<div class="span4">
-			<label for="lmdfInputL24" class="checkbox lmdfInputL24" style="display: none;">El periodo en días apmarado por la licencia</label>
-			<input type="text" name="lmdfInputL24" id="lmdfInputL24" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Periodo (días)" />
-			</label>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span4">
-			<fieldset class="lmdfSelectorL25">
-				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
-				<span class="lmdfSelectorL25">Tipo de estacionamiento:</span>
-				<label class="lmdfSelectorL25">
-					<input type="radio" name="lmdfSelectorL1A" id="lmdfSelectorL25" value="cubierto" /> Cubierto
-				</label>
-				<label class="lmdfSelectorL25">
-					<input type="radio" name="lmdfSelectorL1A" id="lmdfSelectorL25" value="descubierto" /> Descubierto
-				</label>
-				</div>
-			</fieldset>
-		</div>
-		<div class="span4">
-			<label for="lmdfInputL21" class="checkbox lmdfInputL21" style="display: none;">Reparación menor
-			<input type="checkbox" name="lmdfInputL21" id="lmdfInputL21" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que se pretende realizar una reparación menor" />
-			</label>
-                </div>
-		<div class="span4">
-			<label for="lmdfInputL22" class="checkbox lmdfInputL22" style="display: none;">Reparación mayor o adaptación
-			<input type="checkbox" name="lmdfInputL22" id="lmdfInputL22" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que se pretende realizar una reparación mayor o adaptación" />
-			</label>
-		</div>
-  	</div>
-</fieldset>
 
 
 
