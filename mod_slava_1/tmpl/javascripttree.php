@@ -60,9 +60,11 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Alineamiento",
+				 "dependencies" : [ "lmdfSelector2A" ] 
 			},
 			{ 
-				"option" : "Número oficial"
+				"option" : "Número oficial",
+				 "dependencies" : [ "lmdfSelector2A" ] 
 			},
 			{ 
 				"option" : "Inspección"
@@ -73,6 +75,21 @@ var lmdfDecisionTree = 	{ input : [
 			}
 		]
 	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelector2A",
+		"description" : "Selector de tipo de inmueble para tramites de alineamiento",
+		"options" : 
+		[
+			{ 
+				"option" : "A",
+			},
+			{ 
+				"option" : "B"
+			},
+		]
+	} ,
+
 // ====nuevo selector de licencias========
 	{ 
 		"type" : "input",
@@ -83,7 +100,21 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL1",
 		"description" : "Licencia para construcción de inmuebles",
-		"dependencies" : [ "docRequired2" ] 
+		"dependencies" : [ "lmdfSelectorL1A", "docRequired2" ] 
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL1A",
+		"description" : "Selector de licencia del tipo I.",
+		"options" : 
+		[
+			{ 
+				"option" : "A",
+			},
+			{ 
+				"option" : "B"
+			},
+		]
 	} ,
 	{ 
 		"type" : "input",
