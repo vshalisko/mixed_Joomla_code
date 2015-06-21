@@ -226,6 +226,7 @@ $form = <<<FORM
 			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
 		</div>
 	</div>
+<br />
 	<div class="row-fluid">
 		<div class="span4">
 			<fieldset class="lmdfSelectorD3">
@@ -252,9 +253,7 @@ $form = <<<FORM
 			<label for="lmdfInputD5" class="lmdfInputD5" style="display: none;">Fecha de contrato de compra-venta</label>
 			<input type="text" name="lmdfInputD5" id="lmdfInputD5" class="input-large" style="display: none;" />
 		</div>
-
 	</div>
-
 </fieldset>
 
 <!-- Datos especificos sobre licencias -->
@@ -297,8 +296,7 @@ $form = <<<FORM
 			</fieldset>
                 </div>
   	</div>
-
-
+<br />
 	<div class="row-fluid">
 		<div class="span4">
 			<fieldset class="lmdfSelectorL32">
@@ -399,9 +397,7 @@ $form = <<<FORM
 			</fieldset>
                 </div>
   	</div>
-
-
-
+<br />
 	<div class="row-fluid">
 		<div class="span4 lmdfSelectorL25" style="display: none;">
 			<fieldset class="lmdfSelectorL25">
@@ -430,6 +426,7 @@ $form = <<<FORM
 			</fieldset>
 		</div>
   	</div>
+<br />
 	<div class="row-fluid">
 		<div class="span3 lmdfInputL23" style="display: none;">
 			<label for="lmdfInputL23" class="checkbox lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>

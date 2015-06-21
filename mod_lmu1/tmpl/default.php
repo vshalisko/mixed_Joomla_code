@@ -51,10 +51,10 @@ if (isset($dataGeneral->person_login)) {
 	if (1 == $case_list_flag) {
 		// new case button
 		echo '<div class="span12">';
-		echo '<form action="paso2" method="post">';
-		echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="415" />';           // debugging
-		echo '<input type="hidden" id="parcel_map_version_id" name="parcel_map_version_id" value="2" />';     // debugging
-		echo '<button type="submit" class="btn btn-primary hasTooltip" type="button" title="Aprieta el botón para iniciar tramite" data-placement="right">Iniciar nuevo tramite</button>';
+		echo '<form action="maps" method="post">';
+		// echo '<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="415" />';           // debugging
+		// echo '<input type="hidden" id="parcel_map_version_id" name="parcel_map_version_id" value="2" />';     // debugging
+		echo '<button type="submit" class="btn btn-primary btn-large hasTooltip" type="button" title="Aprieta el botón para iniciar tramite" data-placement="right">Iniciar nuevo tramite (Paso 1)</button>';
 		echo '</form>';
 		echo 'Paso 1: Seleccionar parcela en mapa; Paso 2: Llenar formulario; Paso 3: Anexar los documentos';
 		echo '</div><p style="padding-bottom: 30px;">&nbsp;</p>';

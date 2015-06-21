@@ -156,6 +156,22 @@ $doc->addStyleDeclaration( $style );
 	</div>
 </form>
 
+<form class="docRequired1A" name="docRequired1A" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired1A" class="docRequired1A" style="display: none;">Documento requerido: identificación oficial del propietario</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired1A_file" id="docRequiredA1_file" />
+	<input type="hidden" name="docRequired1A_parcel_case_id" id="docRequired1A_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired1A_text" id="docRequired1A_text" value="identificación oficial del propietario" />
+	<input type="hidden" name="docRequired1A_id" id="docRequired1A_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit1A" id="ajaxFileSubmit1A" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete1A" id="ajaxFileDelete1A" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult1A"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
 
 <form class="docRequired2" name="docRequired2" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
@@ -179,7 +195,7 @@ $doc->addStyleDeclaration( $style );
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired3_file" id="docRequired3_file" />
 	<input type="hidden" name="docRequired3_parcel_case_id" id="docRequired3_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
-	<input type="hidden" name="docRequired3_text" id="docRequired3_text" value="escrituras del predio" />
+	<input type="hidden" name="docRequired3_text" id="docRequired3_text" value="contrato de compra-venta" />
 	<input type="hidden" name="docRequired3_id" id="docRequired3_id" value="" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit3" id="ajaxFileSubmit3" value="Subir documento" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete3" id="ajaxFileDelete3" value="Eliminar documento" style="display: none;" />
@@ -189,6 +205,133 @@ $doc->addStyleDeclaration( $style );
 	</div>
 </form>
 
+<form class="docRequired4" name="docRequired4" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired4" class="docRequired4">Documento requerido: comprobante de domicilio</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired4_file" id="docRequired4_file" />
+	<input type="hidden" name="docRequired4_parcel_case_id" id="docRequired4_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired4_text" id="docRequired4_text" value="comprobante de domicilio" />
+	<input type="hidden" name="docRequired4_id" id="docRequired4_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit4" id="ajaxFileSubmit4" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete4" id="ajaxFileDelete4" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult4"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired5" name="docRequired5" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired5" class="docRequired5">Documento requerido: registro público de la propiedad</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired5_file" id="docRequired5_file" />
+	<input type="hidden" name="docRequired5_parcel_case_id" id="docRequired5_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired5_text" id="docRequired5_text" value="registro público de la propiedad" />
+	<input type="hidden" name="docRequired5_id" id="docRequired5_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit5" id="ajaxFileSubmit5" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete5" id="ajaxFileDelete5" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult5"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired6" name="docRequired6" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired6" class="docRequired6">Documento requerido: pago de predial actualizado</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired6_file" id="docRequired6_file" />
+	<input type="hidden" name="docRequired6_parcel_case_id" id="docRequired6_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired6_text" id="docRequired6_text" value="pago de predial" />
+	<input type="hidden" name="docRequired6_id" id="docRequired6_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit6" id="ajaxFileSubmit6" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete6" id="ajaxFileDelete6" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult6"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired7" name="docRequired7" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired7" class="docRequired7">Documiento requerido: croquis de construcción</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired7_file" id="docRequired7_file" />
+	<input type="hidden" name="docRequired7_parcel_case_id" id="docRequired7_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired7_text" id="docRequired7_text" value="croquis de construcción" />
+	<input type="hidden" name="docRequired7_id" id="docRequired7_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit7" id="ajaxFileSubmit7" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete7" id="ajaxFileDelete7" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult7"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired8" name="docRequired8" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired8" class="docRequired8">Documiento requerido: Proyecto y planos ejecutivos firmados por director responsable de obra (DRO)</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired8_file" id="docRequired8_file" />
+	<input type="hidden" name="docRequired8_parcel_case_id" id="docRequired8_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired8_text" id="docRequired8_text" value="proyecto y planos ejecutivos" />
+	<input type="hidden" name="docRequired8_id" id="docRequired8_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit8" id="ajaxFileSubmit8" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete8" id="ajaxFileDelete8" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult8"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired9" name="docRequired9" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired9" class="docRequired9">Documiento requerido: Fotos de fachada e interior (anexar en un solo archivo PDF)</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired9_file" id="docRequired9_file" />
+	<input type="hidden" name="docRequired9_parcel_case_id" id="docRequired9_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired9_text" id="docRequired9_text" value="fotos de fachada e interior" />
+	<input type="hidden" name="docRequired9_id" id="docRequired9_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit9" id="ajaxFileSubmit9" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete9" id="ajaxFileDelete9" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult9"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequiredA" name="docRequiredA" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequiredA" class="docRequiredA">Documiento requerido: Comprobante de alineamiento</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredA_file" id="docRequiredA_file" />
+	<input type="hidden" name="docRequiredA_parcel_case_id" id="docRequiredA_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequiredA_text" id="docRequiredA_text" value="comprobante de alineamiento" />
+	<input type="hidden" name="docRequiredA_id" id="docRequiredA_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmitA" id="ajaxFileSubmitA" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDeleteA" id="ajaxFileDeleteA" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResultA"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequiredN" name="docRequiredN" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequiredN" class="docRequiredN">Documiento requerido: Comprobante de asignación del número oficial</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredN_file" id="docRequiredN_file" />
+	<input type="hidden" name="docRequiredN_parcel_case_id" id="docRequiredN_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequiredN_text" id="docRequiredN_text" value="comprobante de asignación del número oficial" />
+	<input type="hidden" name="docRequiredN_id" id="docRequiredN_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmitN" id="ajaxFileSubmitN" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDeleteN" id="ajaxFileDeleteN" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResultN"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
 
 
 <form class="docRequiredD" name="docRequiredD" enctype="multipart/form-data" style="display: none;" /> 
@@ -197,7 +340,7 @@ $doc->addStyleDeclaration( $style );
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredD_file" id="docRequiredD_file" />
 	<input type="hidden" name="docRequiredD_parcel_case_id" id="docRequiredD_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
-	<input type="hidden" name="docRequiredD_text" id="docRequiredD_text" value="escrituras del predio" />
+	<input type="hidden" name="docRequiredD_text" id="docRequiredD_text" value="dictamen usos y destinos" />
 	<input type="hidden" name="docRequiredD_id" id="docRequiredD_id" value="" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmitD" id="ajaxFileSubmitD" value="Subir documento" />
 	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDeleteD" id="ajaxFileDeleteD" value="Eliminar documento" style="display: none;" />

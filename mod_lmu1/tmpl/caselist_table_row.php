@@ -41,7 +41,11 @@ $names_array = array(
 
 
 // XML parsing to get case information
-$case_properties = new SimpleXMLElement($row->case_properties_xml);
+if($row->case_properties_xml) {                                               // need to improve this to prevent erros when the XML is bad formed
+	$case_properties = new SimpleXMLElement($row->case_properties_xml);
+} else {
+	$case_properties = new SimpleXMLElement('<xml />');
+}
 $case_group = $case_properties->lmdfSelector0;
 if ('Grupo 1 Usos' == $case_group) { echo 'Dictamen de usos y destinos <br />'; };
 if ('Grupo 2 Trazo' == $case_group) { echo 'Dictamen de trazo, usos y destinos específicos <br />'; };

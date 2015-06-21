@@ -28,7 +28,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15","lmdfInputP16","lmdfInputP19", 
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                  
 			{ 
 				"option" : "Grupo 2 Trazo",
@@ -36,7 +36,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19",
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -48,7 +48,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", "lmdfInputPR0",
 						"lmdfInputL20", 
-						"lmdfInputD0","lmdfSelectorD3","docRequired1" ]
+						"lmdfInputD0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                    
 			{ 
 				"option" : "Grupo 4 Alineamiento",
@@ -57,7 +57,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", 
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1" ]
+						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			}
 		]
 	} ,
@@ -111,7 +111,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL1",
 		"description" : "Licencia para construcción de inmuebles",
-		"dependencies" : [ "lmdfSelectorL1A" ] 
+		"dependencies" : [ "lmdfSelectorL1A", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "selector",
@@ -132,18 +132,20 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL2",
-		"description" : "Licencia para construcción de albercas"
+		"description" : "Licencia para construcción de albercas",
+		"dependencies" : [ "docRequired7"  ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL3",
-		"description" : "Licencia para construcción de canchas y áreas deportivas"
+		"description" : "Licencia para construcción de canchas y áreas deportivas",
+		"dependencies" : [ "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL4",
 		"description" : "Licencia para construcción de estacionamientos para usos no habitacionales",
-		"dependencies" : [ "lmdfSelectorL25", "lmdfInputL23"  ] 
+		"dependencies" : [ "lmdfSelectorL25", "lmdfInputL23", "docRequired7"  ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -155,7 +157,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL6",
 		"description" : "Licencia para acotamiento",
-		"dependencies" : [ "lmdfInputL23", "lmdfSelectorL30" ] 
+		"dependencies" : [ "lmdfInputL23", "lmdfSelectorL30", "docRequired7", "docRequired8" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -168,13 +170,13 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL8",
 		"description" : "Licencia para remodelación o restauración",
-		"dependencies" : [ "lmdfInputP17", "lmdfInputP18" ] 
+		"dependencies" : [ "lmdfInputP17", "lmdfInputP18", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL9",
 		"description" : "Licencia para reconstrucción, reestructuración o adaptación",
-		"dependencies" : [ "lmdfSelectorL21" ] 
+		"dependencies" : [ "lmdfSelectorL21", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -198,19 +200,20 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL13",
-		"description" : "Licencia provisional de construcción"
+		"description" : "Licencia provisional de construcción",
+		"dependencies" : [ "docRequired7" ]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL14",
 		"description" : "Licencia para construcción de plataformas, patios de maniobra y rampas",
-		"dependencies" : [ "lmdfInputL23" ] 
+		"dependencies" : [ "lmdfInputL23", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL15",
 		"description" : "Licencia similar de tipo no previsto",
-		"dependencies" : [ "lmdfInputL23", "lmdfInputC1" ] 
+		"dependencies" : [ "lmdfInputL23", "docRequired7", "lmdfInputC1" ] 
 	} ,
 
 // ====campos a llenar en formulario========
@@ -516,7 +519,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputPR0",
 		"description" : "Propietario es distinto del solicitante",
-		"dependencies" : [ "lmdfInputPR1", "lmdfInputPR2", "lmdfInputPR3", "lmdfInputPR4", "lmdfInputPR5", "lmdfInputPR6", "lmdfInputPR7", "lmdfInputPR8" ]
+		"dependencies" : [ "lmdfInputPR1", "lmdfInputPR2", "lmdfInputPR3", "lmdfInputPR4", "lmdfInputPR5", "lmdfInputPR6", "lmdfInputPR7", "lmdfInputPR8", "docRequired1A" ]
 	} ,
 	{ 
 		"type" : "input",
@@ -590,7 +593,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputP6",
 		"description" : "Superficie de obra mayor que 50 m2",
-		"dependencies" : [ "lmdfInputP7" ]
+		"dependencies" : [ "lmdfInputP7", "docRequired8" ]
 	} ,
 	{ 
 		"type" : "input",
@@ -656,7 +659,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputP19",
 		"description" : "Predio cuenta con la construcción o se pretende construir",
-		"dependencies" : [ "lmdfInputP20" ]
+		"dependencies" : [ "lmdfInputP20", "docRequired7" ]
 
 	} ,
 	{ 
@@ -673,6 +676,11 @@ var lmdfDecisionTree = 	{ input : [
 	} ,
 	{ 
 		"type" : "input",
+		"name" : "docRequired1A",
+		"description" : "Documiento requerido: identificación oficial del propietario"
+	} ,
+	{ 
+		"type" : "input",
 		"name" : "docRequired2",
 		"description" : "Documiento requerido: escrituras"
 	} ,
@@ -681,7 +689,46 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "docRequired3",
 		"description" : "Documiento requerido: contrato de compra-venta"
 	} ,
-
+	{ 
+		"type" : "input",
+		"name" : "docRequired4",
+		"description" : "Documiento requerido: comprobante de domicilio"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired5",
+		"description" : "Documiento requerido: registro público de la propiedad"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired6",
+		"description" : "Documiento requerido: pago de predial actualizado"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired7",
+		"description" : "Documiento requerido: croquis de construcción"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired8",
+		"description" : "Documiento requerido: Proyecto y planos ejecutivos firmados por director responsable de obra (DRO)"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequired9",
+		"description" : "Documiento requerido: Fotos de fachada e interior (en un solo archivo PDF)"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequiredA",
+		"description" : "Documiento requerido: Comprobante de alineamiento"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "docRequiredN",
+		"description" : "Documiento requerido: Comprobante de asignación del número oficial"
+	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequiredD",
