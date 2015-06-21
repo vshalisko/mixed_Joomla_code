@@ -571,7 +571,13 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP2",
-		"description" : "Ubicación: número oficial"
+		"description" : "Ubicación: número oficial",
+		"dependencies" : [ "lmdfInputP2A" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputP2A",
+		"description" : "Se cuenta con comprobante de asignación del número oficial"
 	} ,
 	{ 
 		"type" : "input",

@@ -429,22 +429,22 @@ $form = <<<FORM
 <br />
 	<div class="row-fluid">
 		<div class="span3 lmdfInputL23" style="display: none;">
-			<label for="lmdfInputL23" class="checkbox lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>
+			<label for="lmdfInputL23" class="lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>
 			<input type="text" name="lmdfInputL23" id="lmdfInputL23" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie" />
 			</label>
 		</div>
 		<div class="span3 lmdfInputL27" style="display: none;">
-			<label for="lmdfInputL27" class="checkbox lmdfInputL27" style="display: none;">Distancia en m apmarado</label>
+			<label for="lmdfInputL27" class="lmdfInputL27" style="display: none;">Distancia en m apmarado</label>
 			<input type="text" name="lmdfInputL27" id="lmdfInputL27" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Distancia" />
 			</label>
 		</div>
 		<div class="span3 lmdfInputL26" style="display: none;">
-			<label for="lmdfInputL26" class="checkbox lmdfInputL26" style="display: none;">El volumen en m<sup>3</sup> apmarado</label>
+			<label for="lmdfInputL26" class="lmdfInputL26" style="display: none;">El volumen en m<sup>3</sup> apmarado</label>
 			<input type="text" name="lmdfInputL26" id="lmdfInputL26" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Volumen" />
 			</label>
 		</div>
 		<div class="span3 lmdfInputL24" style="display: none;">
-			<label for="lmdfInputL24" class="checkbox lmdfInputL24" style="display: none;">El periodo en días apmarado</label>
+			<label for="lmdfInputL24" class="lmdfInputL24" style="display: none;">El periodo en días apmarado</label>
 			<input type="text" name="lmdfInputL24" id="lmdfInputL24" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Periodo (días)" />
 			</label>
 		</div>
@@ -460,9 +460,14 @@ $form = <<<FORM
 			<label for="lmdfInputP1" class="lmdfInputP1" style="display: none;">Calle</label>
 			<input type="text" name="lmdfInputP1" id="lmdfInputP1" class="input-xlarge" style="display: none;" />
 		</div>
-		<div class="span6">
+		<div class="span2">
 			<label for="lmdfInputP2" class="lmdfInputP2" style="display: none;">Número oficial</label>
 			<input type="text" name="lmdfInputP2" id="lmdfInputP2" class="input-mini" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputP2A" class="lmdfInputP2A checkbox" style="display: none;">Comprobante del número oficial
+			<input type="checkbox" name="lmdfInputP2A" id="lmdfInputP2A" style="display: none;" class="hasTooltip" title="Selecciona casillla en caso que existe un comprobante de asignación del número oficial" />
+			</label>
 		</div>
 	</div>
 	<div class="row-fluid">
