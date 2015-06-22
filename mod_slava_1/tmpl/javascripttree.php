@@ -24,10 +24,10 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "Grupo 1 Usos",
-		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
+		  		"dependencies" : [ "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15","lmdfInputP16","lmdfInputP19", 
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15","lmdfInputP19", 
 						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                  
 			{ 
@@ -35,7 +35,7 @@ var lmdfDecisionTree = 	{ input : [
 		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19",
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19",
 						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},
 			{ 
@@ -46,7 +46,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", "lmdfInputPR0",
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19", "lmdfInputPR0",
 						"lmdfInputL20", 
 						"lmdfInputD0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                    
@@ -56,7 +56,7 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP16", "lmdfInputP19", 
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19", 
 						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			}
 		]
@@ -76,11 +76,12 @@ var lmdfDecisionTree = 	{ input : [
 				 "dependencies" : [ "lmdfSelector2A" ] 
 			},
 			{ 
-				"option" : "Inspección"
+				"option" : "Inspección",
+				 "dependencies" : [ "lmdfInputL23" ] 
 			},
 			{ 
 				"option" : "Otro",
-				 "dependencies" : [ "lmdfInputC1" ] 
+				 "dependencies" : [ "lmdfInputL23", "lmdfInputC1" ] 
 			}
 		]
 	} ,
@@ -121,11 +122,11 @@ var lmdfDecisionTree = 	{ input : [
 		[
 			{ 
 				"option" : "A",
-				"dependencies" : [ "lmdfSelectorL30", "lmdfSelectorL31" ] 
+				"dependencies" : [ "lmdfInputL23", "lmdfSelectorL30", "lmdfSelectorL31" ] 
 			},
 			{ 
 				"option" : "B",
-				"dependencies" : [ "lmdfSelectorL32" ]
+				"dependencies" : [ "lmdfInputL23", "lmdfSelectorL32" ]
 			},
 		]
 	} ,
@@ -133,13 +134,13 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL2",
 		"description" : "Licencia para construcción de albercas",
-		"dependencies" : [ "docRequired7"  ] 
+		"dependencies" : [ "lmdfInputL26", "docRequired7"  ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL3",
 		"description" : "Licencia para construcción de canchas y áreas deportivas",
-		"dependencies" : [ "docRequired7" ] 
+		"dependencies" : [ "lmdfInputL23", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -151,7 +152,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL5",
 		"description" : "Licencia para demolición",
-		"dependencies" : [ "lmdfInputP16" ] 
+		"dependencies" : [ "lmdfInputP16", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -163,7 +164,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL7",
 		"description" : "Licencia para instalar tapiales provisionales en la vía pública",
-		"dependencies" : [ "lmdfInputP16", "lmdfInputL27" ] 
+		"dependencies" : [ "lmdfInputP16", "lmdfInputL27", "docRequired7" ] 
 
 	} ,
 	{ 
@@ -182,20 +183,20 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL10",
 		"description" : "Licencia para ocupación de la vía pública con materiales de construcción",
-		"dependencies" : [ "lmdfInputL23", "lmdfInputL24" ] 
+		"dependencies" : [ "lmdfInputP16", "lmdfInputL23", "lmdfInputL24", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL11",
 		"description" : "Licencia para ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales",
-		"dependencies" : [ "lmdfInputL23", "lmdfInputL24" ] 
+		"dependencies" : [ "lmdfInputP16", "lmdfInputL23", "lmdfInputL24", "docRequired7" ] 
 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL12",
 		"description" : "Licencia para movimientos de tierra",
-		"dependencies" : [ "lmdfInputL26" ] 
+		"dependencies" : [ "lmdfInputL26", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
@@ -315,12 +316,12 @@ var lmdfDecisionTree = 	{ input : [
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL26",
-		"description" : "Volumen en metros cúbicos"
+		"description" : "Volumen en métros cúbicos amparado por la licencia"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL27",
-		"description" : "Distancia metros lineales"
+		"description" : "Distancia en métros lineales amparado por la licencia"
 	} ,
 	{ 
 		"type" : "selector",
@@ -713,7 +714,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "docRequired7",
-		"description" : "Documiento requerido: croquis de construcción"
+		"description" : "Documiento requerido: croquis de construcción u otro"
 	} ,
 	{ 
 		"type" : "input",

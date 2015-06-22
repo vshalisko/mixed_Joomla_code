@@ -209,57 +209,10 @@ $form = <<<FORM
 	</div>
 </fieldset>
 
-<fieldset class="lmdfInputS" style="display: none;">
-	<legend class="lmdfInputS" style="display: none;"><span class="badge">3</span> Llena los campos requeridos</legend>
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputD0" class="lmdfInputD0 checkbox" style="display: none;">Predio ya cuenta con dictamen de usos y destinos</sup>
-			<input type="checkbox" name="lmdfInputD0" id="lmdfInputD0" style="display: none;" class="hasTooltip" title="Selecciona casillla en caso que existe un dictamen previamente emitido" />
-			</label>
-		</div>
-		<div class="span4">
-			<label for="lmdfInputD1" class="lmdfInputD1" style="display: none;">Número oficial del dictamen de usos y destinos</label>
-			<input type="text" name="lmdfInputD1" id="lmdfInputD1" class="input-large" style="display: none;" />
-		</div>
-		<div class="span4">
-			<label for="lmdfInputD2" class="lmdfInputD2" style="display: none;">Fecha de emisión del dictamen de usos y destinos</label>
-			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
-		</div>
-	</div>
-<br />
-	<div class="row-fluid">
-		<div class="span4">
-			<fieldset class="lmdfSelectorD3">
-				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
-					<span class="lmdfSelectorD3">Especifica escritura o contrato de compra-venta:</span>
-					<label class="lmdfSelectorD3">
-						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="escritura" /> Escritura
-					</label>
-					<label class="lmdfSelectorD3">
-						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="contrato de compra-venta" /> Contrato de compra-venta
-					</label>
-				</div>
-			</fieldset>
-		</div>
-		<div class="span4">
-			<!-- Opcion escritura -->
-			<label for="lmdfInputD3" class="lmdfInputD3" style="display: none;">Número de escritura</label>
-			<input type="text" name="lmdfInputD3" id="lmdfInputD3" class="input-large" style="display: none;" />
-			<!-- Opcion contrato -->
-			<label for="lmdfInputD4" class="lmdfInputD4" style="display: none;">Número de contrato de compra-venta</label>
-			<input type="text" name="lmdfInputD4" id="lmdfInputD4" class="input-large" style="display: none;" />
-		</div>
-		<div class="span4">
-			<label for="lmdfInputD5" class="lmdfInputD5" style="display: none;">Fecha de contrato de compra-venta</label>
-			<input type="text" name="lmdfInputD5" id="lmdfInputD5" class="input-large" style="display: none;" />
-		</div>
-	</div>
-</fieldset>
-
 <!-- Datos especificos sobre licencias -->
-<fieldset class="lmdfInputL20 lmdfSelectorL30 lmdfSelectorL32" style="display: none;">
-	<legend class="lmdfInputL20 lmdfSelectorL30 lmdfSelectorL32" style="display: none;">Detalles de licencias</legend>
-	<div class="row-fluid">
+<fieldset class="lmdfInputS" style="display: none;">
+	<legend class="lmdfInputS" style="display: none;">Detalles de tramite</legend>
+	<div class="row-fluid lmdfSelectorL30 lmdfSelectorL31" style="display: none;">
 		<div class="span4">
 			<fieldset class="lmdfSelectorL30">
 				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
@@ -295,9 +248,9 @@ $form = <<<FORM
 				</div>
 			</fieldset>
                 </div>
-  	</div>
 <br />
-	<div class="row-fluid">
+  	</div>
+	<div class="row-fluid lmdfSelectorL32" style="display: none;">
 		<div class="span4">
 			<fieldset class="lmdfSelectorL32">
 				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
@@ -396,8 +349,10 @@ $form = <<<FORM
 				</div>
 			</fieldset>
                 </div>
-  	</div>
-<br />
+	</div>
+</fieldset>
+<span class="lmdfSelectorL30 lmdfSelectorL32" style="display: none;"><br /></span>
+<fieldset>
 	<div class="row-fluid">
 		<div class="span4 lmdfSelectorL25" style="display: none;">
 			<fieldset class="lmdfSelectorL25">
@@ -426,7 +381,25 @@ $form = <<<FORM
 			</fieldset>
 		</div>
   	</div>
-<br />
+<span class="lmdfSelectorL25 lmdfSelectorL21" style="display: none;"><br /></span>
+	<div class="row-fluid>
+		<div class="span4 lmdfInputP16" style="display: none;">
+			<label for="lmdfInputP16" class="checkbox lmdfInputP16" style="display: none;">Ubicado en el centro histórico
+			<input type="checkbox" name="lmdfInputP16" id="lmdfInputP16" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio se encuentra en el centro histórico" />
+			</label>
+                </div>
+		<div class="span4 lmdfInputP17" style="display: none;">
+			<label for="lmdfInputP17" class="checkbox lmdfInputP17" style="display: none;">Restauración en el centro histórico
+			<input type="checkbox" name="lmdfInputP17" id="lmdfInputP17" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de restauración de inmueble en el centro histórico" />
+			</label>
+		</div>
+		<div class="span4 lmdfInputP18" style="display: none;">
+			<label for="lmdfInputP18" class="checkbox lmdfInputP18" style="display: none;">Remodelación en el centro histórico
+			<input type="checkbox" name="lmdfInputP18" id="lmdfInputP18" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de remodelación de inmueble en el centro histórico" />
+			</label>
+		</div>
+	</div>
+<span class="lmdfInputP16 lmdfInputP17 lmdfInputP18" style="display: none;"><br /></span>
 	<div class="row-fluid">
 		<div class="span3 lmdfInputL23" style="display: none;">
 			<label for="lmdfInputL23" class="lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>
@@ -447,6 +420,168 @@ $form = <<<FORM
 			<label for="lmdfInputL24" class="lmdfInputL24" style="display: none;">El periodo en días apmarado</label>
 			<input type="text" name="lmdfInputL24" id="lmdfInputL24" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Periodo (días)" />
 			</label>
+		</div>
+	</div>
+</fieldset>
+
+<div class="lmdfInputS">
+	<legend class="lmdfInputS" style="display: none;"><span class="badge">3</span> Llena los campos requeridos</legend>
+</div>
+
+<!-- Datos sobre solicitante -->
+<fieldset class="lmdfInputS0 lmdfInputS2" style="display: none;">
+	<legend class="lmdfInputS0 lmdfInputS2" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
+
+	<div class="row-fluid lmdfInputS0" style="display: none;">
+		<div class="span2">
+			<label for="lmdfInputS0" class="checkbox lmdfInputS0" style="display: none;">Giro comercial</sup>
+			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
+			</label>
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
+			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="span10" style="display: none;" placeholder="escribe nombre completo de la persona moral" />
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputS8" style="display: none;">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
+			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="span10" style="display: none;" placeholder="describe la actividad comercial" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio del solicitante</label>
+			<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xxlarge" style="display: none;" ></textarea>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+			<label for="lmdfInputS3" class="lmdfInputS3" style="display: none;">Colonia</label>
+			<input type="text" name="lmdfInputS3" id="lmdfInputS3" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputS4" class="lmdfInputS4" style="display: none;">Código postal</label>
+			<input type="text" name="lmdfInputS4" id="lmdfInputS4" class="input-mini" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span6">
+			<label for="lmdfInputS5" class="lmdfInputS5" style="display: none;">Ciudad</label>
+			<input type="text" name="lmdfInputS5" id="lmdfInputS5" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputS6" class="lmdfInputS6" style="display: none;">Estado</label>
+			<input type="text" name="lmdfInputS6" id="lmdfInputS6" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<label for="lmdfInputS7" class="lmdfInputS7" style="display: none;">Teléfono de contacto</label>
+			<input type="text" name="lmdfInputS7" id="lmdfInputS7" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+</fieldset>
+
+<!-- Datos sobre propietario -->
+<fieldset class="lmdfInputPR0" style="display: none;">
+	<legend class="lmdfInputPR0" style="display: none;">Introduce los datos adicionales sobre el propietario</legend>
+	<div class="row-fluid lmdfInputPR0" style="display: none;">
+		<div class="span2">
+			<label for="lmdfInputPR0" class="lmdfInputPR0 checkbox" style="display: none;">Propietario es distinto del solicitante</sup>
+			<input type="checkbox" name="lmdfInputPR0" id="lmdfInputPR0" style="display: none;" class="hasTooltip" title="Casilla queda seleccionada en caso que propietario es distinto del solicitante" />
+			</label>
+		</div>
+		<div class="span10">
+			<label for="lmdfInputPR1" class="lmdfInputPR1" style="display: none;">Nombre completo del propietario</label>
+			<input type="text" name="lmdfInputPR1" id="lmdfInputPR1" class="span10" style="display: none;" placeholder="escribe nombre completo del propietario tal como aparece en la identificación oficial" />
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputPR2" style="display: none;">
+		<div class="span12">
+			<label for="lmdfInputPR2" class="lmdfInputPR2" style="display: none;">Domicilio del propietario</label>
+			<textarea type="textarea" name="lmdfInputPR2" id="lmdfInputPR2" class="input-xxlarge" style="display: none;" ></textarea>
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputPR3 lmdfInputPR4" style="display: none;">
+		<div class="span6">
+			<label for="lmdfInputPR3" class="lmdfInputPR3" style="display: none;">Colonia</label>
+			<input type="text" name="lmdfInputPR3" id="lmdfInputPR3" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputPR4" class="lmdfInputPR4" style="display: none;">Código postal</label>
+			<input type="text" name="lmdfInputPR4" id="lmdfInputPR4" class="input-mini" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputPR5 lmdfInputPR6" style="display: none;">
+		<div class="span6">
+			<label for="lmdfInputPR5" class="lmdfInputPR5" style="display: none;">Ciudad</label>
+			<input type="text" name="lmdfInputPR5" id="lmdfInputPR5" class="input-xlarge" style="display: none;" />
+                </div>
+		<div class="span6">
+			<label for="lmdfInputPR6" class="lmdfInputPR6" style="display: none;">Estado</label>
+			<input type="text" name="lmdfInputPR6" id="lmdfInputPR6" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputPR7 lmdfInputPR8" style="display: none;">
+		<div class="span6">
+			<label for="lmdfInputPR7" class="lmdfInputPR7" style="display: none;">Teléfono de contacto</label>
+			<input type="text" name="lmdfInputPR7" id="lmdfInputPR7" class="input-xlarge" style="display: none;" />
+		</div>
+		<div class="span6">
+			<label for="lmdfInputPR8" class="lmdfInputPR8" style="display: none;">Dirección del correo electrónico</label>
+			<input type="text" name="lmdfInputPR8" id="lmdfInputPR8" class="input-xlarge" style="display: none;" />
+		</div>
+	</div>
+</fieldset>
+
+
+<fieldset class="lmdfInputD0 lmdfSelectorD3" style="display: none;">
+	<legend class="lmdfInputD0 lmdfSelectorD3" style="display: none;">Documentación:</legend>
+	<div class="row-fluid lmdfInputD0" style="display: none;">
+		<div class="span4">
+			<label for="lmdfInputD0" class="lmdfInputD0 checkbox" style="display: none;">Predio ya cuenta con dictamen de usos y destinos</sup>
+			<input type="checkbox" name="lmdfInputD0" id="lmdfInputD0" style="display: none;" class="hasTooltip" title="Selecciona casillla en caso que existe un dictamen previamente emitido" />
+			</label>
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD1" class="lmdfInputD1" style="display: none;">Número oficial del dictamen de usos y destinos</label>
+			<input type="text" name="lmdfInputD1" id="lmdfInputD1" class="input-large" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD2" class="lmdfInputD2" style="display: none;">Fecha de emisión del dictamen de usos y destinos</label>
+			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
+		</div>
+<br />
+	</div>
+	<div class="row-fluid lmdfSelectorD3" style="display: none;">
+		<div class="span4">
+			<fieldset class="lmdfSelectorD3">
+				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
+					<span class="lmdfSelectorD3">Especifica escritura o contrato de compra-venta:</span>
+					<label class="lmdfSelectorD3">
+						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="escritura" /> Escritura
+					</label>
+					<label class="lmdfSelectorD3">
+						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="contrato de compra-venta" /> Contrato de compra-venta
+					</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<!-- Opcion escritura -->
+			<label for="lmdfInputD3" class="lmdfInputD3" style="display: none;">Número de escritura</label>
+			<input type="text" name="lmdfInputD3" id="lmdfInputD3" class="input-large" style="display: none;" />
+			<!-- Opcion contrato -->
+			<label for="lmdfInputD4" class="lmdfInputD4" style="display: none;">Número de contrato de compra-venta</label>
+			<input type="text" name="lmdfInputD4" id="lmdfInputD4" class="input-large" style="display: none;" />
+		</div>
+		<div class="span4">
+			<label for="lmdfInputD5" class="lmdfInputD5" style="display: none;">Fecha de contrato de compra-venta</label>
+			<input type="text" name="lmdfInputD5" id="lmdfInputD5" class="input-large" style="display: none;" />
 		</div>
 	</div>
 </fieldset>
@@ -501,30 +636,6 @@ $form = <<<FORM
 		</div>
 	</div>
 </fieldset>
-
-<fieldset class="lmdfInputP16" style="display: none;">
-	<legend class="lmdfInputP16" style="display: none;">Ubicación en el centro histórico</legend>
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputP16" class="checkbox lmdfInputP16" style="display: none;">Ubicado en el centro histórico
-			<input type="checkbox" name="lmdfInputP16" id="lmdfInputP16" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio se encuentra en el centro histórico" />
-			</label>
-                </div>
-		<div class="span4">
-			<label for="lmdfInputP17" class="checkbox lmdfInputP17" style="display: none;">Restauración en el centro histórico
-			<input type="checkbox" name="lmdfInputP17" id="lmdfInputP17" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de restauración de inmueble en el centro histórico" />
-			</label>
-		</div>
-		<div class="span4">
-			<label for="lmdfInputP18" class="checkbox lmdfInputP18" style="display: none;">Remodelación en el centro histórico
-			<input type="checkbox" name="lmdfInputP18" id="lmdfInputP18" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que trata de remodelación de inmueble en el centro histórico" />
-			</label>
-		</div>
-
-	</div>
-</fieldset>
-
-
 <fieldset class="lmdfInputP11" style="display: none;">
 	<legend class="lmdfInputP11" style="display: none;">Presencia de servicios</legend>
 	<div class="row-fluid">
@@ -583,124 +694,6 @@ $form = <<<FORM
 		</div>
 	</div>
 </fieldset>
-
-
-
-
-
-<!-- Datos sobre solicitante -->
-<fieldset class="lmdfInputS0" style="display: none;">
-	<legend class="lmdfInputS0" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
-
-	<div class="row-fluid">
-		<div class="span2">
-			<label for="lmdfInputS0" class="checkbox lmdfInputS0" style="display: none;">Giro comercial</sup>
-			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
-			</label>
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
-			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="span10" style="display: none;" placeholder="escribe nombre completo de la persona moral" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span2">
-			&nbsp;
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
-			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="span10" style="display: none;" placeholder="describe la actividad comercial" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio del solicitante</label>
-			<textarea type="textarea" name="lmdfInputS2" id="lmdfInputS2" class="input-xxlarge" style="display: none;" ></textarea>
-		</div>
-	</div>
-
-
-	<div class="row-fluid">
-		<div class="span6">
-			<label for="lmdfInputS3" class="lmdfInputS3" style="display: none;">Colonia</label>
-			<input type="text" name="lmdfInputS3" id="lmdfInputS3" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span6">
-			<label for="lmdfInputS4" class="lmdfInputS4" style="display: none;">Código postal</label>
-			<input type="text" name="lmdfInputS4" id="lmdfInputS4" class="input-mini" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span6">
-			<label for="lmdfInputS5" class="lmdfInputS5" style="display: none;">Ciudad</label>
-			<input type="text" name="lmdfInputS5" id="lmdfInputS5" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span6">
-			<label for="lmdfInputS6" class="lmdfInputS6" style="display: none;">Estado</label>
-			<input type="text" name="lmdfInputS6" id="lmdfInputS6" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<label for="lmdfInputS7" class="lmdfInputS7" style="display: none;">Teléfono de contacto</label>
-			<input type="text" name="lmdfInputS7" id="lmdfInputS7" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-</fieldset>
-
-<!-- Datos sobre propietario -->
-<fieldset class="lmdfInputPR0" style="display: none;">
-	<legend class="lmdfInputPR0" style="display: none;">Introduce los datos adicionales sobre el propietario</legend>
-	<div class="row-fluid">
-		<div class="span2">
-			<label for="lmdfInputPR0" class="lmdfInputPR0 checkbox" style="display: none;">Propietario es distinto del solicitante</sup>
-			<input type="checkbox" name="lmdfInputPR0" id="lmdfInputPR0" style="display: none;" class="hasTooltip" title="Casilla queda seleccionada en caso que propietario es distinto del solicitante" />
-			</label>
-		</div>
-		<div class="span10">
-			<label for="lmdfInputPR1" class="lmdfInputPR1" style="display: none;">Nombre completo del propietario</label>
-			<input type="text" name="lmdfInputPR1" id="lmdfInputPR1" class="span10" style="display: none;" placeholder="escribe nombre completo del propietario tal como aparece en la identificación oficial" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<label for="lmdfInputPR2" class="lmdfInputPR2" style="display: none;">Domicilio del propietario</label>
-			<textarea type="textarea" name="lmdfInputPR2" id="lmdfInputPR2" class="input-xxlarge" style="display: none;" ></textarea>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span6">
-			<label for="lmdfInputPR3" class="lmdfInputPR3" style="display: none;">Colonia</label>
-			<input type="text" name="lmdfInputPR3" id="lmdfInputPR3" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span6">
-			<label for="lmdfInputPR4" class="lmdfInputPR4" style="display: none;">Código postal</label>
-			<input type="text" name="lmdfInputPR4" id="lmdfInputPR4" class="input-mini" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span6">
-			<label for="lmdfInputPR5" class="lmdfInputPR5" style="display: none;">Ciudad</label>
-			<input type="text" name="lmdfInputPR5" id="lmdfInputPR5" class="input-xlarge" style="display: none;" />
-                </div>
-		<div class="span6">
-			<label for="lmdfInputPR6" class="lmdfInputPR6" style="display: none;">Estado</label>
-			<input type="text" name="lmdfInputPR6" id="lmdfInputPR6" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span6">
-			<label for="lmdfInputPR7" class="lmdfInputPR7" style="display: none;">Teléfono de contacto</label>
-			<input type="text" name="lmdfInputPR7" id="lmdfInputPR7" class="input-xlarge" style="display: none;" />
-		</div>
-		<div class="span6">
-			<label for="lmdfInputPR8" class="lmdfInputPR8" style="display: none;">Dirección del correo electrónico</label>
-			<input type="text" name="lmdfInputPR8" id="lmdfInputPR8" class="input-xlarge" style="display: none;" />
-		</div>
-	</div>
-</fieldset>
-
-
 
 <fieldset class="lmdfInputC1" style="display: none;">
 	<legend class="lmdfInputC1" style="display: none;">Comentario</legend>
