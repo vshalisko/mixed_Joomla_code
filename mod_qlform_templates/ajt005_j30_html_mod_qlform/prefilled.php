@@ -10,8 +10,6 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.tooltip');
-require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_javascriptmodules');
-require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_lmdf');
 ?>
 
 <style type="text/css">fieldset.additionalFields {display:none;}</style>
@@ -34,8 +32,6 @@ if (1==$params->get('authorbool')) require JModuleHelper::getLayoutPath('mod_qlf
 <div id="lmdfDataTest"></div>
 <input type="hidden" id="lmdfJSONoutside" value="">
 </br>
-
-<pre><div id="lmdfXMLout1">[cadena xml formada]</div></pre>
 
 
 </div>

@@ -1,14 +1,12 @@
 <?php
 /**
- * @package		modified layout for mod_qlform
- * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
- * @author 		layout modification by Viacheslav Shalisko vshalisko@gmail.com
- * @author 		mod_qlform by Mareike Riegel mareike.riegel@ql.de
+ * @package		mod_qlform
+ * @copyright	Copyright (C) 2014 ql.de All rights reserved.
+ * @author 		Mareike Riegel mareike.riegel@ql.de
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 // no direct access
 defined('_JEXEC') or die;
-require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_helper');
 ?>
 <form method="post" action="<?php echo $action; ?>" id="mod_qlform_<?php echo $module->id;?>" class="form-validate" <?php if (1==$params->get('fileupload_enabled')) echo ' enctype="multipart/form-data" ';?>>
 

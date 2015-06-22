@@ -46,7 +46,7 @@ require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_helper');
         <?php endif; ?>
         <div class="controls">
             <img id="captcha" src="<?php echo $image;?>" /><br/>
-            <?php if(''!=$params->get('captchadesc')) echo '<span>'.$params->get('captchadesc').'</span><br />';?><input type="text" name="captcha" value="" />
+            <?php if(''!=$params->get('captchadesc')) echo '<span>'.$params->get('captchadesc').'</span><br />';?><input type="text" class="required" name="captcha" value="" />
         </div>
     </div>
     <?php endif; ?>

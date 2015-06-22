@@ -35,6 +35,7 @@ function xmlToString(xmlData) {
 jQuery.noConflict();
 (function ($) {
 lmdfInit = function () {
+//	jQuery.validator.defaults.ignore = ":hidden";
 	var lmdfDecisionTree1 = "";
 	if ( !document.getElementById("lmdfJSONoutside").value ) {
 		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree);              // Store JSON string on hidden field
@@ -55,6 +56,7 @@ lmdfInit = function () {
 	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)           // Taking one by one all the elements from JSON structure (input)
 	{
 		if (    lmdfDecisionTree1.input[i].value &&
+			lmdfDecisionTree1.input[i].on &&   // addition 06.2015
 			lmdfDecisionTree1.input[i].dependencies &&
 			lmdfDecisionTree1.input[i].dependencies.length > 0 ) {
 			for (var d = 0; d < lmdfDecisionTree1.input[i].dependencies.length; d++) {      // Get list of dependent elements
@@ -69,6 +71,7 @@ lmdfInit = function () {
 			}
 		}
 		if (    lmdfDecisionTree1.input[i].value &&
+			lmdfDecisionTree1.input[i].on &&   // addition 06.2015
 			lmdfDecisionTree1.input[i].options &&
 			lmdfDecisionTree1.input[i].options.length > 0 ) {
 			for (var o = 0; o < lmdfDecisionTree1.input[i].options.length; o++)
@@ -102,8 +105,13 @@ lmdfInit = function () {
 		if ( lmdfDecisionTree1.input[i].on ) {
                         $(lmdfDependentInputID).css("display", "block");           // Make element visible by ID
                         $(lmdfDependentInputClass).css("display", "block");        // Make element visible by class (same as ID)
+			// $(lmdfDependentInputID).rules("add",{required : true});
+			// $(lmdfDependentInputID).removeAttr("disabled");
+			// $(lmdfDependentInputID).addClass("required");
+			// $(lmdfDependentInputClass).addClass("required");
 		} else {
                         $(lmdfDependentInputID).css("display", "none");           // Make element invisible by ID
+			// $(lmdfDependentInputID).attr("disabled");
                         $(lmdfDependentInputClass).css("display", "none");        // Make element invisible by class (same as ID)
 		}
 
@@ -130,12 +138,11 @@ lmdfInit = function () {
 
 	lmdf_xml_formed = xmlToString(lmdfXML);
 //	alert(lmdf_xml_formed);
-//	document.getElementById("lmdfXMLout1").value = lmdf_xml_formed;
 	document.getElementById("jform_case_properties_xml").value = lmdf_xml_formed;
 	document.getElementById("jform_case_properties_json").value = JSON.stringify(lmdfDecisionTree1);
-//	$("#lmdfXMLout1").text(lmdf_xml_formed);
-//	$("#jform_case_properties_xml").text(lmdf_xml_formed);
-//	$("#jform_case_properties_json").text(JSON.stringify(lmdfDecisionTree1));
+//	alert('#'+$(jform_case_properties_json).closest("form").attr('id'));
+//	$('#'+$(jform_case_properties_json).closest("form").attr('id')).validate({})
+
 	
 }
 })(jQuery);

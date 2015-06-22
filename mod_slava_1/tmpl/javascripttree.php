@@ -25,18 +25,20 @@ var lmdfDecisionTree = 	{ input : [
 			{ 
 				"option" : "Grupo 1 Usos",
 		  		"dependencies" : [ "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
-						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
+						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15","lmdfInputP19", 
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
+						"lmdfInputS","lmdfInputPR0",
+						"lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                  
 			{ 
 				"option" : "Grupo 2 Trazo",
 		  		"dependencies" : [ "lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
-						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
+						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5", "lmdfInputP6", 
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19",
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
+						"lmdfInputS","lmdfInputPR0",
+						"lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
@@ -44,20 +46,21 @@ var lmdfDecisionTree = 	{ input : [
 						"lmdfInputL6","lmdfInputL7","lmdfInputL8","lmdfInputL9","lmdfInputL10","lmdfInputL11",
 						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15",
 						"lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
-						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19", "lmdfInputPR0",
-						"lmdfInputL20", 
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19","lmdfInputL20", 
+						"lmdfInputS","lmdfInputL","lmdfInputPR0",
 						"lmdfInputD0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},                                                                    
 			{ 
 				"option" : "Grupo 4 Alineamiento",
 		  		"dependencies" : [ "lmdfSelector2",
 						"lmdfInputS0", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
-						"lmdfInputS","lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
+						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19", 
-						"lmdfInputPR0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19",
+						"lmdfInputS","lmdfInputL","lmdfInputPR0",
+						"lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			}
 		]
 	} ,
@@ -218,6 +221,11 @@ var lmdfDecisionTree = 	{ input : [
 	} ,
 
 // ====campos a llenar en formulario========
+	{       // this should be selected in case of license or "tramite de alineamiento"
+		"type" : "input",
+		"name" : "lmdfInputL",
+		"description" : "Opciones de tramite (grupo)"
+	} ,
 	{       // this should be selected in any case after the selector lmdfSelector0 
 		"type" : "input",
 		"name" : "lmdfInputS",

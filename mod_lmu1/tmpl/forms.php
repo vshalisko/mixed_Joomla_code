@@ -33,6 +33,6 @@ echo '<div class="span12">';
 echo '<form action="tramite" method="post">';
 echo '<input type="hidden" id="parcel_case_id" name="parcel_case_id" value="'. $dataGeneral->case_new_id->rows[0]->parcel_case_id .'" />';
 echo '<input type="hidden" id="case_submit" name="npf_submit" value="1" />';
-echo '<button type="submit" class="btn btn-large hasTooltip" type="button" title="Someter tramite para revisión por un ejecutivo" data-placement="right">Someter tramite</button>';
+echo '<button type="submit" class="btn btn-primary btn-large hasTooltip" type="button" title="Someter tramite para revisión por un ejecutivo" data-placement="right">Someter tramite</button>';
 echo '</form>';
 ?>

@@ -44,9 +44,9 @@ require JModuleHelper::getLayoutPath('mod_qlform', 'prefilled_helper');
         <dt class="captcha">
             <?php if(""!=$params->get('captchalabel')) echo "<span>".$params->get('captchalabel')."</span><br />";?>
             <img id="captcha" src="<?php echo $image;?>" /></dt>
-        <dd class="captcha"><?php if(""!=$params->get('captchadesc')) echo "<span>".$params->get('captchadesc')."</span><br />";?><input type="text" name="captcha" value="" /></dd>
+        <dd class="captcha"><?php if(""!=$params->get('captchadesc')) echo "<span>".$params->get('captchadesc')."</span><br />";?><input type="text" class="required" name="captcha" value="" /></dd>
         <?php endif; ?>
-        <dt class="submit"></dt><dd class="submit"><input class="submit" type="submit" value="<?php echo $submit; ?>" /></dd>
+        <dt class="submit"></dt><dd class="submit"><input class="btn btn-large btn-primary submit" type="submit" value="<?php echo $submit; ?>" /></dd>
     </dl>
     <?php if (1==$fieldModuleId) : ?>
     <input type="hidden" value="<?php echo $moduleId;?>" name="moduleId" />

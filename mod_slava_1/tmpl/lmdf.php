@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for Hello Slava! module
+ * LMDF module
  * @package		mod_slava_1
  * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
@@ -36,16 +36,16 @@ $form = <<<FORM
 	<legend class="lmdfSelector0" style="display: none;"><span class="badge">2</span> Selecciona el grupo de tramites</legend>
 	<div class="radio hasTooltip" data-placement="left" title="Elige una de 4 opciones">
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 1 Usos" /> Tramitar el dictamen de usos y destinos 
+		<input type="radio" class="required" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 1 Usos" /> Tramitar el dictamen de usos y destinos 
 	</label>
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 2 Trazo" /> Tramitar el dictamen de trazo, usos y destinos específicos
+		<input type="radio" class="required" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 2 Trazo" /> Tramitar el dictamen de trazo, usos y destinos específicos
 	</label>
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 3 Licencia" /> Tramitar la licencia (15 tipos de licencia)
+		<input type="radio" class="required" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 3 Licencia" /> Tramitar la licencia (15 tipos de licencia)
 	</label>
 	<label class="lmdfSelector0">
-		<input type="radio" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 4 Alineamiento" /> Realizar el tramite de alineamiento, designación del número oficial o inspección de valor
+		<input type="radio" class="required" name="lmdfSelector0" id="lmdfSelector0" value="Grupo 4 Alineamiento" /> Realizar el tramite de alineamiento, designación del número oficial o inspección de valor
 	</label>
 	</div>
 </fieldset>
@@ -209,9 +209,9 @@ $form = <<<FORM
 	</div>
 </fieldset>
 
-<!-- Datos especificos sobre licencias -->
-<fieldset class="lmdfInputS" style="display: none;">
-	<legend class="lmdfInputS" style="display: none;">Detalles de tramite</legend>
+<!-- Datos especificos sobre licencias y tramites de alineamiento -->
+<fieldset class="lmdfInputL" style="display: none;">
+	<legend class="lmdfInputL" style="display: none;">Opciones de tramite</legend>
 	<div class="row-fluid lmdfSelectorL30 lmdfSelectorL31" style="display: none;">
 		<div class="span4">
 			<fieldset class="lmdfSelectorL30">
@@ -402,7 +402,7 @@ $form = <<<FORM
 <span class="lmdfInputP16 lmdfInputP17 lmdfInputP18" style="display: none;"><br /></span>
 	<div class="row-fluid">
 		<div class="span3 lmdfInputL23" style="display: none;">
-			<label for="lmdfInputL23" class="lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> apmarado</label>
+			<label for="lmdfInputL23" class="lmdfInputL23" style="display: none;">La superficie en m<sup>2</sup> amparado</label>
 			<input type="text" name="lmdfInputL23" id="lmdfInputL23" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie" />
 			</label>
 		</div>
@@ -431,27 +431,6 @@ $form = <<<FORM
 <!-- Datos sobre solicitante -->
 <fieldset class="lmdfInputS0 lmdfInputS2" style="display: none;">
 	<legend class="lmdfInputS0 lmdfInputS2" style="display: none;">Introduce los datos adicionales sobre solicitante</legend>
-
-	<div class="row-fluid lmdfInputS0" style="display: none;">
-		<div class="span2">
-			<label for="lmdfInputS0" class="checkbox lmdfInputS0" style="display: none;">Giro comercial</sup>
-			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
-			</label>
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
-			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="span10" style="display: none;" placeholder="escribe nombre completo de la persona moral" />
-		</div>
-	</div>
-	<div class="row-fluid lmdfInputS8" style="display: none;">
-		<div class="span2">
-			&nbsp;
-		</div>
-		<div class="span10">
-			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
-			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="span10" style="display: none;" placeholder="describe la actividad comercial" />
-		</div>
-	</div>
 	<div class="row-fluid">
 		<div class="span12">
 			<label for="lmdfInputS2" class="lmdfInputS2" style="display: none;">Domicilio del solicitante</label>
@@ -540,7 +519,7 @@ $form = <<<FORM
 
 
 <fieldset class="lmdfInputD0 lmdfSelectorD3" style="display: none;">
-	<legend class="lmdfInputD0 lmdfSelectorD3" style="display: none;">Documentación:</legend>
+	<legend class="lmdfInputD0 lmdfSelectorD3" style="display: none;">Documentación</legend>
 	<div class="row-fluid lmdfInputD0" style="display: none;">
 		<div class="span4">
 			<label for="lmdfInputD0" class="lmdfInputD0 checkbox" style="display: none;">Predio ya cuenta con dictamen de usos y destinos</sup>
@@ -555,13 +534,13 @@ $form = <<<FORM
 			<label for="lmdfInputD2" class="lmdfInputD2" style="display: none;">Fecha de emisión del dictamen de usos y destinos</label>
 			<input type="text" name="lmdfInputD2" id="lmdfInputD2" class="input-large" style="display: none;" />
 		</div>
-<br />
 	</div>
+<span class="lmdfSelectorD0" style="display: none;"><br /></span>
 	<div class="row-fluid lmdfSelectorD3" style="display: none;">
 		<div class="span4">
 			<fieldset class="lmdfSelectorD3">
 				<div class="radio hasTooltip" data-placement="left" title="Elige una opcion">
-					<span class="lmdfSelectorD3">Especifica escritura o contrato de compra-venta:</span>
+					<span class="lmdfSelectorD3"><!--Especifica escritura o contrato de compra-venta:-->&nbsp;</span>
 					<label class="lmdfSelectorD3">
 						<input type="radio" name="lmdfSelectorD3" id="lmdfSelectorD3" value="escritura" /> Escritura
 					</label>
@@ -670,18 +649,7 @@ $form = <<<FORM
 
 
 <fieldset class="lmdfInputP6" style="display: none;">
-	<legend class="lmdfInputP6" style="display: none;">Especifica la detalles y superficie de la obra</legend>
-	<div class="row-fluid">
-		<div class="span4">
-			<label for="lmdfInputP19" class="checkbox lmdfInputP19" style="display: none;">Existe una construcción o se va a construir
-			<input type="checkbox" name="lmdfInputP19" id="lmdfInputP19" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con una construcción o se pretende construir una" />
-			</label>
-                </div>
-		<div class="span8">
-			<label for="lmdfInputP20" class="lmdfInputP20" style="display: none;">Descripción de la construcción y de la obra que se realizará (250 símbolos)
-			<textarea type="textarea" name="lmdfInputP20" id="lmdfInputP20" class="input-xxlarge" style="display: none;" ></textarea>
-		</div>
-	</div>
+	<legend class="lmdfInputP6" style="display: none;"><!--Especifica la detalles y superficie de la obra-->Detalles adicionales</legend>
 	<div class="row-fluid">
 		<div class="span4">
 			<label for="lmdfInputP6" class="checkbox lmdfInputP6" style="display: none;">Superficie de la obra mayor que 50 m<sup>2</sup>
@@ -693,11 +661,44 @@ $form = <<<FORM
 			<input type="text" name="lmdfInputP7" id="lmdfInputP7" class="input-mini hasTooltip" data-placement="right" style="display: none;" title="Superficie para los predios mayores que 50 m" />
 		</div>
 	</div>
+<span class="lmdfInputP6" style="display: none;"><br /></span>
+	<div class="row-fluid">
+		<div class="span4">
+			<label for="lmdfInputP19" class="checkbox lmdfInputP19" style="display: none;">Existe una construcción o se va a construir
+			<input type="checkbox" name="lmdfInputP19" id="lmdfInputP19" style="display: none;" class="hasTooltip" title="Selecciona casilla en caso que predio cuenta con una construcción o se pretende construir una" />
+			</label>
+                </div>
+		<div class="span8">
+			<label for="lmdfInputP20" class="lmdfInputP20" style="display: none;">Descripción de la construcción y de la obra que se realizará (250 símbolos)
+			<textarea type="textarea" name="lmdfInputP20" id="lmdfInputP20" class="input-xxlarge" style="display: none;" ></textarea>
+		</div>
+	</div>
+<span class="lmdfInputP19" style="display: none;"><br /></span>
+	<div class="row-fluid lmdfInputS0" style="display: none;">
+		<div class="span2">
+			<label for="lmdfInputS0" class="checkbox lmdfInputS0" style="display: none;">Giro comercial</sup>
+			<input type="checkbox" name="lmdfInputS0" id="lmdfInputS0" style="display: none;" />
+			</label>
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS1" class="lmdfInputS1" style="display: none;">Razón social</label>
+			<input type="text" name="lmdfInputS1" id="lmdfInputS1" class="span10" style="display: none;" placeholder="escribe nombre completo de la persona moral" />
+		</div>
+	</div>
+	<div class="row-fluid lmdfInputS8" style="display: none;">
+		<div class="span2">
+			&nbsp;
+		</div>
+		<div class="span10">
+			<label for="lmdfInputS8" class="lmdfInputS8" style="display: none;">Tipo de giro comercial</label>
+			<input type="text" name="lmdfInputS8" id="lmdfInputS8" class="span10" style="display: none;" placeholder="describe la actividad comercial" />
+		</div>
+	</div>
 </fieldset>
 
 <fieldset class="lmdfInputC1" style="display: none;">
 	<legend class="lmdfInputC1" style="display: none;">Comentario</legend>
-	<label for="lmdfInputC1" class="lmdfInputC1" style="display: none;">Comentario del solicitante sobre contenido de tramite</label>
+	<label for="lmdfInputC1" class="lmdfInputC1" style="display: none;">Comentario del solicitante sobre el contenido de tramite</label>
 	<textarea type="textarea" class="input-xxlarge" name="lmdfInputC1" id="lmdfInputC1" style="display: none;" rows="10" cols="30"></textarea>
 </fieldset>
 
@@ -713,6 +714,7 @@ echo '</div>';
 echo '<script type="text/javascript">';
 // echo 'alert($("#hidden_lmdf").html());';    // debugging
 echo '$(".insertion_lmdf").append($("#hidden_lmdf").html());';
+echo '$("#hidden_lmdf").html("");';
 echo '</script>';
 
 ?>
