@@ -67,6 +67,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector2",
+		"required" : true,
 		"description" : "Selector del tipo de tramite de segundo nivel (tramites de alineamiento)",
 		"options" : 
 		[
@@ -91,6 +92,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector2A",
+		"required" : true,
 		"description" : "Selector de tipo de inmueble para tramites de alineamiento",
 		"options" : 
 		[
@@ -120,6 +122,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL1A",
+		"required" : true,
 		"description" : "Selector de licencia del tipo I.",
 		"options" : 
 		[
@@ -240,16 +243,19 @@ var lmdfDecisionTree = 	{ input : [
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD1",
+		"required" : true,
 		"description" : "Número oficial del dictamen de usos y destinos"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD2",
+		"required" : true,
 		"description" : "Fecha de emisión del dictamen de usos y destinos"
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorD3",
+		"required" : true,
 		"description" : "Estacionamiento cubierto o descubierto",
 		"options" : 
 		[
@@ -266,16 +272,19 @@ var lmdfDecisionTree = 	{ input : [
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD3",
+		"required" : true,
 		"description" : "Número de escritura"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD4",
+		"required" : true,
 		"description" : "Número de contrato de compra-venta"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD5",
+		"required" : true,
 		"description" : "Fecha de contrato de compra-venta"
 	} ,
 	{       // this should be selected in any case after any License is selected
@@ -286,6 +295,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL21",
+		"required" : true,
 		"description" : "Tipo de reparación",
 		"options" : 
 		[
@@ -300,16 +310,19 @@ var lmdfDecisionTree = 	{ input : [
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL23",
+		"required" : true,
 		"description" : "Superficeie en métros cuadrados amparado por la licencia"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL24",
+		"required" : true,
 		"description" : "Periodo en días amparado por la licencia"
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL25",
+		"required" : true,
 		"description" : "Estacionamiento cubierto o descubierto",
 		"options" : 
 		[
@@ -324,16 +337,19 @@ var lmdfDecisionTree = 	{ input : [
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL26",
+		"required" : true,
 		"description" : "Volumen en métros cúbicos amparado por la licencia"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputL27",
+		"required" : true,
 		"description" : "Distancia en métros lineales amparado por la licencia"
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL30",
+		"required" : true,
 		"description" : "Densidad",
 		"options" : 
 		[
@@ -354,6 +370,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL31",
+		"required" : true,
 		"description" : "Tipo de vivienda",
 		"options" : 
 		[
@@ -371,6 +388,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL32",
+		"required" : true,
 		"description" : "Tipo de uso no habitacional",
 		"options" : 
 		[
@@ -395,6 +413,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL33",
+		"required" : true,
 		"description" : "Tipo de comercio y servicios",
 		"options" : 
 		[
@@ -416,6 +435,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL34",
+		"required" : true,
 		"description" : "Tipo de uso turistico",
 		"options" : 
 		[
@@ -439,6 +459,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL35",
+		"required" : true,
 		"description" : "Tipo de industria",
 		"options" : 
 		[
@@ -456,6 +477,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL36",
+		"required" : true,
 		"description" : "Tipo de equipamientos y otros",
 		"options" : 
 		[
@@ -486,31 +508,37 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS1",
+		"required" : true,
 		"description" : "Razón social"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS2",
+		"required" : true,
 		"description" : "Domicilio de residencia"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS3",
+		"required" : true,
 		"description" : "Colónia"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS4",
+		"required" : true,
 		"description" : "Código postal"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS5",
+		"required" : true,
 		"description" : "Ciudad"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS6",
+		"required" : true,
 		"description" : "Estado"
 	} ,
 	{ 
@@ -521,6 +549,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS8",
+		"required" : true,
 		"description" : "Tipo de giro comercial"
 	} ,
 // =========Campos de información sobre propietario======================================
@@ -533,31 +562,37 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR1",
+		"required" : true,
 		"description" : "Nombre del propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR2",
+		"required" : true,
 		"description" : "Domicilio del propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR3",
+		"required" : true,
 		"description" : "Colónia"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR4",
+		"required" : true,
 		"description" : "Código postal"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR5",
+		"required" : true,
 		"description" : "Ciudad"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR6",
+		"required" : true,
 		"description" : "Estado"
 	} ,
 	{ 
@@ -568,12 +603,14 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR8",
+		"required" : true,
 		"description" : "Correo electrónico de propietario"
 	} ,
 // ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP1",
+		"required" : true,
 		"description" : "Ubicación: calle",
 		"dependencies" : [ "lmdfInputP2" ]
 	} ,
@@ -613,6 +650,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP7",
+		"required" : true,
 		"description" : "Superficie de la obra",
 	} , 
 	{ 
@@ -680,6 +718,7 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP20",
+		"required" : true,
 		"description" : "Descripción de la construcción"
 	} ,
 

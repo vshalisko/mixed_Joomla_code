@@ -93,7 +93,7 @@ lmdfInit = function () {
 		}
 	}
 
-	var lmdfXML = $.parseXML("<xml></xml>");					// Making empty XML document
+	var lmdfXML = $.parseXML("<xml></xml>");					// Making an empty XML document
 
 	// Taking one by one all the elements from JSON structure and switchig on or off the corresponding predefined elements in HTML
 	for (var i = 0; i < lmdfDecisionTree1.input.length; i++)      			
@@ -105,14 +105,17 @@ lmdfInit = function () {
 		if ( lmdfDecisionTree1.input[i].on ) {
                         $(lmdfDependentInputID).css("display", "block");           // Make element visible by ID
                         $(lmdfDependentInputClass).css("display", "block");        // Make element visible by class (same as ID)
+			$('[name="'+lmdfDependentInputName+'"]').css("display", "block"); // Make element visible by name (important for radio buttons and selectors
+			if ( lmdfDecisionTree1.input[i].required ) {
+				$(lmdfDependentInputID).addClass("required");	   		// Setting the required property for validation only in required
+				$('[name="'+lmdfDependentInputName+'"]').addClass("required");
+			}
 			// $(lmdfDependentInputID).rules("add",{required : true});
-			// $(lmdfDependentInputID).removeAttr("disabled");
-			// $(lmdfDependentInputID).addClass("required");
-			// $(lmdfDependentInputClass).addClass("required");
 		} else {
                         $(lmdfDependentInputID).css("display", "none");           // Make element invisible by ID
-			// $(lmdfDependentInputID).attr("disabled");
                         $(lmdfDependentInputClass).css("display", "none");        // Make element invisible by class (same as ID)
+			$(lmdfDependentInputID).removeClass("required");          // Removing the required property in all invisible
+			$('[name="'+lmdfDependentInputName+'"]').removeClass("required");
 		}
 
 ////	Borradorr de código para repoblar los campos de formulario con valores (por el momento no funciona correctamente)
@@ -137,9 +140,10 @@ lmdfInit = function () {
 	}                                       	
 
 	lmdf_xml_formed = xmlToString(lmdfXML);
-//	alert(lmdf_xml_formed);
 	document.getElementById("jform_case_properties_xml").value = lmdf_xml_formed;
 	document.getElementById("jform_case_properties_json").value = JSON.stringify(lmdfDecisionTree1);
+
+//	alert(lmdf_xml_formed);
 //	alert('#'+$(jform_case_properties_json).closest("form").attr('id'));
 //	$('#'+$(jform_case_properties_json).closest("form").attr('id')).validate({})
 
