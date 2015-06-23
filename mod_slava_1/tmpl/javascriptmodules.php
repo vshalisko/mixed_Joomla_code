@@ -184,13 +184,15 @@ lmdfInit = function () {
 		var lmdfElementData = $(this).val();
 		var lmdfElementText = $("option:selected", this).text();
 		var lmdfElementName = $(this).attr('name');
+		
+		// alert(lmdfElementData + ' : ' + lmdfElementText + ' : ' + lmdfElementName);
 
 		for (var i = 0; i < lmdfDecisionTree1.input.length; i++)	{
 			if ( lmdfDecisionTree1.input[i].name == lmdfElementName ) {
 				if ( lmdfElementData ) {
 					// Rendering data string for use in selector
 					// lmdfDecisionTree1.input[i].value = lmdfElementText + " (" + lmdfElementData + ")";         // Set element value in JSON structure
-					lmdfDecisionTree1.input[i].value = lmdfElementText;
+					lmdfDecisionTree1.input[i].value = lmdfElementData;
 					lmdfDecisionTree1.input[i].selected = lmdfElementData;
 				}
 			}			
@@ -198,6 +200,16 @@ lmdfInit = function () {
 		document.getElementById("lmdfJSONoutside").value = JSON.stringify(lmdfDecisionTree1);     // Updating stored JSON string
 		lmdfInit();
 	});
+
+	$(document).on('change', 'select[name ="lmdfSelectorRol"]', function() {     		// Detecting input from the Rol selector
+		var lmdfElementData = $(this).val();
+		var lmdfElementText = $("option:selected", this).text();
+		var lmdfElementName = $(this).attr('name');
+		
+		// alert(lmdfElementData + ' : ' + lmdfElementText + ' : ' + lmdfElementName);
+		document.getElementById("jform_person_role").value = lmdfElementData;          // Updating the form value of person role field
+	});
+
 
 	$(document).on('change', 'radio[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);

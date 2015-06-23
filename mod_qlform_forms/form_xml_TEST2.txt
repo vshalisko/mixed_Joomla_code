@@ -1,30 +1,34 @@
 [form]
- [fieldset name="fieldsetCaseDecisions"]
+ [fieldset name="fieldsetParcelCases2"]
 
-[field type="spacer" label="Captura de decisiones, resoluciones, observaciones y dictámenes asociados con casos." description=""][/field]
-
-  [field name="parcel_case_id" label="Número interno ID de tramite" type="text"  size="50" maxlength="12" required="true" readonly="true" /]
-
-  [field name="officer_id" label="ID de ejecutivo" type="text"  size="50"  maxlength="12" required="true" readonly="true" /]
-
-  [field name="decision_content" label="Decisión" type="textarea" cols="50" rows="5" required="true" /]
-
-  [field name="decision_content" label="Contenido de la resolución o dictámen" type="list" cols="50" required="true"]
-   [option value="Dictamen: aprobado"] Dictamen: aprobado[/option]
-   [option value="Dictamen: no-aprobado"] Dictamen: no-aprobado[/option]
-   [option value="Resolución: falta documentación"] Resolución: falta documentación[/option]
-   [option value="Resolución: falta estudio"] Resolución: falta estudio[/option]
+  [field name="person_role" label="Selecciona tipo de relación del solicitante con el predio" description="Propietario, gestor o apoderado" type="hidden" cols="50" required="true"]
+   [option]  [/option]
+   [option value="propietario"] Propietario del predio[/option]
+   [option value="gestor"] Gestor[/option]
+   [option value="apoderado"] Apoderado[/option]
  [/field]
 
-  [field name="decision_status" label="Estatus de resolución/dictámen" type="list" cols="50" required="true"]
-   [option value="vigente"] Vigente[/option]
-   [option value="no-vigente"] No vigente[/option]
-   [option value="cancelado"] Cancelado[/option]
- [/field]
+[field type="spacer" name="insertion_lmdf" class="insertion_lmdf" label="" description=""][/field]
 
-  [field name="decision_properties_xml" label="Propiedades de decición en XML (temporalmente)" type="textarea" cols="50" rows="5" /]
+[field name="system_case_identifier" label="Folio provisional" description="Folio generado automáticamente por sistema" type="text"  size="30" readonly="true" /]
 
-  [field name="decision_modification_date_time" label="Fecha de decisión" type="calendar" default="NOW"  format="%Y-%m-%d %H:%M:%S" readonly="true" required="true" /]
+[field name="open_date_time" label="Fecha de inicio del tramite" type="calendar" default="NOW"  format="%Y-%m-%d %H:%M:%S" readonly="true" required="true" /]
+
+[field name="nested_case_id" label="ID de tramite anterior en cadena (temporalmente)" type="hidden"  size="50" maxlength="12" /]
+
+[field name="parcel_case_x" label="coordenada X (temporalmente)" description="Coordenada X del punto marcado por el usuario en mapa" type="hidden" size="50" maxlength="50" readonly="true" /]
+
+[field name="parcel_case_y" label="coordenada Y (temporalmente)" description="Coordenada Y del punto marcado por el usuario en mapa" type="hidden"  size="50" maxlength="50" readonly="true" /]
+
+[field name="case_parcel_properties_xml" label="Propiedades de parcela en XML (temporalmente)" description="Propiedades de parcela que contiene punto marcado por el usuario" type="hidden" cols="100" rows="5" readonly="true" /]
+
+[field name="case_properties_xml" label="Propiedades de tramite en XML (temporalmente)" type="hidden" cols="100" rows="5" readonly="true" /]
+
+[field name="case_properties_json" label="Propiedades de tramite en JSON (temporalmente)" type="hidden" cols="100" rows="5" readonly="true" /]
+
+[field name="parcel_id" label="ID de parcela" type="hidden" size="50" maxlength="12" required="true" readonly="true" /]
+
+  [field name="person_id" default="1" label="ID de persona (usuario)" type="hidden"  size="50"  maxlength="12" required="true" readonly="true" /]
 
  [/fieldset] 
 [/form]

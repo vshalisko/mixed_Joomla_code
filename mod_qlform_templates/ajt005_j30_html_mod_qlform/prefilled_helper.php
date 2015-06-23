@@ -44,7 +44,7 @@ $dataToBind->system_case_identifier=$temporal_identifier;
 echo '<div class="row-fluid">';
 
 if (isset($dataToBind->case_parcel_properties_xml)) {
-	echo '<div class="span6 alert alert-success">';
+	echo '<div class="span6 source_parcel_properties" style="display: none;">';
 	echo 'Datos del predio:<br />';
 	echo $dataToBind->case_parcel_properties_xml;
 	echo '';
@@ -82,12 +82,12 @@ if (!$joomla_user->guest) {
 }
 
 if (isset($dataToBind->person_name)) {
-	echo '<div class="span6 alert alert-success">';
-	echo 'Nombre del solicitante:<br />';
+	echo '<div class="span6 source_user_properties" style="display: none;">';
+	echo 'Nombre del solicitante: ';
 	echo '<b>'.$dataToBind->person_name.'</b>';
-	echo '<br />CURP del solicitante:<br />';
+	echo '<br />CURP del solicitante: ';
 	echo '<b>'.$dataToBind->person_curp.'</b>';
-	echo '<br />Correo electrónico del solicitante:<br />';
+	echo '<br />Correo electrónico del solicitante: ';
 	echo '<b>'.$dataToBind->person_email.'</b>';
 	echo '';
 	echo '</div>';
