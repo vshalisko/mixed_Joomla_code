@@ -142,7 +142,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired1" name="docRequired1" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired1" class="docRequired1" style="display: none;">Documento requerido: identificación oficial de solicitante</label>
+	<label for="docRequired1" class="docRequired1" style="display: none;">Documento: identificación oficial de solicitante</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired1_file" id="docRequired1_file" />
 	<input type="hidden" name="docRequired1_parcel_case_id" id="docRequired1_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -158,8 +158,8 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired1A" name="docRequired1A" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired1A" class="docRequired1A" style="display: none;">Documento requerido: identificación oficial del propietario</label>
-	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired1A_file" id="docRequiredA1_file" />
+	<label for="docRequired1A" class="docRequired1A" style="display: none;">Documento: identificación oficial del propietario</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired1A_file" id="docRequired1A_file" />
 	<input type="hidden" name="docRequired1A_parcel_case_id" id="docRequired1A_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
 	<input type="hidden" name="docRequired1A_text" id="docRequired1A_text" value="identificación oficial del propietario" />
@@ -175,7 +175,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired2" name="docRequired2" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired2" class="docRequired2">Documento requerido: escrituras</label>
+	<label for="docRequired2" class="docRequired2">Documento: escrituras</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired2_file" id="docRequired2_file" />
 	<input type="hidden" name="docRequired2_parcel_case_id" id="docRequired2_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -191,7 +191,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired3" name="docRequired3" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired3" class="docRequired3">Documento requerido: contrato de compra-venta</label>
+	<label for="docRequired3" class="docRequired3">Documento: contrato de compra-venta</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired3_file" id="docRequired3_file" />
 	<input type="hidden" name="docRequired3_parcel_case_id" id="docRequired3_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -207,7 +207,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired4" name="docRequired4" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired4" class="docRequired4">Documento requerido: comprobante de domicilio</label>
+	<label for="docRequired4" class="docRequired4">Documento: comprobante de domicilio</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired4_file" id="docRequired4_file" />
 	<input type="hidden" name="docRequired4_parcel_case_id" id="docRequired4_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -223,7 +223,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired5" name="docRequired5" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired5" class="docRequired5">Documento requerido: registro público de la propiedad</label>
+	<label for="docRequired5" class="docRequired5">Documento: registro público de la propiedad</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired5_file" id="docRequired5_file" />
 	<input type="hidden" name="docRequired5_parcel_case_id" id="docRequired5_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -239,7 +239,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired6" name="docRequired6" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired6" class="docRequired6">Documento requerido: pago de predial actualizado</label>
+	<label for="docRequired6" class="docRequired6">Documento: pago de predial actualizado</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired6_file" id="docRequired6_file" />
 	<input type="hidden" name="docRequired6_parcel_case_id" id="docRequired6_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -255,7 +255,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired7" name="docRequired7" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired7" class="docRequired7">Documiento requerido: croquis de construcción</label>
+	<label for="docRequired7" class="docRequired7">Documiento: croquis de construcción</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired7_file" id="docRequired7_file" />
 	<input type="hidden" name="docRequired7_parcel_case_id" id="docRequired7_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -271,7 +271,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired8" name="docRequired8" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired8" class="docRequired8">Documiento requerido: Proyecto y planos ejecutivos firmados por director responsable de obra (DRO)</label>
+	<label for="docRequired8" class="docRequired8">Documiento: Proyecto y planos ejecutivos firmados por director responsable de obra (DRO)</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired8_file" id="docRequired8_file" />
 	<input type="hidden" name="docRequired8_parcel_case_id" id="docRequired8_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -287,7 +287,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequired9" name="docRequired9" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequired9" class="docRequired9">Documiento requerido: Fotos de fachada e interior (anexar en un solo archivo PDF)</label>
+	<label for="docRequired9" class="docRequired9">Fotos de fachada e interior (anexar en un solo archivo PDF)</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired9_file" id="docRequired9_file" />
 	<input type="hidden" name="docRequired9_parcel_case_id" id="docRequired9_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -303,7 +303,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequiredA" name="docRequiredA" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequiredA" class="docRequiredA">Documiento requerido: Comprobante de alineamiento</label>
+	<label for="docRequiredA" class="docRequiredA">Documiento: comprobante de alineamiento</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredA_file" id="docRequiredA_file" />
 	<input type="hidden" name="docRequiredA_parcel_case_id" id="docRequiredA_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -319,7 +319,7 @@ $doc->addStyleDeclaration( $style );
 
 <form class="docRequiredN" name="docRequiredN" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequiredN" class="docRequiredN">Documiento requerido: Comprobante de asignación del número oficial</label>
+	<label for="docRequiredN" class="docRequiredN">Documiento: comprobante de asignación del número oficial</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredN_file" id="docRequiredN_file" />
 	<input type="hidden" name="docRequiredN_parcel_case_id" id="docRequiredN_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
@@ -333,10 +333,42 @@ $doc->addStyleDeclaration( $style );
 	</div>
 </form>
 
+<form class="docRequired10" name="docRequired10" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired10" class="docRequired10">Documiento: dictamen de la dirección de obras públicas y desarrollo urbano sobre movimientos de la tierra</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired10_file" id="docRequired10_file" />
+	<input type="hidden" name="docRequired10_parcel_case_id" id="docRequired10_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired10_text" id="docRequired10_text" value="dictamen de la dirección de obras públicas y desarrollo urbano sobre movimientos de la tierra" />
+	<input type="hidden" name="docRequired10_id" id="docRequired10_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit10" id="ajaxFileSubmit10" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete10" id="ajaxFileDelete10" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult10"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
+<form class="docRequired11" name="docRequired11" enctype="multipart/form-data" style="display: none;" /> 
+	<div class="row-fluid">
+	<label for="docRequired11" class="docRequired11">Documiento: carta de poder</label>
+	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired11_file" id="docRequired11_file" />
+	<input type="hidden" name="docRequired11_parcel_case_id" id="docRequired11_parcel_case_id" 
+				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
+	<input type="hidden" name="docRequired11_text" id="docRequired11_text" value="carta de poder" />
+	<input type="hidden" name="docRequired11_id" id="docRequired11_id" value="" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit11" id="ajaxFileSubmit11" value="Subir documento" />
+	<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete11" id="ajaxFileDelete11" value="Eliminar documento" style="display: none;" />
+	</div>
+	<div class="row-fluid">
+	<div class="span6 ajaxFileSubmitResult11"></div><div class="span3">&nbsp;</div>
+	</div>
+</form>
+
 
 <form class="docRequiredD" name="docRequiredD" enctype="multipart/form-data" style="display: none;" /> 
 	<div class="row-fluid">
-	<label for="docRequiredD" class="docRequiredD">Documento requerido: dictamen de usos y destinos</label>
+	<label for="docRequiredD" class="docRequiredD">Documento: dictamen de usos y destinos</label>
 	<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequiredD_file" id="docRequiredD_file" />
 	<input type="hidden" name="docRequiredD_parcel_case_id" id="docRequiredD_parcel_case_id" 
 				value="<?php echo $dataGeneral->case_new_id->rows[0]->parcel_case_id ?>" />
