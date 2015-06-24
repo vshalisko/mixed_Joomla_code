@@ -1,15 +1,12 @@
 <?php
 /**
- * Template for Hello Slava! module
+ * mod_slava_1 LMDF module
+ * Form generatior JavaScript logics
  * @package		mod_slava_1
- * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
+ * @copyright	Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
- * @license        GNU/GPL, see LICENSE.php
- * mod_helloworld is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- */
+ * @license     GNU/GPL, see LICENSE.php
+  */
 
 // No direct access
 defined('_JEXEC') or die('Restricted access'); 
@@ -118,7 +115,7 @@ lmdfInit = function () {
 			$('[name="'+lmdfDependentInputName+'"]').removeClass("required");
 		}
 
-////	Borradorr de código para repoblar los campos de formulario con valores (por el momento no funciona correctamente)
+////	Borradorr de cÃ³digo para repoblar los campos de formulario con valores (por el momento no funciona correctamente)
 //               if ( lmdfDecisionTree1.input[i].value ) {                          
 //			$('name='+lmdfDependentInputName+']').val(lmdfDecisionTree1.input[i].value);
 //			if($('name='+lmdfDependentInputName+']').is('select') && lmdfDecisionTree1.input[i].selected) {
@@ -152,7 +149,8 @@ lmdfInit = function () {
 })(jQuery);
 
 (function ($) {
-	$(document).on('keypress change input keyup click', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+//	$(document).on('keypress change input keyup click', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+	$(document).on('change keyup', 'input[name^="lmdf"]', function() {     		// Detecting input from one of the form elements (less events)
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
 		var lmdfElementData = $(this).val();
 		var lmdfElementName = $(this).attr('name');
@@ -227,7 +225,8 @@ lmdfInit = function () {
 		lmdfInit();
 	});
 
-	$(document).on('keypress change input paste cut keyup', 'textarea[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+//	$(document).on('keypress change input paste cut keyup', 'textarea[name^="lmdf"]', function() {     		// Detecting input from one of the form elements
+	$(document).on('change paste cut keyup', 'textarea[name^="lmdf"]', function() {     		// Detecting input from one of the form elements (less events)
 		var lmdfDecisionTree1 = JSON.parse(document.getElementById("lmdfJSONoutside").value);
 		var lmdfElementData = $(this).val();
 		var lmdfElementName = $(this).attr('name');

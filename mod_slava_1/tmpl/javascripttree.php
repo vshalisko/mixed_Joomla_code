@@ -1,10 +1,11 @@
 <?php
 /**
+ * mod_slava_1 LMDF module
  * Definition of decicion tree for form generator
  * @package		mod_slava_1 & mod_lmu1
- * @copyright		Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
+ * @copyright	Copyright (C) 2015 Viacheslav Shalisko. All rights reserved.
  * @author 		Viacheslav Shalisko vshalisko@gmail.com
- * @license        	GNU/GPL, see LICENSE.php
+ * @license     GNU/GPL, see LICENSE.php
  */
 
 // No direct access
@@ -20,22 +21,22 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfSelectorRol",
 		"alwaysvisible" : true,
 		"required" : true,
-		"description" : "Selector de rol del solicitante",
+		"description" : "Rol de solicitante",
 		"options" : 
 		[
 			{ 
 				"option" : "propietario",
-				"dependencies" : [ "lmdfInputS0", "lmdfInputSP", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7" ]
+				"dependencies" : [ "lmdfSelector0", "lmdfInputS0", "lmdfInputSP", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7" ]
 			},
 			{ 
 				"option" : "gestor",
-				"dependencies" : [ "lmdfInputS0", "lmdfInputSG", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
+				"dependencies" : [ "lmdfSelector0", "lmdfInputS0", "lmdfInputSG", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputPR0", "lmdfInputPR1", "lmdfInputPR2", "lmdfInputPR3", "lmdfInputPR4", "lmdfInputPR5", "lmdfInputPR6", "lmdfInputPR7", "lmdfInputPR8", 
 						"docRequired1A", "docRequired11" ]
 			},
 			{ 
 				"option" : "apoderado",
-				"dependencies" : [ "lmdfInputS0", "lmdfInputSG", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
+				"dependencies" : [ "lmdfSelector0", "lmdfInputS0", "lmdfInputSG", "lmdfInputS2", "lmdfInputS3", "lmdfInputS4", "lmdfInputS5",  "lmdfInputS6", "lmdfInputS7",
 						"lmdfInputPR0", "lmdfInputPR1", "lmdfInputPR2", "lmdfInputPR3", "lmdfInputPR4", "lmdfInputPR5", "lmdfInputPR6", "lmdfInputPR7", "lmdfInputPR8", 
 						"docRequired1A", "docRequired11" ]
 			},
@@ -44,34 +45,48 @@ var lmdfDecisionTree = 	{ input : [
  	{ 
 		"type" : "selector",
 		"name" : "lmdfSelector0",
-		"description" : "Selector del tipo de tramite de primer nivel",
-		"alwaysvisible" : true,
+		"description" : "Tipo de tramite (grupo)",
+		// "alwaysvisible" : true,
 		"options" : 
 		[
 			{ 
 				"option" : "Grupo 2 Trazo",
-		  		"dependencies" : [ 
+		  		"dependencies" : [ "lmdfInputS","lmdfInputC0", "lmdfInputS0", "lmdfSelectorTD", // main controls
 						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", "lmdfInputP4", "lmdfInputP5",
 						"lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
 						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15",
-						"lmdfInputS","lmdfInputC0",
-						"lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
+						"lmdfInputD10","lmdfInputD11","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			},
 			{ 
 				"option" : "Grupo 3 Licencia",
-		  		"dependencies" : [ "lmdfInputL0","lmdfInputL1","lmdfInputL2","lmdfInputL3","lmdfInputL4","lmdfInputL5",
+		  		"dependencies" : [ "lmdfInputS","lmdfInputL", // main controls
+						"lmdfInputL0","lmdfInputL1","lmdfInputL2","lmdfInputL3","lmdfInputL4","lmdfInputL5",
 						"lmdfInputL6","lmdfInputL7","lmdfInputL8","lmdfInputL9","lmdfInputL10","lmdfInputL11",
 						"lmdfInputL12","lmdfInputL13","lmdfInputL14","lmdfInputL15",
 						"lmdfInputA0","lmdfInputAD","lmdfInputAN","lmdfInputA3","lmdfInputA4",
 						"lmdfInputP1", "lmdfInputP2", "lmdfInputP3", 
 						"lmdfInputP4", "lmdfInputP5", "lmdfInputP6", "lmdfInputP8", "lmdfInputP9", "lmdfInputP10", "lmdfInputP11", "lmdfInputP12", 
-						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19","lmdfInputL20", 
-						"lmdfInputS","lmdfInputL",
-						"lmdfInputD0","lmdfSelectorD3","docRequired1","docRequired4","docRequired5","docRequired6" ]
+						"lmdfInputP13", "lmdfInputP14", "lmdfInputP15", "lmdfInputP19","lmdfInputP20", 
+						"lmdfInputD0","lmdfInputD10","lmdfInputD11","docRequired1","docRequired4","docRequired5","docRequired6" ]
 			}
 		]
 	} ,
-// ====nuevo selector de alineamiento========
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorTD",
+		"required" : true,
+		"description" : "Tipo de dictamen solicitado",
+		"options" : 
+		[
+			{ 
+				"option" : "usos y destinos",
+			},
+			{ 
+				"option" : "trazos usos y destinos"
+			}
+		]
+	} ,
+// ====Selector A===
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputA0",
@@ -92,26 +107,26 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputA1",
-		"description" : "Alineamiento",
+		"description" : "Tramite de alineamiento",
 		"dependencies" : [ "lmdfSelector2A", "lmdfInputL27H" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputA2",
-		"description" : "Designación del número oficial",
+		"description" : "Tramite de designación del número oficial",
 		"dependencies" : [ "lmdfSelector2A" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputA3",
-		"description" : "Inspección",
+		"description" : "Solicitud de inspección",
 		"dependencies" : [ "lmdfSelector2A" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputA4",
 		"description" : "Otro tramite no previsto",
-		"dependencies" : [ "lmdfInputL23H", "lmdfInputC1" ] 
+		"dependencies" : [ "lmdfInputL23H", "lmdfInputComm" ] 
 	} ,
 	{ 
 		"type" : "selector",
@@ -130,7 +145,7 @@ var lmdfDecisionTree = 	{ input : [
 			},
 		]
 	} ,
-// ====nuevo selector de licencias========
+// ===Selector L===
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL0",
@@ -139,14 +154,14 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL1",
-		"description" : "Licencia para construcción de inmuebles",
+		"description" : "I. Licencia de construcción, incluye inspección por métro cuadrado de construcción",
 		"dependencies" : [ "lmdfSelectorL1A", "lmdfInputL23", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "selector",
 		"name" : "lmdfSelectorL1A",
 		"required" : true,
-		"description" : "Selector de licencia del tipo I.",
+		"description" : "Opción de licencia del tipo I.",
 		"options" : 
 		[
 			{ 
@@ -162,100 +177,100 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL2",
-		"description" : "Licencia para construcción de albercas",
+		"description" : "II. Licencias para construcción de albercas, por metro cúbico de capacidad",
 		"dependencies" : [ "lmdfInputL26", "docRequired7"  ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL3",
-		"description" : "Licencia para construcción de canchas y áreas deportivas",
+		"description" : "III. Construcciones de canchas y áreas deportivas, por metro cuadrado",
 		"dependencies" : [ "lmdfInputL23A", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL4",
-		"description" : "Licencia para construcción de estacionamientos para usos no habitacionales",
+		"description" : "IV.  Estacionamientos para usos no habitacionales, por metro cuadrado",
 		"dependencies" : [ "lmdfInputL23B", "lmdfSelectorL25", "docRequired7"  ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL5",
-		"description" : "Licencia para demolición",
+		"description" : "V. Licencia para demolición, sobre el importe de los derechos",
 		"dependencies" : [ "lmdfSelectorP16", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL6",
-		"description" : "Licencia para acotamiento",
+		"description" : "VI. Licencia para acotamiento de predios baldíos, bardado en colindancia y demolición de muros, por metro lineal",
 		"dependencies" : [ "lmdfInputL23C", "lmdfInputL27","lmdfSelectorL30A", "docRequired7", "docRequired8" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL7",
-		"description" : "Licencia para instalar tapiales provisionales en la vía pública",
+		"description" : "VII. Licencia para instalar tapiales provisionales en la vía pública, por metro lineal",
 		"dependencies" : [ "lmdfSelectorP16B", "lmdfInputL27A", "docRequired7" ] 
 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL8",
-		"description" : "Licencia para remodelación o restauración",
+		"description" : "VIII. Licencia para remodelación o restauración, sobre el importe de los derechos",
 		"dependencies" : [ "lmdfSelectorP16A", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL9",
-		"description" : "Licencia para reconstrucción, reestructuración o adaptación",
+		"description" : "IX. Licencia para reconstrucción, reestructuración o adaptación, sobre el importe de los derechos ",
 		"dependencies" : [ "lmdfSelectorL21", "docRequired9", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL10",
-		"description" : "Licencia para ocupación de la vía pública con materiales de construcción",
+		"description" : "X. Licencias para ocupación en la vía pública con materiales de construcción, por metro cuadrado, por día",
 		"dependencies" : [ "lmdfSelectorP16C", "lmdfInputL23D", "lmdfInputL24", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL11",
-		"description" : "Licencia para ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales",
+		"description" : "XI. Por puestos, carpas, módulos, etcétera. provisionales en la vía pública, por metro cuadrado, por día",
 		"dependencies" : [ "lmdfSelectorP16D", "lmdfInputL23E", "lmdfInputL24A", "docRequired7" ] 
 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL12",
-		"description" : "Licencia para movimientos de tierra",
+		"description" : "XII. Licencias para movimientos de tierra, previo dictamen de la dirección de obras públicas y desarrollo urbano, por metro cúbico",
 		"dependencies" : [ "lmdfInputL26A", "docRequired7", "docRequired10" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL13",
-		"description" : "Licencia provisional de construcción",
+		"description" : "XIII. Licencias provisionales de construcción, sobre el importe de los derechos",
 		"dependencies" : [ "docRequired7" ]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL14",
-		"description" : "Licencia para construcción de plataformas, patios de maniobra y rampas",
+		"description" : "Licencia para construcción de plataformas, patios de maniobra y rampas, por métro cuadrado",
 		"dependencies" : [ "lmdfInputL23F", "docRequired7" ] 
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputL15",
-		"description" : "Licencia similar de tipo no previsto",
-		"dependencies" : [ "lmdfInputL23G", "docRequired7", "lmdfInputC1" ] 
+		"description" : "Licencia similar no prevista, por metro cuadrado o fracción",
+		"dependencies" : [ "lmdfInputL23G", "docRequired7", "lmdfInputComm" ] 
 	} ,
 
-// ====campos a llenar en formulario========
+// ===Opciones====
 	{       // this should be selected in case of license or "tramite de alineamiento"
 		"type" : "input",
 		"name" : "lmdfInputL",
-		"description" : "Opciones de tramite (grupo)"
+		"description" : "Opciones de tramite de licencia (grupo)"
 	} ,
 	{       // this should be selected in any case after the selector lmdfSelector0 
 		"type" : "input",
 		"name" : "lmdfInputS",
-		"description" : "Campos a llenar (grupo)"
+		"description" : "Campos a llenar para el tramite (grupo)"
 	} ,
 	{       
 		"type" : "input",
@@ -275,34 +290,17 @@ var lmdfDecisionTree = 	{ input : [
 		"required" : true,
 		"description" : "Fecha de emisión del dictamen de usos y destinos"
 	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelectorD3",
-		"required" : true,
-		"description" : "Estacionamiento cubierto o descubierto",
-		"options" : 
-		[
-			{ 
-				"option" : "escritura",
-				"dependencies" : [ "lmdfInputD3", "docRequired3" ]
-			},
-			{ 
-				"option" : "contrato de compra-venta",
-				"dependencies" : [ "lmdfInputD4", "lmdfInputD5", "docRequired3" ]
-			},
-		]
-	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD3",
 		"required" : true,
-		"description" : "Número de escritura"
+		"description" : "Folio de escritura"
 	} ,
 	{       
 		"type" : "input",
 		"name" : "lmdfInputD4",
 		"required" : true,
-		"description" : "Número de contrato de compra-venta"
+		"description" : "Folio de contrato de compra-venta"
 	} ,
 	{       
 		"type" : "input",
@@ -310,25 +308,17 @@ var lmdfDecisionTree = 	{ input : [
 		"required" : true,
 		"description" : "Fecha de contrato de compra-venta"
 	} ,
-	{       // this should be selected in any case after any License is selected
+	{       
 		"type" : "input",
-		"name" : "lmdfInputL20",
-		"description" : "Detalles de licencias"
+		"name" : "lmdfInputD10",
+		"description" : "Existe escritura",
+		"dependencies" : [ "lmdfInputD3", "docRequired2" ]
 	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelectorL21",
-		"required" : true,
-		"description" : "Tipo de reparación",
-		"options" : 
-		[
-			{ 
-				"option" : "reparación menor"
-			},
-			{ 
-				"option" : "reparación mayor o adaptación"
-			},
-		]
+	{       
+		"type" : "input",
+		"name" : "lmdfInputD11",
+		"description" : "Existe contrato de compra-venta",
+		"dependencies" : [ "lmdfInputD4", "lmdfInputD5", "docRequired3" ]
 	} ,
 	{       
 		"type" : "input",
@@ -382,7 +372,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputL23H",
 		"required" : true,
-		"description" : "Superficie en métros cuadrados tramites similares no previstos"
+		"description" : "Superficie en métros cuadrados en tramites similares no previstos"
 	} ,
 	{       
 		"type" : "input",
@@ -395,21 +385,6 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputL24A",
 		"required" : true,
 		"description" : "Periodo en días amparado por la licencia XI."
-	} ,
-	{ 
-		"type" : "selector",
-		"name" : "lmdfSelectorL25",
-		"required" : true,
-		"description" : "Estacionamiento cubierto o descubierto",
-		"options" : 
-		[
-			{ 
-				"option" : "cubierto",
-			},
-			{ 
-				"option" : "descubierto"
-			}
-		]
 	} ,
 	{       
 		"type" : "input",
@@ -440,6 +415,36 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputL27H",
 		"required" : true,
 		"description" : "Métros lineales por alineamiento"
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL25",
+		"required" : true,
+		"description" : "Estacionamiento cubierto o descubierto",
+		"options" : 
+		[
+			{ 
+				"option" : "cubierto",
+			},
+			{ 
+				"option" : "descubierto"
+			}
+		]
+	} ,
+	{ 
+		"type" : "selector",
+		"name" : "lmdfSelectorL21",
+		"required" : true,
+		"description" : "Tipo de reparación",
+		"options" : 
+		[
+			{ 
+				"option" : "reparación menor"
+			},
+			{ 
+				"option" : "reparación mayor o adaptación"
+			},
+		]
 	} ,
 	{ 
 		"type" : "selector",
@@ -508,7 +513,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "selector",
 		"name" : "lmdfSelectorL31",
 		"required" : true,
-		"description" : "Tipo de vivienda",
+		"description" : "Tipo de vivienda (Licencia I.)",
 		"options" : 
 		[
 			{ 
@@ -576,7 +581,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "selector",
 		"name" : "lmdfSelectorL33",
 		"required" : true,
-		"description" : "Tipo de comercio y servicios (Licencias)",
+		"description" : "Tipo de comercio y servicios (Licencia I.)",
 		"options" : 
 		[
 			{ 
@@ -620,7 +625,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "selector",
 		"name" : "lmdfSelectorL34",
 		"required" : true,
-		"description" : "Tipo de uso turistico (Licencias)",
+		"description" : "Tipo de uso turistico (Licencia I.)",
 		"options" : 
 		[
 			{ 
@@ -668,7 +673,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "selector",
 		"name" : "lmdfSelectorL35",
 		"required" : true,
-		"description" : "Tipo de industria (Licencias)",
+		"description" : "Tipo de industria (Licencia I.)",
 		"options" : 
 		[
 			{ 
@@ -704,7 +709,7 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "selector",
 		"name" : "lmdfSelectorL36",
 		"required" : true,
-		"description" : "Tipo de equipamientos y otros (Licencias)",
+		"description" : "Tipo de equipamientos y otros (Licencia I.)",
 		"options" : 
 		[
 			{ 
@@ -749,12 +754,24 @@ var lmdfDecisionTree = 	{ input : [
 		]
 	} ,
 
-// =========Campos de información sobre solicitante======================================
+// ===Solicitante===
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS0",
 		"description" : "Giro comercial",
 		"dependencies" : [ "lmdfInputS1", "lmdfInputS8" ]
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS8",
+		"required" : true,
+		"description" : "Tipo de giro comercial"
+	} ,
+	{ 
+		"type" : "input",
+		"name" : "lmdfInputS1",
+		"required" : true,
+		"description" : "Razón social del giro comercial"
 	} ,
 	{ 
 		"type" : "input",
@@ -766,55 +783,43 @@ var lmdfDecisionTree = 	{ input : [
 		"name" : "lmdfInputSG",
 		"description" : "Solicitante es gestor o apoderado",
 	} ,
-
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS1",
-		"required" : true,
-		"description" : "Razón social"
-	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS2",
 		"required" : true,
-		"description" : "Domicilio de residencia"
+		"description" : "Domicilio de residencia de solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS3",
 		"required" : true,
-		"description" : "Colónia"
+		"description" : "Colónia de solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS4",
 		"required" : true,
-		"description" : "Código postal"
+		"description" : "Código postal de solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS5",
 		"required" : true,
-		"description" : "Ciudad"
+		"description" : "Ciudad de solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS6",
 		"required" : true,
-		"description" : "Estado"
+		"description" : "Estado de solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputS7",
-		"description" : "Teléfono de contacto"
+		"description" : "Teléfono de contacto de solicitante"
 	} ,
-	{ 
-		"type" : "input",
-		"name" : "lmdfInputS8",
-		"required" : true,
-		"description" : "Tipo de giro comercial"
-	} ,
-// =========Campos de información sobre propietario======================================
+
+// ===Propietario===
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR0",
@@ -825,37 +830,37 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputPR1",
 		"required" : true,
-		"description" : "Nombre del propietario"
+		"description" : "Nombre de propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR2",
 		"required" : true,
-		"description" : "Domicilio del propietario"
+		"description" : "Domicilio de propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR3",
 		"required" : true,
-		"description" : "Colónia"
+		"description" : "Colónia de propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR4",
 		"required" : true,
-		"description" : "Código postal"
+		"description" : "Código postal de propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR5",
 		"required" : true,
-		"description" : "Ciudad"
+		"description" : "Ciudad de propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputPR6",
 		"required" : true,
-		"description" : "Estado"
+		"description" : "Estado de propietario"
 	} ,
 	{ 
 		"type" : "input",
@@ -868,18 +873,18 @@ var lmdfDecisionTree = 	{ input : [
 		"required" : true,
 		"description" : "Correo electrónico de propietario"
 	} ,
-// ==============Campos comunes para dictamenes de usos y destinos y otros tipos de tramites=================================
+// ===Predio===
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP1",
 		"required" : true,
-		"description" : "Ubicación: calle",
+		"description" : "Ubicación del predio: calle",
 		"dependencies" : [ "lmdfInputP2" ]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP2",
-		"description" : "Ubicación: número oficial",
+		"description" : "Ubicación del predio: número oficial",
 		"dependencies" : [ "lmdfInputP2A" ]
 	} ,
 	{ 
@@ -890,23 +895,23 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP3",
-		"description" : "Ubicación: colonia"
+		"description" : "Ubicación del predio: colonia"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP4",
-		"description" : "Ubicación: entre la calle 1",
+		"description" : "Ubicación del predio: entre la calle 1",
 		"dependencies" : [ "lmdfInputP5" ]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP5",
-		"description" : "Ubicación: entre la calle 2"
+		"description" : "Ubicación del predio: entre la calle 2"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP6",
-		"description" : "Superficie de obra mayor que 50 m2",
+		"description" : "Superficie de la obra es mayor que 50 m2",
 		"dependencies" : [ "lmdfInputP7", "docRequired8" ]
 	} ,
 	{ 
@@ -918,17 +923,17 @@ var lmdfDecisionTree = 	{ input : [
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP8",
-		"description" : "Manzana"
+		"description" : "Ubicación del predio: manzana"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP9",
-		"description" : "Lote"
+		"description" : "Ubicación del predio: lote"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputP10",
-		"description" : "Clave catastral"
+		"description" : "Ubicación del predio: clave catastral"
 	} ,
 	{ 
 		"type" : "input",
@@ -1052,102 +1057,100 @@ var lmdfDecisionTree = 	{ input : [
 		"type" : "input",
 		"name" : "lmdfInputP20",
 		"required" : true,
-		"description" : "Descripción de la construcción"
+		"description" : "Descripción de la construcción o de la obra"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputC0",
-		"description" : "Construcción",
+		"description" : "Edificación",
 		"dependencies" : [ "lmdfInputC1" ]
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "lmdfInputC1",
-		"description" : "Superficie de construcción en m2"
+		"description" : "Superficie de edificación en m2"
 	} ,
-// ====documents========
+// ====documents===
 	{ 
 		"type" : "input",
 		"name" : "docRequired1",
-		"description" : "Documiento requerido: identificación oficial del solicitante"
+		"description" : "Documiento: identificación oficial del solicitante"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired1A",
-		"description" : "Documiento requerido: identificación oficial del propietario"
+		"description" : "Documiento: identificación oficial del propietario"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired2",
-		"description" : "Documiento requerido: escrituras"
+		"description" : "Documiento: escrituras"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired3",
-		"description" : "Documiento requerido: contrato de compra-venta"
+		"description" : "Documiento: contrato de compra-venta"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired4",
-		"description" : "Documiento requerido: comprobante de domicilio"
+		"description" : "Documiento: comprobante de domicilio"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired5",
-		"description" : "Documiento requerido: registro público de la propiedad"
+		"description" : "Documiento: registro público de la propiedad"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired6",
-		"description" : "Documiento requerido: pago de predial actualizado"
+		"description" : "Documiento: pago de predial actualizado"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired7",
-		"description" : "Documiento requerido: croquis de construcción u otro"
+		"description" : "Documiento: croquis de construcción u otro"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired8",
-		"description" : "Documiento requerido: Proyecto y planos ejecutivos firmados por director responsable de obra (DRO)"
+		"description" : "Documiento: proyecto y planos ejecutivos firmados por director responsable de obra (DRO)"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired9",
-		"description" : "Documiento requerido: Fotos de fachada e interior (en un solo archivo PDF)"
+		"description" : "Fotos de fachada e interior (en un solo archivo PDF)"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired10",
-		"description" : "Documiento requerido: Dictamen de la dirección de obras públicas y desarrollo urbano sobre movimientos de la tierra"
+		"description" : "Documiento: dictamen de la dirección de obras públicas y desarrollo urbano sobre movimientos de la tierra"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequired11",
-		"description" : "Documiento requerido: Carta de poder"
+		"description" : "Documiento: carta de poder"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequiredA",
-		"description" : "Documiento requerido: Comprobante de alineamiento"
+		"description" : "Documiento: comprobante de alineamiento"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequiredN",
-		"description" : "Documiento requerido: Comprobante de asignación del número oficial"
+		"description" : "Documiento: comprobante de asignación del número oficial"
 	} ,
 	{ 
 		"type" : "input",
 		"name" : "docRequiredD",
-		"description" : "Documiento requerido: dictamen de usos y destinos"
+		"description" : "Documiento: dictamen de usos y destinos"
 	} ,
-
-
 // ====pruebas viejas========
 	{ 
 		"type" : "input",
-		"description" : "Comentario del usuario sobre el contenido del tramite",
-		"name" : "lmdfInputC1"
+		"description" : "Comentario del usuario sobre el contenido de tramite",
+		"name" : "lmdfInputComm"
 	}
 ]};
 
