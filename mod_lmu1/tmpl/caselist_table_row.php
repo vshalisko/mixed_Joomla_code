@@ -22,21 +22,25 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <td><?php 
 
 $names_array = array(
-	"lmdfInputL1" => "Construcción de inmuebles",
-	"lmdfInputL2" => "Construcción albercas",
-	"lmdfInputL3" => "Construcción canchas/áreas deportivas",
-	"lmdfInputL4" => "Construcción estacionamientos para usos no-habitacionales",
-	"lmdfInputL5" => "Demolición",
-	"lmdfInputL6" => "Acotamiento",
-	"lmdfInputL7" => "Instalación de tapiales provisionales en la via pública",
-	"lmdfInputL8" => "Remodelación o restauración",
-	"lmdfInputL9" => "Reconstrucción, reestructuración o adaptación",
-	"lmdfInputL10" => "Ocupación de la vía pública con materiales de construcción",
-	"lmdfInputL11" => "Ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales",
-	"lmdfInputL12" => "Movimientos de tierra",
-	"lmdfInputL13" => "Provisional de construcción",
-	"lmdfInputL14" => "Construcción de plataformas, patios de maniobra y rampas",
-	"lmdfInputL15" => "Similar de tipo no previsto"
+	"lmdfInputL1" => "I. Construcción de inmuebles",
+	"lmdfInputL2" => "II. Construcción albercas",
+	"lmdfInputL3" => "III. Construcción canchas/áreas deportivas",
+	"lmdfInputL4" => "IV. Construcción estacionamientos para usos no-habitacionales",
+	"lmdfInputL5" => "V. Demolición",
+	"lmdfInputL6" => "VI. Acotamiento",
+	"lmdfInputL7" => "VII. Instalación de tapiales provisionales en la via pública",
+	"lmdfInputL8" => "VIII. Remodelación o restauración",
+	"lmdfInputL9" => "IX. Reconstrucción, reestructuración o adaptación",
+	"lmdfInputL10" => "X. Ocupación de la vía pública con materiales de construcción",
+	"lmdfInputL11" => "XI. Ocupación de la vía pública por puestos, carpas, módulos, etcétera provisionales",
+	"lmdfInputL12" => "XII. Movimientos de tierra",
+	"lmdfInputL13" => "XIII. Provisional de construcción",
+	"lmdfInputL14" => "XIV. Construcción de plataformas, patios de maniobra y rampas",
+	"lmdfInputL15" => "XV. Similar de tipo no previsto",
+	"lmdfInputA1"  => "Tramite de alineamiento",
+	"lmdfInputA2"  => "Tramite de designación del número oficial",
+	"lmdfInputA3"  => "Solicitud de inspección",
+	"lmdfInputA4"  => "Otro tramite no previsto"
  	);
 
 
@@ -57,24 +61,35 @@ if($row->case_properties_xml) {
 }
 
 $case_group = $case_properties->lmdfSelector0;
-if ('Grupo 1 Usos' == $case_group) { echo 'Dictamen de usos y destinos <br />'; };
-if ('Grupo 2 Trazo' == $case_group) { echo 'Dictamen de trazo, usos y destinos específicos <br />'; };
+$case_dictamen = $case_properties->lmdfSelectorTD;
+if ('usos y destinos' == $case_dictamen) { echo 'Dictamen de usos y destinos<br />'; };
+if ('trazos usos y destinos' == $case_dictamen) { echo 'Dictamen de trazo, usos y destinos<br />'; };
+if ('Grupo 2 Trazo' == $case_group & !$case_dictamen) { echo 'Dictamen<br />'; };
 if ('Grupo 3 Licencia' == $case_group) { 
-	echo '<em>Licencia:</em> <br />';
+	$A_string = '';
+	for ( $i=1; $i<=4; $i++) {
+		$option_name = "\$case_properties->lmdfInputA" . $i;
+		$option_status = eval( "return ". $option_name . ";" );
+		if ( 'on' == $option_status ) {
+			// echo " tipo " . $i;
+			$A_string .= $names_array["lmdfInputA".$i].'<br />';
+		}
+	};
+	if ( $A_string ) {
+		echo '' . $A_string;
+	}
+	$L_string = '';
 	for ( $i=1; $i<=15; $i++) {
 		$option_name = "\$case_properties->lmdfInputL" . $i;
 		$option_status = eval( "return ". $option_name . ";" );
 		if ( 'on' == $option_status ) {
 			// echo " tipo " . $i;
-			echo $names_array["lmdfInputL".$i].'<br />';
+			 $L_string .= $names_array["lmdfInputL".$i].'<br />';
 		}
 	};
-};
-if ('Grupo 4 Alineamiento' == $case_group) { 
-	echo '<em>Otro tramite:</em> <br />';
-	foreach ( $case_properties->lmdfSelector2 as $option ) {
-		echo $option .' <br />';
-	};
+	if ( $L_string ) {
+		echo '<em>Licencias:</em><br />' . $L_string;
+	}
 };
 
 ?></td>

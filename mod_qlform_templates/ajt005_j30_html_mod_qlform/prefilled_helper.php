@@ -46,8 +46,26 @@ echo '<div class="row-fluid">';
 if (isset($dataToBind->case_parcel_properties_xml)) {
 	echo '<div class="span6 source_parcel_properties" style="display: none;">';
 	echo 'Datos del predio:<br />';
-	echo $dataToBind->case_parcel_properties_xml;
-	echo '';
+	// echo $dataToBind->case_parcel_properties_xml;  // raw output
+	if($dataToBind->case_parcel_properties_xml) {    
+		libxml_use_internal_errors(true);
+		$xml_test = simplexml_load_string($dataToBind->case_parcel_properties_xml);
+		if (!$xml_test) {
+			$parcel_map_properties = new SimpleXMLElement('<xml />');
+		} else {
+			$parcel_map_properties = new SimpleXMLElement($dataToBind->case_parcel_properties_xml);
+			echo (!empty($parcel_map_properties->nombre_2)) ? '<br />Nombre de polígono / zona: <b>' . $parcel_map_properties->nombre_2 . '</b>' : '';
+			echo (!empty($parcel_map_properties->etique_e1)) ? '<br />Etiqueta plano desarrollo E1: <b>' . $parcel_map_properties->etique_e1 . '</b>' : '';
+			echo (!empty($parcel_map_properties->etique_e2)) ? '<br />Etiqueta plano desarrollo E2: <b>' . $parcel_map_properties->etique_e2 . '</b>' : '';
+			echo (!empty($parcel_map_properties->c_historic)) ? '<br />Pertenece al centro histórico: <b>' . $parcel_map_properties->c_historic . '</b>' : '<br />Pertenece al centro histórico: <b>NO</b>';
+			echo (!empty($parcel_map_properties->etkt_ri)) ? '<br />Restricciones asociadas: <b>' . $parcel_map_properties->etkt_ri . '</b>' : '';
+			echo (!empty($parcel_map_properties->riesgo)) ? '<br />Riesgo: <b>' . $parcel_map_properties->riesgo . '</b>' : '';
+			echo (!empty($parcel_map_properties->area_ha)) ? '<br />Área polígono de gestión (ha): <b>' . $parcel_map_properties->area_ha . '</b>' : '';
+			echo (!empty($parcel_map_properties->perim_m)) ? '<br />Perímetro polígono de gestión (m): <b>' . $parcel_map_properties->perim_m . '</b>' : '';
+		}
+	}
+
+
 	echo '</div>';
 } else {
 	$warning = '<H4>Forma no valida! El predio con las caracteristicas especificados no fue encontrado en sistema.</H4>';

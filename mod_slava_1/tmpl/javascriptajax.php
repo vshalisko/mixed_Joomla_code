@@ -39,7 +39,7 @@ $js = <<<JS
 				var p = 'sin datos'; // dafault value
 				if (r.rows[0].parcel_map_id) {   // we have parcel_map_id, so can form a button
 					s = '</ br><form action="paso2" method="post">' +
-						'<input type="hidden" id="parcel_map_version_id" name="parcel_map_version_id" value="2" />' +
+						'<input type="hidden" id="parcel_map_version_id" name="parcel_map_version_id" value="3" />' +
 						'<input type="hidden" id="parcel_map_id" name="parcel_map_id" value="' + r.rows[0].parcel_map_id +
 						'" /><input type="submit" class="btn btn-large btn-primary" value="Iniciar tramite" /></form>';
 					
@@ -55,7 +55,7 @@ $js = <<<JS
 					}
 					var claveText = '';
 					if ( xmlObj.find("clave").text() || xmlObj.find("t_area").text() ) {
-						claveText = '<br />Tipo de area (E1): <br /><b>';
+						claveText = '<br />Tipo de área (E1): <br /><b>';
 						if ( xmlObj.find("t_area").text() ) {
 						 	claveText = claveText + xmlObj.find("t_area").text() + ' (' + xmlObj.find("clave").text() + ')</b>';
 						} else {
@@ -121,8 +121,8 @@ $js = <<<JS
 						restrictText = '<br />Riesgo: <br /><b>' + xmlObj.find("riesgo").text() + '</b>';
 					}
 
-					var areahaText = '<br />Área poligono de gestión (ha): <br /><b>' + xmlObj.find("area_ha").text() + '</b>';
-					var perimhaText = '<br />Perimetro poligono de gestión (m): <br /><b>' + xmlObj.find("perim_m").text() + '</b>';
+					var areahaText = '<br />Área polígono de gestión (ha): <br /><b>' + xmlObj.find("area_ha").text() + '</b>';
+					var perimhaText = '<br />Perímetro polígono de gestión (m): <br /><b>' + xmlObj.find("perim_m").text() + '</b>';
 
 					p = nombreText + claveText + subclaveText + etiquee1Text + clave2Text + densidadText + tipoText + 
 						etiquee2Text + centroText + restrictText + riesgoText + areahaText + perimhaText;
