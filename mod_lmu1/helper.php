@@ -53,6 +53,7 @@ class modLMUHelper
 	}
 	// Prepare the query
 	$my_db->setQuery($query);
+	$my_db->execute();
 	// Load the results as a list of stdClass objects
         $rows = $my_db->loadObjectList();
 	return $rows;
@@ -66,6 +67,22 @@ class modLMUHelper
 	// Load the results as a list of stdClass objects
 	$my_db->execute();
 	return $my_db->insertid();
+    }
+
+    public static function getSQLDelete ( $sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
+	// Prepare the query
+	$my_db->setQuery($sql);
+	// Load the results as a list of stdClass objects
+	$res = $my_db->execute();
+	if($res)
+	{
+		$affectedRows = $my_db->getAffectedRows($res);
+		return $affectedRows;
+	} else {
+		return 0;
+	}
     }
 
 
@@ -309,31 +326,64 @@ class modLmu1Helper
 		$obj->insertId = $insert_id;	// the ID of new database record
 		$obj->string = $result;		// the result messages
 		$obj->errorlog = $errorlog;	// the error message (if any)
-		return json_encode($obj);
-
-	} else {
-		// Preparing and executing database request
-        	$base_sql = "SELECT * FROM list_of_decisions_for_case WHERE decision_content IS NOT NULL AND parcel_case_id = ";
-		$rows = modLMUHelper::getSQLQuery01( $data, $base_sql );
-
-		$result = "";
-		if( !$rows ) {
-			$result = "<br />Tramite aun sin deciciones</br>";;
-		}
-		// Retrieve each value in the ObjectList 
- 		foreach( $rows as $row ) { 
-		$result .= "<br />";
-		$result .= "Case ID: " . $row->parcel_case_id . ", ";
-		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
-		$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
-		$result .= "Estatus de decición: " . $row->decision_status . ", ";
-		$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
-		$result .= "Ejecutivo: " . $row->officer_name . ", ";
-		$result .= "Organismo: " . $row->officer_affiliation . ", ";
-		$result .= "<br />";
-	 	} 
-		return 'Resultados de consulta por medio de Ajax: ' . $result;
+                return json_encode($obj);
 	}
+
+	if ('file_delete' == $mode) {
+		$result = "";
+		$errorlog = "";
+		$parcel_case_id = $input->get('parcel_case_id');
+		$case_document_id = $input->get('case_document_id');
+		$my_db1 = modLMUHelper::getDBinstance();
+			$user_test_sql = 'SELECT person_login FROM persons WHERE person_id = (SELECT person_id FROM parcel_cases WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' LIMIT 1)';
+			$rowsuser = modLMUHelper::getSQLQuery01( '', $user_test_sql ); // checking if the user who created the parcel_case is the same as who is trying to delete the document
+			$joomla_user = JFactory::getUser();
+			if (isset($rowsuser[0]->person_login) && ($rowsuser[0]->person_login == $joomla_user->username)) {
+				$result .= "\nUsuario autorizado";
+				$test_sql = 'SELECT COUNT(*) AS count FROM case_documents WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' AND case_document_id = '.$my_db1->quote($case_document_id);
+				$rows = modLMUHelper::getSQLQuery01( '', $test_sql ); // checking if there are only one record to be deleted
+				if (isset($rows[0]->count) && ($rows[0]->count == 1)) {
+			        	$base_sql = 'DELETE FROM case_documents WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' AND case_document_id = '.$my_db1->quote($case_document_id);
+					$affected_rows = modLMUHelper::getSQLDelete($base_sql);
+					if( $affected_rows ) {
+						$result .= "\nRegistro de ".$affected_rows." documento en DB fue eliminado";
+					} else {
+						$errorlog .= "\nProblema al eliminar 1 registro de documento en DB, registro no fue eliminado";
+					}
+				} else {
+					$errorlog .= "\nProblema al eliminar registro de documento en DB (número incorrecto de registros marcado)";
+				}
+			} else {
+				$errorlog .= "\nUsuario no autorizado eliminar documento";
+			}
+		$obj = new stdClass;
+		$obj->string = $result;		// the result messages
+		$obj->errorlog = $errorlog;	// the error message (if any)
+                return json_encode($obj);
+	}
+//	} else {
+//		// Preparing and executing database request
+//        	$base_sql = "SELECT * FROM list_of_decisions_for_case WHERE decision_content IS NOT NULL AND parcel_case_id = ";
+//		$rows = modLMUHelper::getSQLQuery01( $data, $base_sql );
+//
+//		$result = "";
+//		if( !$rows ) {
+//			$result = "<br />Tramite aun sin deciciones</br>";;
+//		}
+//		// Retrieve each value in the ObjectList 
+//		foreach( $rows as $row ) { 
+//		$result .= "<br />";
+//		$result .= "Case ID: " . $row->parcel_case_id . ", ";
+//		$result .= "Fecha de inicio: " . $row->open_date_time . ", ";
+//		$result .= "Decisión/Resolución: " . $row->decision_content . ", ";
+//		$result .= "Estatus de decición: " . $row->decision_status . ", ";
+//		$result .= "Fecha de decición: " . $row->decision_modification_date_time . ", ";
+//		$result .= "Ejecutivo: " . $row->officer_name . ", ";
+//		$result .= "Organismo: " . $row->officer_affiliation . ", ";
+//		$result .= "<br />";
+//	 	} 
+//		return 'Resultados de consulta por medio de Ajax: ' . $result;
+//	}
 	JFactory::getApplication()->close(); // Ensure getApplication termination
     }
 }
