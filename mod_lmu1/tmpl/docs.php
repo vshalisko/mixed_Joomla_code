@@ -16,6 +16,57 @@ defined('_JEXEC') or die('Restricted access');
 
 $js = <<<JS
 (function ($) {
+	$(document).on('click', 'input[name^=ajaxFileDelete]', function () {
+		// funcion to delete documents. works only on client side, still should be actual work on server side (in ajax_mode file_delete)
+	
+		var submitName = this.getAttribute("name");
+		var baseName = submitName.replace("ajaxFileDelete",""); // getting the variable part of the form elements names
+		var docId = $('input[name=docRequired'+baseName+'_id]').val(); // taking the document ID
+		var parcelId = $('input[name=docRequired'+baseName+'_parcel_case_id]').val(); // taking the parcel ID
+                var request = new FormData();
+			request.append('doc_id',docId);
+			request.append('parcel_case_id',parcelId);
+			request.append('option','com_ajax');
+			request.append('module','lmu1');
+			request.append('ajax_mode','file_submit');  // change this to file_delete once the server side is done
+			request.append('format','json');
+		$.ajax({
+			type   : 	'POST',
+			dataType   : 	'json',
+			processData: 	false,
+			contentType: 	false,
+			scriptCharset: 'utf-8',
+			data   : 	request,
+			success: 	function (response) {
+				// var s = JSON.stringify(response.data); // debugging
+				var r = JSON.parse(response.data);
+				if (response.type == 'error') {
+					// we got an error in some part of the process
+					var errormessage = '<div class="alert"><button type="button" class="close" data-dismiss="alert">' +
+							'×</button><strong>Error!</strong> Archivo no fue eliminado.</div>';
+					$('.ajaxFileSubmitResult'+baseName).html( errormessage );	
+				} else {
+					// no error
+					$('.ajaxFileSubmitResult'+baseName).html( '<!-- Messages: ' + r['string'] + 'InsertID:' + r['insertId'] + '-->');   
+					document.getElementById('ajaxFileSubmit'+baseName).disabled = false; // disabling submit button on success
+					document.getElementById('ajaxFileDelete'+baseName).style.display = "none";
+					document.getElementById('docRequired'+baseName+'_file').disabled = false;
+					document.getElementById('docRequired'+baseName+'_text').disabled = false;
+					document.getElementById('docRequired'+baseName+'_id').value = '';
+					document.getElementById('docRequired'+baseName+'_file').value = '';
+				}
+			
+			},
+			error: 	function () {
+				// we got an Ajax execution error
+				var errormessage = '<div class="alert"><button type="button" class="close" data-dismiss="alert">' +
+							'×</button><strong>Error!</strong> Archivo no fue eliminado.</div>';
+				$('.ajaxFileSubmitResult'+baseName).html( errormessage );	
+			}
+		});
+		return false;
+	});
+
 	$(document).on('click', 'input[name^=ajaxFileSubmit]', function () {
 		var submitName = this.getAttribute("name");
 		var baseName = submitName.replace("ajaxFileSubmit",""); // getting the variable part of the form elements names
