@@ -1,0 +1,41 @@
+<!SCRIPT INCLUDE>
+
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script src="../script/jquery.maskedinput.js" type="text/javascript"></script>
+<script src="../script/jquery-ui/jquery-ui.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.6.0/ol.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.6.0/ol.min.js" type="text/javascript"></script>
+<script src="resources/ol3-layerswitcher.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.6.0/ol.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.6.0/ol.min.css" type="text/css">
+<link rel="stylesheet" href="resources/ol3-layerswitcher.css" type="text/css">
+<!JAVASCRIPT,JQUERY>
+<script>
+//Window Scroll Position
+window.onload=function(){
+    var pos=window.name || 0;
+    window.scrollTo(0,pos);
+}
+window.onunload=function(){
+    window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
+}
+//Disable Enter Submition
+$(document).ready(function() {
+    
+    $('form').keypress(function(e){   
+        if(e == 13){
+            return false;
+        }
+    });
+    $('input').keypress(function(e){
+        if(e.which == 13){
+            return false;
+        }
+    });
+    if(req!=null)
+        $('l5').css({"color":"red"});
+});
+</script>
