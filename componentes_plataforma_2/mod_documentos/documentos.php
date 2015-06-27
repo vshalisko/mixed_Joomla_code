@@ -53,7 +53,7 @@ class modForm
 	if ( $p->user_description ) {
 		$user_description_field =  '<div class="row-fluid"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" /></div>';
 	} else {
-		$user_description_field =  "";
+		$user_description_field =  '<div class="row-fluid" style="display: none;"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" /></div>';
 	}
 
 
@@ -82,12 +82,11 @@ HTML;
 }
 
 ?>    
-
 <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 <title>Tr&aacute;mites Lagos de Moreno - Subir Documentos</title>    
 <link rel="stylesheet" href="../css/style.css" type="text/css">
 <link rel="stylesheet" href="../script/jquery-ui/jquery-ui.css">
-
+<!SCRIPT INCLUDE>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
@@ -112,11 +111,12 @@ HTML;
 			dataType   : 	'json',
 			processData: 	false,
 			contentType: 	false,
+			cache: 		false,
 			scriptCharset: 'utf-8',
 			data   : 	request,
 			success: 	function (response) {
-				// var s = JSON.stringify(response.data); // debugging
-				var r = JSON.parse(response.data);
+				var s = JSON.stringify(response);
+				var r = JSON.parse(s);
 				if (response.type == 'error' || r['errorlog']) {
 					// we got an error in some part of the process
 					var errormessage = '<div class="alert"><button type="button" class="close" data-dismiss="alert">' +
@@ -185,6 +185,7 @@ HTML;
 			dataType   : 	'json',
 			processData: 	false,
 			contentType: 	false,
+			cache: 		false,
 			scriptCharset: 'utf-8',
 			data   : 	request,
 			xhr : function()
@@ -209,9 +210,11 @@ HTML;
 			    	return jqXHR;
 			},
 			success: 	function (response) {
-				// var s = JSON.stringify(response.data); // debugging
+				var s = JSON.stringify(response); // debugging
 				// $('.ajaxFileSubmitResult'+baseName).html( s );
-				var r = JSON.parse(response.data);
+				// var r = JSON.parse(response.data);
+				// alert(s);
+                                var r = JSON.parse(s);
 				if (response.type == 'error' || r['errorlog']) {
 					// we got an error in some part of the process
 					var errormessage = '<div class="alert"><button type="button" class="close" data-dismiss="alert">' +
@@ -297,7 +300,11 @@ HTML;
         </table>
     </div>
 <div id="container">
-<div id="top-containier">Carga de Documentación</div>
+<div id="top-containier">
+    <?php echo "Documentación para el Trámite: ".$_SESSION["tipo_tramite"]."";?>
+    
+    
+</div>
 <div id="menu" style="background-color: rgb(238, 238, 238); height: 100%; width: 100%;">
 <table style="width:100%;">
     <tbody>
@@ -332,8 +339,31 @@ echo $upload_form2_html;
 
 ?>            
             </div>
+            <hr style="width:100%; color: rgb(136, 187, 0); background-color: rgb(109, 143, 49);">
+            <button id="finalizar" name="finalizar" value="finalizar" style="width:150px">Finalizar</button>
+            <button id="cancelar" name="cancelar" value="cancelar" style="width:150px">Cancelar</button>
+            </div>
             </td>
-            <td style="color:#FFFFFF; vertical-align: top; text-align: left; width:20%; font-weight: bold;">
+               <script type="text/javascript">
+                $( "#finalizar" ).click(function(){
+                    window.location.assign('../mod_inicio/inicio.php');
+               });
+        </script>                
+            <td style="color:#FFFFFF; vertical-align: top; text-align: center; width:20%; font-weight: bold;">
+                <div id="menudiv" style="width: 100%; z-index: 1;">
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                    <td style="width:20%;"></td>
+                    <td style="width:20%;"></td>
+                    <td style="width:20%;">
+                                    <?php include ("../ui_elements/menu/menu.php");?>
+                    </td>
+<!--                    <td style="width:10%;"></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+                </div
             </td>
         </tr>
 </tbody>

@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <div class="span10 offset1">
 
-<h3 class="text-warning">Para acceso al sistema de tramite se requiere ingresar al sistema</h3>
+<h3 class="text-warning">Para acceso al sistema de tramite se requiere ingresar con nombre de usuario</h3>
 
 <div>Ingresa con su nombre de usuario y contraseña:</div>
 <!--

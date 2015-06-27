@@ -39,3 +39,89 @@ $(document).ready(function() {
         $('l5').css({"color":"red"});
 });
 </script>
+
+
+
+
+
+
+class modLMUHelper
+{
+    /**
+     * @param array $params An object containing the module parameters
+     * @access public
+     */    
+
+    public static function getDBinstance ( )
+    {
+	// get and parse module parameters (for database connection)
+	jimport( 'joomla.application.module.helper' );
+	$my_params = JModuleHelper::getModule( 'mod_lmu1' );
+	$my_params_data = explode(",",str_replace("\"","",substr($my_params->params,1,-1)));
+	$my_params_array = array();
+	foreach ($my_params_data as $pair) {
+	    list($key,$value) = explode(':',$pair);
+	    $my_params_array[$key]=$value;
+	};
+
+	$option = array();
+        $option['driver']   = $my_params_array['databaseexternaldriver'];            	// Database driver name
+	$option['host']     = $my_params_array['databaseexternalhost'];    		// Database host name
+	$option['user']     = $my_params_array['databaseexternaluser'];  		// User for database authentication
+	$option['password'] = $my_params_array['databaseexternalpassword'];   		// Password for database authentication
+	$option['database'] = $my_params_array['databaseexternaldatabase'];      	// Database name
+	$option['prefix']   = $my_params_array['databaseexternalprefix'];             	// Database prefix (may be empty)
+ 
+	// Obtain a database connection
+	$my_db = JDatabaseDriver::getInstance( $option );
+	return $my_db;
+    }
+
+    public static function getSQLQuery01( $data, $base_sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
+	if ($data) {
+		$quoted_data = $my_db->quote( $data );
+		$query = $base_sql . $quoted_data ;
+	} else {
+		$query = $base_sql;
+	}
+	// Prepare the query
+	$my_db->setQuery($query);
+	$my_db->execute();
+	// Load the results as a list of stdClass objects
+        $rows = $my_db->loadObjectList();
+	return $rows;
+    }
+
+    public static function getSQLInsert ( $sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
+	// Prepare the query
+	$my_db->setQuery($sql);
+	// Load the results as a list of stdClass objects
+	$my_db->execute();
+	return $my_db->insertid();
+    }
+
+    public static function getSQLDelete ( $sql )
+    {
+	$my_db = modLMUHelper::getDBinstance();
+	// Prepare the query
+	$my_db->setQuery($sql);
+	// Load the results as a list of stdClass objects
+	$res = $my_db->execute();
+	if($res)
+	{
+		$affectedRows = $my_db->getAffectedRows($res);
+		return $affectedRows;
+	} else {
+		return 0;
+	}
+    }
+
+
+
+
+
+}
