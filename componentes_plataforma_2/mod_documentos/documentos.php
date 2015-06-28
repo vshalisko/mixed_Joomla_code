@@ -44,18 +44,26 @@ class modForm
 
 	$parcel_case_id = $p->parcel_case_id;
 	$document_description = $p->document_description;
+	$document_id = $p->document_id;
 	$u = $p->update_form_id;
 	$u_file = $u . "_file";
 	$u_parcel_case_id = $u ."_parcel_case_id";
 	$u_id = $u . "_id";
 	$u_text = $u . "_text";
 
-	if ( $p->user_description ) {
-		$user_description_field =  '<div class="row-fluid"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" /></div>';
+	if ( $document_id ) {
+		$disabled = "disabled";
+		$hidden = "";
 	} else {
-		$user_description_field =  '<div class="row-fluid" style="display: none;"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" /></div>';
+		$disabled = "";
+		$hidden = 'style="display: none;"';
 	}
 
+	if ( $p->user_description ) {
+		$user_description_field =  '<div class="row-fluid"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" '.$disabled.' /></div>';
+	} else {
+		$user_description_field =  '<div class="row-fluid" style="display: none;"><input class="offset1 span5" type="text" name="docRequired'.$u_text.'" id="docRequired'.$u_text.'" placeholder="describe el documento" '.$disabled.' /></div>';
+	}
 
 $update_form = <<<HTML
 <br />
@@ -63,15 +71,15 @@ $update_form = <<<HTML
 <div class="row-fluid">
 <label for="docRequired$u" class="offset1 docRequired$u">$document_description</label>
 <div class="span1">&nbsp;</div>
-<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired$u_file" id="docRequired$u_file" />
+<input class="span5 btn" type="file" accept="image/*, application/pdf" name="docRequired$u_file" id="docRequired$u_file" $disabled />
 <input type="hidden" name="docRequired$u_parcel_case_id" id="docRequired$u_parcel_case_id" value="$parcel_case_id" />
-<input type="hidden" name="docRequired$u_id" id="docRequired$u_id" value="" />
-<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit$u" id="ajaxFileSubmit$u" value="Subir documento" />
-<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete$u" id="ajaxFileDelete$u" value="Eliminar documento" style="display: none;" />
+<input type="hidden" name="docRequired$u_id" id="docRequired$u_id" value="$document_id" />
+<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileSubmit$u" id="ajaxFileSubmit$u" value="Subir documento" $disabled />
+<input type="button" class="span2 btn btn-small btn-primary" name="ajaxFileDelete$u" id="ajaxFileDelete$u" value="Eliminar documento" $hidden />
 </div>
 $user_description_field
 <div class="row-fluid">
-<div class="offset1 span6 ajaxFileSubmitResult$u"></div>
+<div class="offset1 span6 ajaxFileSubmitResult$u"><i class="icon-ok" $hidden></i></div>
 <div class="span3">&nbsp;</div>
 </div>
 </form>
@@ -315,17 +323,32 @@ HTML;
             <!-- file uploader elements -->
 <?php
 
-// the main 'update_form_id' is an unique identifier, rest of names of the elements in the form will derive from this
+// 'update_form_id' is an unique identifier, rest of names of the elements in the form will derive from this
+// 'parcel_case_id' is the main identifier of case (tramite), should be case opened by the same user as current session user
+// 'document_id' is the document primary key in case_documents table, if defined this cause the submit control disabled and delete button enabled
+// 'document_description' - the text that appear in the upper label
+// 'user_description' - text input enabled for custom user description (or comment) of the document
 $upload_form1_properties =  array(
 	'update_form_id' => "D1",
 	'parcel_case_id' => 250,
+	'document_id' => "",
 	'document_description' => "Identificación oficial del solicitante",
 	'user_description' => FALSE
 );
 
 $upload_form2_properties =  array(
+	'update_form_id' => "D2",
+	'parcel_case_id' => 250,
+	'document_id' => "",
+	'document_description' => "Identificación oficial del propietario",
+	'user_description' => FALSE
+);
+
+
+$upload_form3_properties =  array(
 	'update_form_id' => "DOpt",
 	'parcel_case_id' => 250,
+	'document_id' => "",
 	'document_description' => "Documento opcional considerado por el solicitante",
 	'user_description' => TRUE
 );
@@ -335,6 +358,9 @@ $upload_form1_html = modForm::getUploadForm( $upload_form1_properties );
 echo $upload_form1_html; 
 $upload_form2_html = modForm::getUploadForm( $upload_form2_properties );
 echo $upload_form2_html; 
+$upload_form3_html = modForm::getUploadForm( $upload_form3_properties );
+echo $upload_form3_html; 
+
 
 
 ?>            
