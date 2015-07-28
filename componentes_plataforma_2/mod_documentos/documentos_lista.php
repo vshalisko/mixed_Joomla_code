@@ -1,21 +1,24 @@
 <?php
 // modo del modulo: 1 - generador de formas, 0 - generador de lista
-$mod_documentos_mode = 1;
+$mod_documentos_mode = 0;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 
+<?php include 'file_uploader_init.php'; ?>
+
 <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-<title>Tr&aacute;mites Lagos de Moreno - Anexar documentos</title>    
+<title>Tr&aacute;mites Lagos de Moreno - Revisar documentos anexados</title>    
 <link rel="stylesheet" href="../css/style.css" type="text/css">
 <link rel="stylesheet" href="../script/jquery-ui/jquery-ui.css">
 <!SCRIPT INCLUDE>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<?php include 'file_uploader_init.php'; ?>
-
-<?php include 'file_uploader_scripts.php'; ?>        
+<div class="container span8">
+<!-- file uploader scripts -->
+<?php include 'file_uploader_scripts.php'; ?>
+</div>
 
 </head>
 <body>
@@ -37,11 +40,10 @@ $mod_documentos_mode = 1;
 	echo "Documentación para el trámite: "; 
 	echo (isset($_SESSION["tipo_tramite"])) ? $_SESSION["tipo_tramite"] : '';
 ?>
-<!-- file uploader scripts -->
-</div>
 
+</div>
 <div id="menu" style="background-color: rgb(238, 238, 238); height: 100%; width: 100%;">
-<form action="documentos.php" method="get">
+    <form action="documentos_lista.php" method="get">    
 <table style="width:100%;">
     <tbody>
         <tr>
@@ -50,11 +52,8 @@ $mod_documentos_mode = 1;
             <div class="upload-elements">
 
 
-<div class="container span10">
-<br />
 <!-- file uploader elements -->
 <?php include 'file_uploader.php'; ?>
-</div>
 
 
 
@@ -64,26 +63,9 @@ $mod_documentos_mode = 1;
             <button id="cancelar" name="cancelar" value="cancelar" style="width:150px">Cancelar</button>
             </div>
             </td>
-            <script type="text/javascript">
-                $( "#finalizar" ).click(function(e){
-			e.preventDefault(); // cancelamos comportamiteno predefinido
-			var $val = 0;
-			// validando
-	    		$( ".required" ).each( function(r){
-	        		if ( $(this).val() == "" && !$(this).prop("disabled") ) {  // los elementos "disabled" ya cuentan con anexo
-	              			$(this).addClass("error_red");
-		              		$val = 1;
-		        	} else {
-					$(this).removeClass("error_red");
-		        	}
-    			});
-	    		if ($val > 0) {
-	        		alert('Aviso! Se requiere anexar los documentos marcados con asterisco (*) antes de someter el trámite');
-	        		return false;
-	    		} else {
-				$(location).attr('href',"?finalizar=finalizar");
-				return true;
-			};
+               <script type="text/javascript">
+                $( "#finalizar" ).click(function(){
+                    window.location.assign('../mod_inicio/inicio.php');
                });
         </script>                
             <td style="color:#FFFFFF; vertical-align: top; text-align: center; width:20%; font-weight: bold;">
@@ -94,7 +76,7 @@ $mod_documentos_mode = 1;
                     <td style="width:20%;"></td>
                     <td style="width:20%;"></td>
                     <td style="width:20%;">
- <?php if($_SESSION["nivel"]!=1) include ("../ui_elements/menu/menu_v.php"); else include ("../ui_elements/menu/menu_dictaminador_v.php"); ?>
+                                    <?php include ("../ui_elements/menu/menu_v.php");?>
                     </td>
 <!--                    <td style="width:10%;"></td>-->
                     </tr>
@@ -104,10 +86,9 @@ $mod_documentos_mode = 1;
             </td>
         </tr>
 </tbody>
-</table> 
-</form>
+</table>
+    </form>
 </div>
 <div id="footer" style="background-color: rgb(109, 143, 49); clear: both; text-align: center; color: white; font-family: Arial;">Copyright &copy; Lagos de Moreno @ Jalisco.gob.mx</div>
-    <?php include ("../ui_elements/info_footer/contacto.php"); ?>
 </div>  
 </body></html>

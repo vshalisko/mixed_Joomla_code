@@ -56,8 +56,7 @@ class modLmu1Helper
 	$case_document_id = (isset($_POST['case_document_id'])) ? $_POST['case_document_id'] : '';
 		$case_document_id = mysql_real_escape_string($case_document_id);
 	$mode = (isset($_POST['ajax_mode'])) ? $_POST['ajax_mode'] : '';
-	$variable_user = (isset($_SESSION["usuario"])) ? $_SESSION["usuario"] : 'anonimo';
-		$variable_user = mysql_real_escape_string($variable_user);
+	$variable_user = (isset($_SESSION["usuario"])) ? $_SESSION["usuario"] : '';
 
 	if ('file_submit' == $mode) {
 	        try {
@@ -68,10 +67,10 @@ class modLmu1Helper
 				$view_name,$statement_user);
 			if( $selection_user ) {
 				$line = mysql_fetch_assoc($selection_user);
-				($line['usuario']) ? $case_user = $line['usuario'] : $case_user = '';  // we are intereste only in one line, so no problem without loop
+				($line['usuario']) ? $case_user = $line['usuario'] : $case_user = '';  // we are interested only in one line, so no problem without loop
 				// $result .= 'USER ' . $case_user; // debugging
 				mysql_free_result($selection_user);
-				if ($case_user != $_SESSION["usuario"]) {
+				if ($case_user != $variable_user && $variable_doctype != 'docRequiredD16' && $variable_doctype != 'docRequiredD17' && $variable_doctype != 'docRequiredD18') {
 					$errorlog .= "\nProblemas al subir el archivo - usuario no coincide";	
 				}
 			} else {
@@ -98,7 +97,7 @@ class modLmu1Helper
 				$extension = pathinfo($_FILES['variable_file']['name'],PATHINFO_EXTENSION);  // file extension
 //				$tempFullPath = ini_get('upload_tmp_dir').$tempName;
 				$site_path = $_SERVER['DOCUMENT_ROOT'];
-				$destination_folder = $site_path. "uploaded_documents";
+				$destination_folder = $site_path. "/uploaded_documents";
 				$file_properties_xml = "<xml><fileName>".$name."</fileName><fileType>".
 					$type."</fileType><fileSize>".$size."</fileSize><fileDescription>".
 					$variable_doc_description."</fileDescription></xml>";
@@ -184,7 +183,6 @@ class modLmu1Helper
 	}
 
 	if ('file_delete' == $mode) {
-
 		        try {
 				// case creation user should match with current session user
 				$view_name = "tramite_usuario_view";
@@ -196,7 +194,7 @@ class modLmu1Helper
 					($line['usuario']) ? $case_user = $line['usuario'] : $case_user = '';  // we are intereste only in one line, so no problem without loop
 					// $result .= 'USER ' . $case_user; // debugging
 					mysql_free_result($selection_user);
-					if ($case_user != $_SESSION["usuario"]) {
+					if ($case_user != $variable_user && $variable_doctype != 'docRequiredD16' && $variable_doctype != 'docRequiredD17' && $variable_doctype != 'docRequiredD18') {
 						$errorlog .= "\nProblemas al eliminar registro en DB - usuario no coincide";	
 					}
 				} else {
@@ -248,29 +246,6 @@ class modLmu1Helper
 			}
 
 		
-//		$my_db1 = modLMUHelper::getDBinstance();
-//			$user_test_sql = 'SELECT person_login FROM persons WHERE person_id = (SELECT person_id FROM parcel_cases WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' LIMIT 1)';
-//			$rowsuser = modLMUHelper::getSQLQuery01( '', $user_test_sql ); // checking if the user who created the parcel_case is the same as who is trying to delete the document
-//			$joomla_user = JFactory::getUser();
-//			if (isset($rowsuser[0]->person_login) && ($rowsuser[0]->person_login == $joomla_user->username)) {
-//				$result .= "\nUsuario autorizado";
-//				$test_sql = 'SELECT COUNT(*) AS count FROM case_documents WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' AND case_document_id = '.$my_db1->quote($case_document_id);
-//				$rows = modLMUHelper::getSQLQuery01( '', $test_sql ); // checking if there are only one record to be deleted
-//				if (isset($rows[0]->count) && ($rows[0]->count == 1)) {
-//			        	$base_sql = 'DELETE FROM case_documents WHERE parcel_case_id = '.$my_db1->quote($parcel_case_id).' AND case_document_id = '.$my_db1->quote($case_document_id);
-//					$affected_rows = modLMUHelper::getSQLDelete($base_sql);
-//					if( $affected_rows ) {
-//						$result .= "\nRegistro de ".$affected_rows." documento en DB fue eliminado";
-//					} else {
-//						$errorlog .= "\nProblema al eliminar 1 registro de documento en DB, registro no fue eliminado";
-//					}
-//				} else {
-//					$errorlog .= "\nProblema al eliminar registro de documento en DB (número incorrecto de registros marcado)";
-//				}
-//			} else {
-//				$errorlog .= "\nUsuario no autorizado eliminar documento";
-//			}
-
 		$obj = new stdClass;
 		$obj->insertId = $insert_id;
 		$obj->string = $result;		// the result messages
